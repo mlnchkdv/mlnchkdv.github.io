@@ -4,11 +4,9 @@
 
 [РЕГИСТРАЦИЯ](https://forms.gle/1mqSVsDj4tj2Az9r5)
 
-
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:O30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="320px" frameborder="0" scrolling="no"></iframe>
 
 `Каждое задание оценивается от 0 до 5 баллов.`
-
-
 
 1. #### История машинного обучения
 
@@ -29,16 +27,16 @@
    Что такое ансамбли?
    Что такое нейронные сети?
 
-   > **Задание 2.1**: в рамках курса оформите глоссарий (в формате словаря, диаграммы, *mindmap*, графа и т.п.).
+   > **Задание 2.1**: в рамках курса оформите глоссарий (в любом формате, словаря, диаграммы, *mindmap*, графа).
 
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
+   [📖manual + 📝test](./2_branches/index.html) | [📊slides](./2_branches/slides.html) | [💻homework]() | [💬feedback](https://forms.gle/f6oyf2y2miPDWS1e8)
 
 3. #### Модель нейронной сети
 
    Модель перцептрона? 
    Модель многослойного перцептрона?
 
-   > **Задание 3.1**: оформите обзорную таблицу для 10 функций активации.
+   > **Задание 3.1**: сделайте обзорную таблицу для 10 функций активации.
 
    [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
 
