@@ -1,0 +1,1342 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* noto-sans-sc-300 - latin */
+/* noto-sans-sc-300 - latin */
+  /* noto-sans-sc-regular - latin */
+    /* noto-sans-sc-500 - latin */
+    /* noto-sans-sc-700 - latin */
+    /* noto-sans-sc-900 - latin */
+      
+
+/*** Custom fonts ***/
+@import url('file:///C://Users//meldm//AppData//Roaming//Typora/themes/');
+
+/*** Color setting ***/
+:root {
+  --side-bar-bg-color: #183055;
+  --active-file-bg-color: #2f4566;
+  --active-file-text-color: #ffffff;
+  --active-file-border-color: #757575;
+  --active-search-item-bg-color: #23242b;
+  --item-hover-bg-color: #ececec;
+  --item-hover-text-color: #000000;
+  --control-text-color: #ddd;
+  --window-border: 1px solid #183055;
+  --code-cursor: #f0f0f0;
+}
+
+/*** Btn in search bar ***/
+#filesearch-case-option-btn,
+#filesearch-word-option-btn {
+  background: var(--side-bar-bg-color);
+}
+
+/****** #write basic ******/
+#write {
+  position: static;
+  width: 90%;
+  max-width: 700px;
+  line-height: 1.6;
+  transform: none;
+  height: auto;
+  
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/****** #write h1-h6 ******/
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6,
+#write p,
+#write pre {
+  width: auto;
+}
+
+#write h1::before,
+#write h2::before,
+#write h3::before,
+#write h4::before,
+#write h5::before,
+#write h6::before {
+  position: absolute;
+  right: calc(100% + 10px);
+  bottom: 0;
+  color: #b4b4b4;
+  font-size: 1rem;
+  font-weight: bold;
+  font-variant: 'small-caps';
+  border: 0;
+  border-radius: 0;
+  left: auto;
+  float: none;
+  padding: 0;
+}
+
+#write h1 {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h1::before {
+  /* content: 'H1'; */
+  bottom: 1rem;
+}
+
+#write h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h2::before {
+  /* content: 'H2'; */
+  bottom: .85rem;
+}
+
+#write h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h3::before {
+  /* content: 'H3'; */
+  top: .44rem;
+  padding: 3px 0 3px 0;
+}
+
+#write h4 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h4::before {
+  /* content: 'H4'; */
+  top: .4rem;
+}
+
+#write h5,
+#write h6 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h5::before,
+#write h6::before {
+  top: .2rem;
+}
+
+#write h5::before {
+  /* content: 'H5'; */
+}
+
+#write h6::before {
+  /* content: 'H6'; */
+}
+
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+  color: #ddd;
+  color: var(--heading-char-color);
+  border: 1px solid;
+  border-radius: 3px;
+  position: absolute;
+  left: -1.642857143rem;
+  top: .357142857rem;
+  float: left;
+  font-size: 9px;
+  padding-left: 2px;
+  padding-right: 2px;
+  vertical-align: bottom;
+  font-weight: 400;
+  line-height: 2;
+}
+
+/****** Global Style ******/
+body {
+  margin: 0;
+  font-family: 'Glow Sans SC', -apple-system, sans-serif;
+  font-weight: 500;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%
+}
+
+html,
+body {
+  color: #242A31;
+  /* width: 100%; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  line-height: 1rem;
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+hr {
+  border-color: #e6ecf1;
+  height: 2px;
+  border-top: 2px solid #e6ecf1;
+}
+
+img {
+  max-width: 80%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+/****** ul ol Style ******/
+
+ul>li>ul>li {
+  list-style-type: circle;
+}
+
+ul>li>ul>li>ul>li {
+  list-style-type: square;
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+  line-height: 1;
+}
+
+ol>li {
+  list-style-type: decimal
+}
+
+ol>li>ol>li {
+  list-style-type: lower-alpha
+}
+
+ol>li>ol>li>ol>li {
+  list-style-type: lower-roman
+}
+
+/****** Table Style ******/
+
+table {
+  padding: 0;
+  word-break: initial;
+}
+
+table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+  background-color: #f5f7f9;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
+
+/****** YAML Style ******/
+pre.md-meta-block {
+  font-size: .85rem !important;
+  color: #5d5d5d;
+  min-height: .8rem;
+  white-space: pre-wrap;
+  background: #f5f7f9;
+  display: block;
+  overflow-x: hidden;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
+
+/****** Global Text ******/
+p {
+  font-size: 16px;
+  font-family: "Glow Sans SC", -apple-system, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  font-style: normal;
+  color: rgb(59, 69, 78);
+}
+
+a {
+  /* color: rgb(164, 78, 237); */
+  color: rgb(56, 132, 254);
+  font-weight: 500;
+  text-decoration: none;
+  text-decoration-style: none;
+  cursor: pointer;
+  padding: 0 3px 0 3px;
+}
+
+#write a:hover {
+  color: rgb(56, 132, 254);
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+strong {
+  font-weight: 700;
+}
+
+mark {
+  background: #87CEFA;
+  padding: 0 2px 0 2px;
+  margin: 0 2px 0 2px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+
+/****** Print header ******/
+@media print {
+  .typora-export * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  #write h1::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h2::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h3::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h4::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h5::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h6::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+
+}
+
+
+/****** #write Code Fences ******/
+#write .md-fences {
+  -webkit-font-smoothing: initial;
+  margin: 1rem 0 1rem 0 !important;
+  line-height: 1.43rem;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  word-wrap: normal;
+}
+
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+  padding-left: 30px;
+  line-height: 1.55rem;
+}
+
+#write .CodeMirror-cursors .CodeMirror-cursor {
+  border-left: 2px solid var(--code-cursor);
+}
+
+#write code,
+tt {
+  margin: 0 2px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 0.92rem !important;
+  background: #f5f7f9;
+  display: inline;
+  vertical-align: bottom;
+  line-height: 1.8;
+}
+
+#write .md-footnote {
+  color: var(--main-5);
+  background-color: var(--main-1);
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  padding: 0.75rem 0.15rem 0.75rem 0.15rem;
+  background-color: #183055 !important;
+  color: #f8f8f2 !important;
+  border: none;
+  border-radius: 6px;
+}
+
+
+.code-tooltip {
+  box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+  border-top: 1px solid #eef2f2;
+  background: #183055;
+  border-radius: 6px;
+}
+
+.md-fences {
+  font-size: .9rem;
+  position: relative !important;
+  display: block;
+  page-break-inside: avoid;
+  text-align: left;
+  overflow: visible;
+  white-space: pre;
+  background: inherit;
+}
+
+.md-fences {
+  background-color: #f8f8f8;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+
+.md-fences,
+tt {
+  border-radius: 3px;
+  /* color: #f0f0f0; */
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+/****** Sidebar ******/
+#typora-sidebar * {
+  color: #f0f0f0;
+}
+
+#typora-sidebar .file-tree-node.file-library-file-node.active .file-node-background {
+  border-left: 5px solid #3884ff;
+  height: 2.2rem;
+}
+
+#sidebar-files-menu {
+  border: 1px solid rgba(0, 2, 3, 0.7);
+}
+
+.file-list-item {
+  border-bottom: var(--window-border);
+}
+
+.file-list-item {
+  overflow: hidden;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  border-bottom: var(--window-border);
+  cursor: pointer;
+  padding-right: 8px;
+  padding-top: 12px;
+  padding-left: 24px;
+  transition: top .5s;
+  -webkit-transition: top .5s;
+}
+
+.file-list-item.active {
+  background: #2f4566;
+  /* background: var(--active-file-bg-color); */
+  color: var(--active-file-text-color);
+  border-radius: 12px;
+}
+
+.file-list-item:not(.active) {
+  opacity: .9;
+}
+
+.file-node-content {
+  padding-top: 6px;
+  margin: 0 0 8px 0;
+  cursor: default;
+  color: var(--control-text-color);
+  white-space: nowrap;
+  height: 2.2rem;
+  line-height: 1.5;
+}
+
+.ty-on-drag-enter {
+  background-color: #2f4566;
+  color: var(--item-hover-text-color);
+}
+
+.file-node-content:active {
+  border-radius: 0px !important;
+  background: #2f4566;
+}
+
+.active .file-node-content {
+  font-weight: bold;
+}
+
+.file-node-content:hover {
+  cursor: pointer;
+  border-radius: 0px !important;
+}
+
+.file-node-icon,
+.file-node-open-state {
+  display: block;
+  float: left;
+  line-height: 1.5;
+  min-height: 15px;
+}
+
+.file-node-icon {
+  margin-right: 6px;
+}
+
+.file-list-item-file-name {
+  font-weight: 700;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  line-height: 2;
+}
+
+.sidebar-footer {
+  background: var(--side-bar-bg-color);
+  border-top: 1px #555 solid;
+}
+
+.html-for-mac #file-library-search-input {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  line-height: 16px;
+  margin: 5px 16px 0px 0;
+  width: 0;
+  /* -webkit-flex: 1; */
+  flex: 1;
+  background: 0 0;
+  color: #bbc0ca !important;
+  /* transform: translateY(-3px); */
+  /* overflow: auto; */
+  padding-top: 6px;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background: #021d43;
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  background: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .show+.menuitem-group-label.show {
+  border-color: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #19191c;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu li>a:hover {
+  background: #021d43;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active,
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn:hover {
+  color: #3884FF;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active {
+  background: #001129;
+}
+
+#typora-sidebar .file-list-item.file-library-node:not(.active):hover {
+  background: #243959;
+  border-radius: 12px;
+}
+
+#typora-sidebar .file-tree-node.file-library-file-node:not(.active):hover .file-node-background {
+  background: #243959;
+  border-radius: 12px;
+  height: 2.2rem;
+}
+
+/****** Quote style ******/
+blockquote {
+  position: relative;
+  /*  margin: 1rem 1 1rem 2rem; */
+  padding: 1rem;
+  color: #827676;
+  background-color: #f5f7f9;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+blockquote::before {
+  content: '';
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  height: 100%;
+  width: .30rem;
+  background: #3884ff;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/****** task list style ******/
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item>input {
+  top: -0.2rem;
+  margin-left: -1.6rem;
+  margin-top: calc(1rem + 1px);
+  -webkit-appearance: initial;
+}
+
+.md-task-list-item>input:before {
+  border: 1px solid#0185ff;
+  border-radius: 1rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  content: ' ';
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+  background: #0185ff;
+  border-width: 1px;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+  opacity: 1;
+}
+
+.md-task-list-item>input:after {
+  opacity: 1;
+  -webkit-transition: opacity 0.05s ease-in-out;
+  -moz-transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.05s ease-in-out;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  content: ' ';
+  opacity: 0;
+}
+
+/****** Source style ******/
+.typora-sourceview-on #write {
+  display: none
+}
+
+#typora-source {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 0;
+  display: none;
+  line-height: 1.5
+}
+
+.mac-seamless-mode #typora-source {
+  top: 20px
+}
+
+#typora-source .CodeMirror {
+  height: 100%;
+  overflow-x: hidden
+}
+
+#typora-source .CodeMirror-gutters {
+  left: initial !important
+}
+
+#typora-source .CodeMirror-lines {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  padding-left: 60px;
+  padding-right: 30px;
+  max-width: 800px;
+  margin: 0 auto
+}
+
+#typora-source .CodeMirror-wrap .CodeMirror-scroll {
+  overflow-y: auto
+}
+
+.CodeMirror-activeline .cm-trailing-space-new-line:after {
+  opacity: .6
+}
+
+.CodeMirror-activeline .cm-starttab .cm-tab:after {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+  width: 100%;
+  opacity: 1
+}
+
+.CodeMirror-activeline .cm-startspace:after,
+.CodeMirror-activeline .cm-trailing-space-new-line:after {
+  opacity: .2
+}
+
+.cm-s-inner .CodeMirror-vscrollbar {
+  display: none !important
+}
+
+#typora-source .CodeMirror-gutter-wrapper {
+  position: absolute !important;
+  left: -6ch !important;
+  min-width: 4ch !important;
+  text-align: right;
+  font-family: monospace;
+  font-size: .8rem;
+  margin-top: .1rem;
+  display: inline-block;
+  opacity: .6
+}
+
+#typora-source .CodeMirror-linenumber {
+  width: auto !important;
+  visibility: hidden
+}
+
+#typora-source .CodeMirror-sizer {
+  margin-left: 0 !important
+}
+
+#typora-source .CodeMirror-gutter {
+  min-width: 4ch !important
+}
+
+#typora-source .CodeMirror-activeline .CodeMirror-linenumber,
+#typora-source .CodeMirror-linenumber.CodeMirror-linenumber-show {
+  visibility: visible
+}
+
+#typora-source .CodeMirror-code>.CodeMirror-activeline::before,
+#typora-source .CodeMirror-code>:first-child::before,
+#typora-source .CodeMirror-code>:last-child::before,
+#typora-source .CodeMirror-code>:nth-child(10n)::before {
+  visibility: visible
+}
+
+.cm-s-typora-default .cm-header1:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 2.2rem;
+}
+
+.cm-s-typora-default .cm-header2:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 2rem;
+}
+
+.cm-s-typora-default .cm-header3:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.6rem;
+}
+
+.cm-s-typora-default .cm-header4:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.4rem;
+}
+
+.cm-s-typora-default .cm-header5:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.2rem;
+}
+
+.cm-s-typora-default .cm-header6:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.2rem;
+}
+
+.cm-s-typora-default .cm-header,
+.cm-s-typora-default .cm-property {
+  color: #183055 !important;
+}
+
+pre.CodeMirror-line {
+  page-break-inside: avoid;
+}
+
+/****** Code style ******/
+code {
+  font-size: .9rem;
+  /*   color: #333333; /*  #537AA2;  
+      border: 1px solid #d0d0d0;  */
+  font-family: 'Cascadia Code', Consolas, 'Noto Sans SC', 'Courier New', monospace;
+  padding: .2rem .2rem;
+  border-radius: 3px;
+  background: #f5f7f9 !important;
+  display: inline;
+  vertical-align: bottom;
+  line-height: 1.8;
+}
+
+code,
+pre {
+  font-size: 95% !important;
+  font-weight: normal;
+  font-family: 'Cascadia Code', Consolas, 'Noto Sans SC', 'Courier New', monospace;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial
+}
+
+/****** The flow chart ******/
+pre.md-fences[lang=sequence].md-focus .md-diagram-panel,
+pre.md-fences[lang=flow].md-focus .md-diagram-panel,
+pre.md-fences[lang=mermaid].md-focus .md-diagram-panel {
+  position: -webkit-sticky;
+  border: 1px solid #777;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.code-tooltip .ty-input,
+.code-tooltip input {
+  background-color: transparent;
+  border: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 3px;
+  text-align: center;
+  min-width: 140px;
+  display: inline-block;
+  padding: 0 4px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.enable-diagrams pre.md-fences[lang=sequence] .code-tooltip,
+.enable-diagrams pre.md-fences[lang=flow] .code-tooltip,
+.enable-diagrams pre.md-fences[lang=mermaid] .code-tooltip {
+  right: 8px;
+  bottom: -2.2em;
+}
+
+/****** Windows contral ******/
+.megamenu-menu-list li a.active,
+.megamenu-menu-list:not(.saved) li a:hover {
+  background-color: #285e8e;
+}
+
+/****** Fix ******/
+.md-tab {
+  display: inline-block;
+  white-space: pre;
+  font-family: initial;
+}
+
+div.md-mathjax-preview.mathjax-candidate.mathjax-candidate-show {
+  background-color: white !important;
+  -webkit-user-modify: read-only;
+}
+
+.mathjax-candidate {
+  text-align: center;
+  padding-top: inherit;
+  overflow-x: auto;
+  padding: 10px 0;
+  background-color: white;
+}
+
+input {
+  font-weight: bold;
+  background-color: inherit;
+  background-color: var(--bg-color);
+  color: var(--text-color) !important;
+}
+
+#write input {
+  transform: translateY(-6.5px);
+}
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item>input {
+  top: -0.2rem;
+  margin-left: -1.6rem;
+  margin-top: calc(1rem + 1px);
+}
+
+.auto-suggest-container li {
+  padding: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  min-width: 124px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.auto-suggest-container {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .1);
+  position: fixed;
+  background-color: #fff;
+  background-color: var(--bg-color);
+  z-index: 10;
+  font-size: .9rem;
+  display: none;
+  padding: 4px 6px 4px 6px;
+  line-height: 20px;
+}
+
+/****** Code highlight ******/
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #596774;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #f8f8f0;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .cm-keyword {
+  color: rgba(199, 146, 234, 1);
+}
+
+.cm-s-inner .cm-operator {
+  color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #82B1FF;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-atom {
+  color: #F77669;
+}
+
+.cm-s-inner .cm-number {
+  color: #F77669;
+}
+
+.cm-s-inner .cm-def {
+  color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-inner .cm-string {
+  color: #C3E88D;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-comment {
+  color: #aebcc2;
+}
+
+.cm-s-inner .cm-variable {
+  color: #82B1FF;
+}
+
+.cm-s-inner .cm-tag {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-meta {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-property {
+  color: #80CBAE;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-tag {
+  color: rgba(255, 83, 112, 1);
+}
+
+.cm-s-inner .cm-error {
+  color: rgba(255, 255, 255, 1.0);
+  background-color: #EC5F67;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner.cm-header {
+  color: #334EEA;
+}
+
+.md-fences .code-tooltip {
+  background-color: #263238;
+}
+
+
+
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='разделы-машинного-обучения'><span>Разделы машинного обучения</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n0"><a class="md-toc-inner" href="#разделы-машинного-обучения">Разделы машинного обучения</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n38"><a class="md-toc-inner" href="#классическое-машинное-обучение">Классическое машинное обучение</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n44"><a class="md-toc-inner" href="#обучение-с-учителем">Обучение с учителем</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n50"><a class="md-toc-inner" href="#классификация">Классификация</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n76"><a class="md-toc-inner" href="#регрессия">Регрессия</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n101"><a class="md-toc-inner" href="#обучение-без-учителя">Обучение без учителя</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n107"><a class="md-toc-inner" href="#кластеризация">Кластеризация</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n135"><a class="md-toc-inner" href="#уменьшение-размерности-обобщение">Уменьшение размерности (обобщение)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n164"><a class="md-toc-inner" href="#поиск-правил-ассоциация">Поиск правил (ассоциация)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n180"><a class="md-toc-inner" href="#обучение-с-подкреплением">Обучение с подкреплением</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n205"><a class="md-toc-inner" href="#ансамбли">Ансамбли</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n206"><a class="md-toc-inner" href="#стекинг">Стекинг</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n208"><a class="md-toc-inner" href="#беггинг">Беггинг</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n209"><a class="md-toc-inner" href="#бустинг">Бустинг</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n210"><a class="md-toc-inner" href="#нейронные-сети-и-глубокое-обучение">Нейронные сети и глубокое обучение</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n246"><a class="md-toc-inner" href="#разновидности-архитектур-нейронных-сетей">Разновидности архитектур нейронных сетей</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n253"><a class="md-toc-inner" href="#свёрточные-нейронные-сети">Свёрточные нейронные сети</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n268"><a class="md-toc-inner" href="#рекуррентные-нейронные-сети">Рекуррентные нейронные сети</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n283"><a class="md-toc-inner" href="#резюме">Резюме</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n288"><a class="md-toc-inner" href="#источники">Источники</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n292"><a class="md-toc-inner" href="#дополнительные-материалы">Дополнительные материалы</a></span></p></div><p><img src=".\images\Слайд1.png" style="zoom:50%;" /></p><p><span>Цель машинного обучения — предсказать результат по входным данным. Чем разнообразнее входные данные, тем проще алгоритму (машине, системе и т.п.) </span><strong><span>найти закономерности</span></strong><span> и сгенерировать результат.</span></p><p><span>Классифицировать алгоритмы можно многими способами. И начнем с обзора  четырех основных направлений в машинном обучении на сегодняшний день.</span></p><p><img src=".\images\7s8.jpg" referrerpolicy="no-referrer"></p><p><span>Как мы видим из данной схемы, можно выделить три составляющих:</span></p><ul><li><p><span>Данные</span></p><blockquote><p><span>От качества, объема и типа данных зависит в итоге как будет сформулирована задача и подобраны методы её решения. Чем качественнее данные, тем эффективнее будет работать программа. </span></p></blockquote></li><li><p><span>Признаки</span></p><blockquote><p><span>Также их называют фичами (features), свойствами, характеристиками — то на что конкретно необходимо смотреть алгоритму в подаваемых ему данных. Признаками могут быть пробег автомобиля, пол пользователя, цена акций, даже счетчик частоты появления слова в тексте или даже просто подпись к фотографии кота, что это есть кот.</span></p></blockquote></li><li><p><span>Алгоритм</span></p><blockquote><p><span>Как правило одну и туже задачу можно решать по разному. От выбора алгоритма зависит точность, скорость работы и размер готовой модели. Поэтому  сначала необходимо, сформулировать и определить критерии и меры оценки эффективности работы выбранных алгоритмов.</span></p></blockquote></li></ul><p><span>Таким образом определение машинного обучение можно вывести исходя из наглядной диаграммы:</span></p><p><img src=".\images\7r8.jpg" referrerpolicy="no-referrer"></p><p><span>Машинное обучение — направление, связанное с разработкой и построением аналитических моделей, которые способны автоматически обнаружить в данных скрытые и ранее неизвестные закономерности, а также самостоятельно приобретать новые свойства, необходимые для распознавания этих закономерностей. Или проще говоря, машинное обучение — подход при котором  наша программа, сама строит алгоритм (модель, функцию) из некого первоначального (исходного) набора данных.</span></p><p><span>Ниже  представлен развернутый вариант условной классификации машинного обучения.</span></p><p><img src=".\images\карта.jpg" referrerpolicy="no-referrer"></p><p><span>Классификация является условной и отображение разделов и подразделов могут быть представлены в других вариантах и формах.</span></p><p><img src=".\images\_1.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\DhMOKAXX4AAXvMB.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\E0oxqlqUcAQ_SJM.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\Eq6Ecl2XEAAfp-k.png" referrerpolicy="no-referrer"></p><p><img src=".\images\Machine Learning tasks, classification, slustering and Dimentionality redirection.png" referrerpolicy="no-referrer"></p><p><img src=".\images\ML-DL-Shema.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\qv8tkjpyrk_qeia-hp4fxkvco7w.jpeg" referrerpolicy="no-referrer"></p><p><img src=".\images\scale_1200.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\DH2a9frUQAAG7JV.jpg" referrerpolicy="no-referrer"></p><p><img src=".\images\maxresdefault.jpg" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h3 id='классическое-машинное-обучение'><span>Классическое машинное обучение</span></h3><p><span>Первые алгоритмы, заложившие классическое машинное обучение, пришли к нам из статистики и теории вероятности еще в 1950-х годах. Они решали формальные задачи — искали закономерности в данных (как правило в цифровых), оценивали близость точек в пространстве и вычисляли направления.</span></p><p><img src=".\images\7r6.jpg" referrerpolicy="no-referrer"></p><blockquote><p><span>Стоит отметить, что на сегодняшний день, крупные корпорации любят использовать нейронные сети везде, где это возможно. Потому что лишние 2% точности для них легко конвертируются в дополнительные прибыли и минимизацию рисков. Но остальным же стоит помнить, что когда задача решается классическими методами, дешевле реализовать сколько-нибудь полезное и эффективное решение на них, а потом думать об улучшениях. </span></p></blockquote><p>&nbsp;</p><h4 id='обучение-с-учителем'><span>Обучение с учителем</span></h4><p><span>Классическое машинное обучение в канонической интерпретации делится на две категории — с учителем (</span><em><span>Supervised Learning</span></em><span>) и без учителя (</span><em><span>Unsupervised Learning</span></em><span>).</span></p><p><span>В первом случае у алгоритма есть некий учитель, который говорит ей как правильно. Рассказывает, что на этой картинке кошка, а на этой собака. То есть учитель уже заранее разделил (разметил) все данные на кошек и собак, а алгоритм учится на конкретных примерах.</span></p><p><span>В обучении без учителя, алгоритм просто получает массив никак не размеченных данных, к примеру архив фотографий животных и требуется «разобраться, кто здесь на кого похож». Данные не размечены, у алгоритма нет учителя, и он пытается сам найти любые закономерности.</span></p><p><span>Очевидно, что с учителем обучаемость быстрее и точнее, поэтому напрактике его используют намного чаще. В свою очередь эти задачи делятся на два типа: </span><strong><span>классификация — предсказание категории объекта, и регрессия — предсказание места на числовой прямой</span></strong><span>.</span></p><p>&nbsp;</p><h5 id='классификация'><span>Классификация</span></h5><p><img src=".\images\7qx.jpg" referrerpolicy="no-referrer"></p><p><em><span>«Разделяет объекты по заранее известному признаку на заранее известные классы. Глаза по цветам, документы по языкам, музыку по жанрам и т.д.»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Спам-фильтры</span></li><li><span>Определение языка</span></li><li><span>Поиск похожих документов</span></li><li><span>Анализ тональности</span></li><li><span>Распознавание рукописных букв и цифр</span></li><li><span>Определение подозрительных транзакций</span></li></ul><p><span>Популярные алгоритмы: </span><a href='https://ru.wikipedia.org/wiki/Наивный_байесовский_классификатор'><span>Наивный Байес</span></a><span>, </span><a href='https://logic.pdmi.ras.ru/~sergey/teaching/mlcsclub/02-dectrees.pdf'><span>Деревья Решений</span></a><span>, </span><a href='https://ru.wikipedia.org/wiki/Логистическая_регрессия'><span>Логистическая Регрессия</span></a><span>, </span><a href='https://ru.wikipedia.org/wiki/Метод_k-ближайших_соседей'><span>K-ближайших соседей</span></a><span>, </span><a href='https://ru.wikipedia.org/wiki/Метод_опорных_векторов'><span>Машины Опорных Векторов</span></a></p><p>&nbsp;</p><p><span>ДОБАВИТЬ</span></p><p>&nbsp;</p><p><span>Также классификация используется для поиска аномалий в данных, т.е. когда один или несколько признаков объекта сильно выделяются или проще говоря не вписываются в наши классы. К примеру, в медицине сразу подсвечиваются все подозрительные области МРТ или выделяет отклонения в анализах. На биржах таким же образом определяют нестандартных игроков, которые скорее всего являются инсайдерами. Научив компьютер «как правильно», мы автоматически получаем и обратный классификатор — как неправильно.</span></p><p><span>Сегодня для классификации всё чаще используют нейросети, ведь по сути их для этого и изобрели. Но не стоит забывать, что </span><strong><span>чем сложнее данные — тем сложнее алгоритм</span></strong><span>. Для текста, цифр, таблиц разумнее начинать с классических методов машинного обучения, где модели меньше, обучаются быстрее и работают понятнее. Для изображений, видео и всего что называется Big Data — разумнее начинать с нейросетей.</span></p><p><img src=".\images\MFCC+…+……+spectrogram+DFT+Waveform+DCT+log+Input+of+DNN+filter+bank.jpg" referrerpolicy="no-referrer"></p><p><span>Подходы решения типовых задач, не стоят на месте, так одним из ярких примером является, задача распознания речи (которая является комбинированной задачей) решалась преобразованием звукового сигнала в MFCC-признаки (</span><em><span>mel-frequency cepstral coefficients</span></em><span>) (т.е. бралось преобразование Фурье, получившийся спектр преобразовывался к логарифмам амплитуд частот и далее от этих логарифмов бралось обратное преобразование Фурье) и уже получившиеся фонемы распознавались с помощью скрытых марковских моделей (т.е. оценивалась вероятность следующего слова при условии нескольких предыдущих). С приходом нейронных сетей, данный подход (основанный на скрытых марковских моделях) был заменен, более того, оказалось, что MFCC-признаки тоже можно улучшить путем обучения (естественно процесс предобработки сигнала остался) и в результате, сигналы (ваш голос) подающиеся на вход современным системам распознавания (такие как Siri, Алиса и т.п.), стал гораздо более «сырым», чем MFCC и при этом более эффективным (см. ниже про рекуррентные нейронные сети). Еще пример, не так давно можно было встретить классификатор лиц на SVM, но сегодня под эту задачу существует множество готовых нейросетей (см. ниже про свёрточные нейронные сети) в открытом доступе. А вот спам-фильтры, начиная с 2010 года, реализуются на основе SVM метода, так и используются по сей день. </span></p><p>&nbsp;</p><h5 id='регрессия'><span>Регрессия</span></h5><p><img src=".\images\7qy.jpg" referrerpolicy="no-referrer"></p><p><em><span>«Нарисуй линию вдоль моих точек. Да, это тоже машинное обучение»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Прогноза стоимости ценных бумаг</span></li><li><span>Анализ спроса и объема продаж</span></li><li><span>Медицинские диагнозы</span></li><li><span>Любые зависимости числа от времени (временные ряды)</span></li><li><span>Эконометрика</span></li></ul><p><span>Популярные алгоритмы: </span><a href='http://www.machinelearning.ru/wiki/index.php?title=Линейная_регрессия_(пример)'><span>Линейная или Полиномиальная Регрессия</span></a></p><p><span>Регрессия — та же классификация, только вместо категории мы предсказываем число (линейная аппроксимация). Стоимость автомобиля по его пробегу, количество пробок по времени суток, объем спроса на товар от роста компании и т.д. На регрессию идеально ложатся любые задачи, где есть зависимость от времени.</span></p><p><span>Регрессия является базовым инструментом у финансистов и аналитиков, она  также встроена в Excel, Tableau, Power BI и есть во всех статистических и аналитических библиотеках. Базовый принцип работы алгоритма — попытаться нарисовать линию, которая в среднем отражает зависимость и в отличие от человека с фломастером и бумагой, делается это математически точно — рассчитывая и учитывая среднее расстояние до каждой точки.</span></p><p><img src=".\images\7rg.jpg" referrerpolicy="no-referrer"></p><p><span>Когда регрессия рисует прямую линию, её называют линейной, когда кривую — полиномиальной. Это два основных вида регрессии, остальные встречаются реже. Также не стоит забывать, что Логистическая Регрессия, это не регрессия, а метод классификации.</span></p><p><span>Схожесть регрессии и классификации подтверждается еще и тем, что многие классификаторы, после небольших преобразований, превращаются в регрессоры. Например, мы можем не просто смотреть к какому классу принадлежит объект, а запоминать, насколько он близок — и вот регрессия.</span></p><p><span>Также регрессию и её подразделы можно классифицировать как методы прогнозирования — поиск конкретного числа, которое ожидается получить для нового наблюдения или для будущих периодов. В их числе </span><a href='http://www.cleverstudents.ru/articles/mnk.html'><span>регрессия, оцененная методом наименьших квадратов</span></a><span> для оценки зависимости одного фактора от другого. Модель временных рядов </span><a href='https://zen.yandex.ru/media/id/5fd12882382a85570c79c48c/arima-v-mashinnom-obuchenii-prostymi-slovami-6191307a9380933c070663a2'><span>ARIMA</span></a><span> для создания прогнозов (прогностических моделей), где </span><em><span>auto-regression</span></em><span> — зависимость от значений в прошлом периоде, </span><em><span>integrated</span></em><span> — процесс избавления от неcтационарности (т.е. наличие тренда или цикличности) и </span><em><span>moving average</span></em><span>  — зависимость от остатка  (разница между текущим и предыдущим значением) в прошлом периоде. </span><a href='https://www.machinelearningmastery.ru/develop-arch-and-garch-models-for-time-series-forecasting-in-python/'><span>GARCH</span></a><span> (</span><em><span>general auto-regression conditional heteroscedastic</span></em><span>) модель — применяется, когда во временных рядах есть гетероскедастичность (так называемая кластеризация). И множество модификаций под разные виды временных рядов.</span></p><blockquote><p><span>Конспект по методам прогнозирования: </span><a href='https://habr.com/ru/post/493396/' target='_blank' class='url'>https://habr.com/ru/post/493396/</a></p></blockquote><p>&nbsp;</p><h4 id='обучение-без-учителя'><span>Обучение без учителя</span></h4><p><span>Обучение без учителя (</span><em><span>Unsupervised Learning</span></em><span>) было изобретено в 90-е годы, и на практике используется реже. Поскольку </span><strong><span>размеченные данные — дорогая редкость</span></strong><span>, то обучение без учителя и используется для того, чтобы автоматически подписывать (размечать) исходные (сырые) данные.</span></p><blockquote><p><span>Но когда обучение без учителя не даёт удовлетворительного результата, а такое случается довольно часто, то на помощь приходят такие сервисы как </span><a href='https://toloka.yandex.ru/'><span>Яндекс.Толока</span></a><span>, которые в ручную, руками своих пользователей, размечают данные, за небольшие деньги. Именно так Яндекс и другие крупные корпорации и создают свои датасеты.</span></p></blockquote><p><span>Обучение без учителя, чаще используют как метод анализа данных, а не как основной алгоритм решения задачи машинного обучения и является частью интеллектуального анализа данных (</span><em><span>Data Mining</span></em><span>), т.е. обнаружения в больших массивах данных, ранее неизвестных, практически полезных и доступных для интерпретации знаний, необходимых для принятия решений.</span></p><p>&nbsp;</p><h5 id='кластеризация'><span>Кластеризация</span></h5><p><img src=".\images\7qz.jpg" referrerpolicy="no-referrer"></p><p><em><span>«Разделяет объекты по неизвестному признаку. Алгоритм сам решает как ему лучше»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Сегментация рынка (типов покупателей, лояльности)</span></li><li><span>Поиск ключевых игроков, «китов» рынка</span></li><li><span>Объединение близких точек на карте</span></li><li><span>Сжатие изображений</span></li><li><span>Анализ и разметки новых данных</span></li><li><span>Детекторы аномального поведения</span></li></ul><p><span>Популярные алгоритмы: </span><a href='https://en.wikipedia.org/wiki/K-means_clustering'><span>Метод K-средних</span></a><span>, </span><a href='https://en.wikipedia.org/wiki/Mean_shift'><span>Mean-Shift</span></a><span>, </span><a href='https://en.wikipedia.org/wiki/DBSCAN'><span>DBSCAN</span></a></p><p><span>5 алгоритмов кластеризации: </span><a href='https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68'><span>The 5 Clustering Algorithms Data Scientists Need to Know</span></a></p><p><img src=".\images\7ri.jpg" referrerpolicy="no-referrer"></p><p><span>Кластеризация — это классификация, но без заранее известных классов. Она сама ищет похожие объекты и объединяет их в кластеры. Количество кластеров можно задать заранее или доверить это алгоритму. Похожесть объектов определяется по тем признакам, которые разметили заранее — у кого много схожих характеристик, тех объединяем в один класс.</span></p><p><span>Отличный пример кластеризации — маркеры на картах, в таких сервисах, как Циан или доставка еды. Когда вы ищете все 3-х комнатные квартиры или все грузинские рестораны в Москве, то сервису приходится группировать их в кружочки с числом (кластер) и при увеличении распадаться на множество более мелких, с привязкой к конкретному адресу, иначе браузер или приложение, просто бы зависло в попытке загрузить и отрисовать миллион маркеров на карте.</span></p><p><span>Более сложные примеры кластеризации можно вспомнить в приложениях iPhoto или Google Photos, которые находят лица людей на фотографиях и группируют их в альбомы. Приложение не знает как зовут ваших друзей, но может отличить их по характерным чертам лица. Типичная кластеризация. Правда для начала им приходится найти эти самые «характерные черты», а это уже только с учителем.</span></p><p><span>Сжатие изображений — еще одна популярная проблема. Сохраняя картинку в PNG, вы можете установить палитру, скажем, в 32 цвета. Тогда кластеризация найдёт все «примерно красные» пиксели изображения, высчитает из них «средний красный» и заменит все красные на этот цвет, поскольку меньше цветов — меньше файл.</span></p><p><span>Проблема только, как быть с цветами типа Cyan — он ближе к зеленому или синему? В таком случае используется популярный алгоритм кластеризации — </span><a href='https://www.youtube.com/watch?v=_aWzGGNrcic'><span>Метод К-средних (K-Means)</span></a><span>. Где случайным образом бросается на палитру цветов наши 32 точки, называя их центроидами. Все остальные точки относятся к ближайшему центроиду от них — получаются как бы созвездия из самых близких цветов. Затем центроид двигается в центр своего созвездия и повторяет действие пока центроиды не перестанут двигаться. В результате кластеры обнаружены, стабильны и их ровно 32.</span></p><p><span>Конечно искать центроиды удобно и просто, но в реальных задачах кластеры могут быть разных форм. Например в геологии, необходимо найти на карте схожие по структуре горные породы — т.е. кластеры не только будут вложены друг в друга, но и нет точного их количества. Одним из решений будет метод </span><a href='https://habr.com/post/322034/'><span>DBSCAN</span></a><span>. Данный метод сам находит скопления точек и строит вокруг них кластеры. Его легко визуализировать и понять, если представить, что точки — это люди на площади. Находим трёх любых близко стоящих человека и говорим им взяться за руки. Затем они начинают брать за руку тех, до кого могут дотянуться. Так по цепочке, пока никто больше не сможет взять кого-то за руку — это и будет первый кластер. Повторяем, пока не поделим всех. Те, кому вообще некого брать за руку — это выбросы и аномалии.</span></p><p><span>Как и классификация, кластеризация тоже может использоваться как детектор аномалий. Скажем необходимо ответить на вопрос, отличается ли поведение пользователя после регистрации от нормального? При этом даже не требуется знать, что есть «нормальное поведение» — на вход просто загружаются все действия пользователей в алгоритм (модель), а далее нормальность и аномалии сами детектируются. Но стоит отметить, что работает такой подход, по сравнению с классификацией, как правило, менее эффективно.</span></p><p>&nbsp;</p><h5 id='уменьшение-размерности-обобщение'><span>Уменьшение размерности (обобщение)</span></h5><p><img src=".\images\7r0.jpg" referrerpolicy="no-referrer"></p><p><em><span>«Собирает конкретные признаки в абстракции более высокого уровня»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Рекомендательные Системы (★)</span></li><li><span>Визуализации данных</span></li><li><span>Определение тематики и поиска похожих документов</span></li><li><a href='https://vas3k.ru/blog/390/'><span>Анализ фейковых изображений</span></a></li><li><span>Риск-менеджмент</span></li></ul><p><span>Популярные алгоритмы: </span><a href='https://ru.wikipedia.org/wiki/Метод_главных_компонент'><span>Метод главных компонент</span></a><span> (PCA), </span><a href='https://ru.wikipedia.org/wiki/Сингулярное_разложение'><span>Сингулярное разложение</span></a><span> (SVD), </span><a href='https://ru.wikipedia.org/wiki/Латентное_размещение_Дирихле'><span>Латентное размещение Дирихле</span></a><span> (LDA), </span><a href='https://ru.wikipedia.org/wiki/Вероятностный_латентно-семантический_анализ'><span>Латентно-семантический анализ</span></a><span> (LSA, pLSA, GLSA), </span><a href='https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding'><span>t-SNE</span></a><span> (для визуализации)</span></p><p><img src=".\images\7rv.jpg" referrerpolicy="no-referrer"></p><p><span>С ростом объемов и сложности исследуемых данных, появилась необходимость в уменьшении и упрощении для дальнейшей интерпретации и анализа (т.е. новый уровень абстракции) исходных данных и данный класс методов назвали уменьшение (понижение) размерности или обобщение (</span><em><span>Dimension Reduction</span></em><span> или </span><em><span>Feature Learning</span></em><span>).</span></p><p><span>Например, собаки с треугольными ушами, длинными носами и большими хвостами объединяются в абстракцию «овчарки». Да, мы теряем информацию о конкретных овчарках, но новая абстракция становится удобнее и полезнее для анализа и интерпретации данных, без лишних деталей. Иными словами мы объединили несколько признаков в один и получили абстракцию. Плюс, обучение на меньшем количестве размерностей работает быстрее.</span></p><p><span>Данный инструмент эффективно используется для определения тематик текстов (</span><em><span>Topic Modelling</span></em><span>). Так метод </span><a href='https://habr.com/post/110078/'><span>Латентно-семантического анализа</span></a><span> (LSA), рассчитывает тематику текста из частоты появления определенных слов данном в тексте: в научных статьях больше технических терминов, в новостях о политике — имён политиков. Иными словами, происходит абстрагирование от конкретных слов до уровня смыслов, даже без привлечения учителя со списком категорий. Да, мы могли бы просто взять все слова из статей и кластеризовать, но тогда бы были потеряны все полезные связи между словами, например, что </span><em><span>батарейка</span></em><span> и </span><em><span>аккумулятор</span></em><span>, означают одно и то же в разных документах. Но точность такой системы будет крайне низкой, поскольку, нужно как-то объединить слова и документы в один признак, чтобы не терять скрытые (латентные) связи. Отсюда и появилось название метода. Оказалось, что </span><a href='https://ru.wikipedia.org/wiki/Сингулярное_разложение'><span>Сингулярное разложение</span></a><span> (SVD) легко справляется с этой задачей, выявляя полезные тематические кластеры из слов, которые встречаются вместе.</span></p><blockquote><p><span>Смотри также статью </span><a href='https://habr.com/post/275273/'><span>Как уменьшить количество измерений и извлечь из этого пользу</span></a><span>, и практическое применение в статье </span><a href='https://netpeak.net/ru/blog/algoritm-lsa-dlya-poiska-pohozhih-dokumentov/'><span>Алгоритм LSA для поиска похожих документов</span></a><span>.</span></p></blockquote><p><span>Другое популярное применение метода уменьшения размерности нашли в рекомендательных системах и коллаборативной фильтрации. Оказалось, если абстрагировать ими оценки пользователей фильмам, получается неплохая система рекомендаций кино, музыки, игр и т.д.</span></p><p><span>Полученная абстракция может быть с трудом понимаема мозгом, но при более тщательном исследовании и анализе, могут быть найдены новые признаки и корреляции, неочевидные ранее. Алгоритм, не знавший ничего кроме оценок пользователей, может совершенно иначе оперировать с ними и выдавать неожиданные связи.</span></p><blockquote><p><span>Лекция Яндекса — </span><a href='https://habr.com/company/yandex/blog/241455/'><span>Как работают рекомендательные системы</span></a></p></blockquote><p><img src=".\images\Screen-Shot-2020-01-07-at-2.56.03-PM-e1578388354711.png" referrerpolicy="no-referrer"></p><p><span>Также уменьшение размерности используется в целях визуализации, перед тем, как работать с многомерными данными, может быть полезно посмотреть на их структуру, уменьшив размерность и спроецировав их на двумерную или трехмерную плоскость. </span></p><p>&nbsp;</p><h5 id='поиск-правил-ассоциация'><span>Поиск правил (ассоциация)</span></h5><p><img src=".\images\7r1.jpg" referrerpolicy="no-referrer"></p><p><em><span>«Ищет закономерности в потоке заказов»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Прогноз акций и распродаж</span></li><li><span>Анализ товаров, покупаемых вместе</span></li><li><span>Расстановка товаров на полках</span></li><li><span>Анализ паттернов поведения на веб-сайтах</span></li></ul><p><span>Популярные алгоритмы: </span><a href='https://en.wikipedia.org/wiki/Association_rule_learning#Algorithms'><span>Apriori, Euclat, FP-growth</span></a></p><p><span>К поиску правил (ассоциаций) относятся все методы анализа продуктовых корзин, стратегий маркетинга и других последовательностей.</span></p><p>&nbsp;</p><h3 id='обучение-с-подкреплением'><span>Обучение с подкреплением</span></h3><p><em><span>«Помести робота в лабиринт и пусть ищет выход»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Самоуправляемых автомобилей</span></li><li><span>Роботов пылесосов</span></li><li><span>Игр</span></li><li><span>Автоматической торговли</span></li><li><span>Управления ресурсами предприятий</span></li></ul><p><span>Популярные алгоритмы: </span><a href='https://ru.wikipedia.org/wiki/Q-обучение'><span>Q-Learning</span></a><span>, </span><a href='https://en.wikipedia.org/wiki/State–action–reward–state–action'><span>SARSA</span></a><span>, DQN, </span><a href='https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-8-asynchronous-actor-critic-agents-a3c-c88f72a5e9f2'><span>A3C</span></a><span>, </span><a href='https://ru.wikipedia.org/wiki/Генетический_алгоритм'><span>Генетический Алгоритм</span></a></p><p><img src="" referrerpolicy="no-referrer"></p><p>&nbsp;</p><p><span>Термин подкрепление (reinforcement) пришёл из поведенческой психологии и обозначает награду или наказание за некоторый получившийся результат, зависящий не только от самих принятых решений, но и внешних, не обязательно подконтрольных, факторов. Под обучением здесь понимается поиск способов достичь желаемого результата методом проб и ошибок (trial and error), то есть попыток решить задачу и использование накопленного опыта для усовершенствования своей стратегии в будущем.</span></p><p>&nbsp;</p><p><span>Обучение с подкреплением используют там, где задача стоит не анализ данных, а «выживание» в реальной среде. Средой может быть как реальный мир, например — автопилот Теслы или роботы-пылесосы, так и в качестве  среды может быть видеоигра, как пример, NPC в некоторых компьютерных играх.</span></p><blockquote><p><a href='https://youtu.be/qv6UVOQ0F44' target='_blank' class='url'>https://youtu.be/qv6UVOQ0F44</a><span> - пример нейросети играющей в Марио</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h3 id='ансамбли'><span>Ансамбли</span></h3><h4 id='стекинг'><span>Стекинг</span></h4><p><span>про стеккинг неправильно написано. то, что там написано - это разновидность бэггинга. проверьте плиз</span></p><h4 id='беггинг'><span>Беггинг</span></h4><h4 id='бустинг'><span>Бустинг</span></h4><h3 id='нейронные-сети-и-глубокое-обучение'><span>Нейронные сети и глубокое обучение</span></h3><p><img src=".\images\7r4.jpg" referrerpolicy="no-referrer"></p><p><em><span>«У нас есть сеть из тысячи слоёв, десятки видеокарт и терабайты данных. Пусть рисует котиков!»</span></em></p><p><span>Сегодня используют для:</span></p><ul><li><span>Вместо всех вышеперечисленных алгоритмов вообще</span></li><li><span>Определение объектов на фото и видео</span></li><li><span>Распознавание и синтез речи</span></li><li><span>Обработка изображений, перенос стиля</span></li><li><span>Машинный перевод</span></li></ul><p><span>Популярные архитектуры: </span><a href='https://ru.wikipedia.org/wiki/Перцептрон'><span>Перцептрон</span></a><span>, </span><a href='https://ru.wikipedia.org/wiki/Свёрточная_нейронная_сеть'><span>Свёрточные Сети</span></a><span> (CNN), </span><a href='https://ru.wikipedia.org/wiki/Рекуррентная_нейронная_сеть'><span>Рекуррентные Сети</span></a><span> (RNN), </span><a href='https://ru.wikipedia.org/wiki/Автокодировщик'><span>Автоэнкодеры</span></a></p><p><img src=".\images\7sb.jpg" referrerpolicy="no-referrer"></p><p><span>Любая нейросеть — это </span><strong><span>набор нейронов и связей между ними</span></strong><span>. Нейрон  представляет из себя просто функцию со множеством входов и одним выходом. Задача нейрона — взять числовые значения со своих входов, выполнить над ними функцию и отдать результат на выход. Простой пример нейрона: просуммировать все цифры со входов, и если их сумма больше N — выдать на выход единицу, иначе — ноль. В свою очередь, связи — это каналы, через которые нейроны шлют друг другу какие-то числовые значения. У каждой связи есть свой вес — её единственный параметр, который можно условно представить как прочность (качество, стоимость) связи. Когда через связь с весом 0.5 проходит число 10, оно превращается в 5. Сам нейрон не разбирается, что к нему пришло и суммирует всё подряд — вот веса и нужны, чтобы управлять на какие входы нейрон должен реагировать, а на какие нет.</span></p><p><img src=".\images\7se.jpg" referrerpolicy="no-referrer"></p><p><span>Далее, чтобы управлять сетью, нейроны решили связывать не как захочется, а по слоям. </span><strong><span>Внутри одного слоя нейроны никак не связаны</span></strong><span>, но соединены с нейронами следующего и предыдущего слоя. Данные в такой сети идут строго в одном направлении — от входов первого слоя к выходам последнего. Если объединить достаточное количество слоёв и правильно расставить веса в такой сети, получается следующее — подав на вход, скажем, изображение написанной от руки цифры 4, чёрные пиксели активируют связанные с ними нейроны, те активируют следующие слои, и так далее и далее, пока в итоге не загорится самый выход, отвечающий за четвёрку. Результат достигнут.</span></p><p><span>С точки зрения машинного обучения, нейронная сеть — частный случай методов распознавания образов и дискриминантного анализа (раздел вычислительной математики о том, какие переменные разделяют, то есть «дискриминируют», данные на известные заранее (в отличие от кластерного анализа) страты). На практике, естественно, никаких нейронов и связей не пишут, всё представляют матрицами и считают матричными произведениями, для эффективной скорости. </span></p><blockquote><p><span>Наглядное </span><a href='https://youtu.be/aircAruvnKk'><span>объяснение</span></a><span> распознавания рукописных цифр.</span></p></blockquote><p><span>Такая сеть, где несколько слоёв и между ними связаны все нейроны, называется </span><a href='https://ru.wikipedia.org/wiki/Многослойный_перцептрон_Румельхарта'><span>перцептроном</span></a><span> (MLP) и считается самой простой архитектурой для новичков. Как правило, в реальных проектах не используется, в виду трудоемкости её обучения и низкой эффективности.</span></p><p><span>Таким образом основная задача, когда мы построили сеть, это правильно расставить веса, чтобы нейроны реагировали на нужные сигналы. Тут нужно вспомнить, что у нас же есть данные — примеры «входов» и правильных «выходов». Будем показывать нейросети рисунок той же цифры 4 и говорить «подстрой свои веса так, чтобы на твоём выходе при таком входе всегда загоралась четвёрка».</span></p><p><span>В начале обучения все веса расставлены случайно, мы показываем сети цифру, она выдаёт какой-то случайный ответ (весов-то нет), а мы сравниваем, насколько результат отличается от нужного нам. Затем идём по сети в обратном направлении, от выходов ко входам, и для каждого нейрона, между выходным и входным слоями, указываем, через веса, правильно или неправильно был активирован нейрон (проще говоря, спрашиваем у каждого нейрона — так, ты вот тут зачем-то активировался, из-за тебя всё пошло не так, давай ты будешь чуть меньше реагировать на вот эту связь и чуть больше на вон ту).</span></p><p><span>В результате, через сто тысяч таких циклов «прогнали-проверили-исправили» веса в сети откорректируются (с большой долей вероятности) так, как мы хотели. Этот подход называется </span><a href='https://en.wikipedia.org/wiki/Backpropagation'><em><span>Backpropagation</span></em></a><span> или «Метод обратного распространения ошибки». С виду очевидный и понятный метод, был открыт еще в 60-е годах прошлого века, но потребовалось 30 лет, чтобы применить его к нейронным сетям (Румельхарт, Хинтон и Уильямс в статье под названием </span><a href='https://www.nature.com/articles/323533a0'><span>«</span><em><span>Learning representations by back-propagating errors</span></em><span>»</span></a><span>). До этого не существовало универсального подхода для их обучения.</span></p><blockquote><p><span>Наглядное </span><a href='https://youtu.be/IHZwWFHWa-w'><span>объяснение</span></a><span> процесса Backpropagation.</span></p></blockquote><p><img src=".\images\3-AI-Booms.png" referrerpolicy="no-referrer"></p><p><span>Итак, хорошо обученная нейросеть может «притворяться» любым алгоритмом из представленных выше. Появилась иллюзия, что </span><em><span>наконец-то у нас есть архитектура человеческого мозга, нужно просто собрать много слоёв и обучить их на любых данных</span></em><span>. Но оказалось, что на обучение сети с большим количеством слоёв требуется невозможный объем мощностей, по тем временам (на сегодняшний день, средний игровой компьютер с GeForce превышает мощность тогдашнего датацентра), и началась первая </span><a href='https://en.wikipedia.org/wiki/AI_winter'><span>Зима ИИ</span></a><span>, потом оттепель, потом вторая волна разочарования (подробнее смотри: </span><a href=''><span>Формирование и развитие машинного обучения и его подразделов</span></a><span>).</span></p><p><img src=".\images\ai1.jpg" referrerpolicy="no-referrer"></p><p><span>Пока в 2006 году Джеффри Хинтон, Руслан Салахутдинов, Осиндеро и Тех опубликовали работу про глубокую сеть доверия </span><a href='https://www.cs.toronto.edu/~hinton/absps/fastnc.pdf'><span>«</span><em><span>A fast learning algorithm for deep belief nets (DBN)</span></em><span>»</span></a><span>, в которой они складывают несколько скрытых слоев, где нейроны внутри одного слоя не связаны друг с другом, но связаны с нейронами соседнего слоя (такой вид связей называется ограниченная машина Больцмана - </span><em><span>Restricted Boltzmann Machine</span></em><span> (RBM)) и называют их </span><em><span>Deep Belief Networks</span></em><span>. Данный подход обучения оказался весьма эффективным на большом количестве данных. А 2012 году свёрточная нейросеть </span><a href='https://habr.com/post/183380/'><span>обошла всех в конкурсе ImageNet</span></a><span>, из-за чего в мире </span><em><span>внезапно вспомнили</span></em><span> о методах глубокого обучения, описанных еще в 90-х годах.</span></p><p><img src=".\images\DBN.png" referrerpolicy="no-referrer"></p><p><span>Отличие </span><strong><span>глубокого обучения</span></strong><span> от классических нейронных сетей было в новых методах обучения, которые справлялись с </span><strong><span>большими размерами сетей</span></strong><span>. Однако на сегодня это разделение условно, какое обучение можно считать глубоким, а какое не очень. Как правило, просто используют популярные «глубокие» библиотеки типа </span><a href='https://keras.io/'><span>Keras</span></a><span>, </span><a href='https://github.com/tensorflow/tensorflow'><span>TensorFlow</span></a><span> и </span><a href='https://pytorch.org/'><span>PyTorch</span></a><span> даже когда необходимо собрать мини-сетку на пять слоёв. Просто потому что они удобнее всего того, что было раньше. И называют это просто нейросетями.</span></p><p>&nbsp;</p><h4 id='разновидности-архитектур-нейронных-сетей'><span>Разновидности архитектур нейронных сетей</span></h4><p><img src=".\images\NeuralNetworkZo19High.png" referrerpolicy="no-referrer"></p><p><span>Составить полный список топологий практически невозможно, так как новые появляются постоянно. Поэтому необходимо создать представление о базовых архитектурах искусственного интеллекта и не считать его исчерпывающим, особенно спустя время.</span></p><p><span>У изображения нейросетей в виде графов есть один недостаток: граф не покажет, как сеть работает. Например, вариационный автоэнкодер (</span><em><span>variational autoencoders</span></em><span>, VAE) выглядит в точности как простой автоэнкодер (AE), в то время как процесс обучения у этих нейросетей совершенно разный. А сферы применения различаются еще сильнее: в VAE на вход подается шум, из которого они получают новый вектор, в то время как AE просто находят для входных данных ближайший соответствующий вектор из тех, что они «запомнили».</span></p><p><span>Также следует отметить, что в виду новизны данного направления, не всегда общепринятые слова и сокращения обозначают одно и тоже. Под RNN иногда понимают рекурсивные нейронные сети (</span><em><span>recursive neural networks</span></em><span>), но обычно эта аббревиатура означает рекуррентную нейронную сеть (</span><em><span>recurrent neural network</span></em><span>). Во многих источниках RNN еще несет обозначение для любой рекуррентной архитектуры, включая LSTM, GRU и двунапраленные варианты. Иногда похожая путаница происходит с AE: VAE, DAE и им подобные могут называть просто AE. Многие сокращения содержат разное количество N в конце: можно сказать «сверточная нейронная сеть» — CNN (</span><em><span>Convolutional Neural Network</span></em><span>), а можно и просто «сверточная сеть» — CN.</span></p><p><span>Так среди базовых архитектур, как правило, выделяют свёрточные нейросети (CNN) и рекуррентные нейросети (RNN). Другие </span></p><p>&nbsp;</p><h5 id='свёрточные-нейронные-сети'><span>Свёрточные нейронные сети</span></h5><p><span>Свёрточные сети сейчас на пике популярности. В основном они используются для поиска объектов на фото и видео, распознавания лиц, переноса стиля, генерации и дорисовки изображений, создания эффектов типа слоу-мо и улучшения качества фотографий. Сегодня CNN применяют везде, где есть картинки или видео. К примеру, даже на ваших телефонах несколько подобных сетей распознают объекты на фотографиях.</span></p><p><img src=".\images\7rz.jpg" referrerpolicy="no-referrer"></p><blockquote><p><span>Картинка выше — результат работы open-source библиотеки </span><a href='https://github.com/facebookresearch/Detectron'><span>Detectron</span></a><span>, от Facebook.</span></p></blockquote><p><span>Проблема с изображениями всегда была в том, что непонятно, как выделять на них признаки. Текст можно разбить по предложениям, взять свойства слов из словарей. Картинки же приходилось размечать руками, объясняя машине, где у котика на фотографии ушки, а где хвост. Такой подход даже назвали «</span><em><span>handcrafting</span></em><span> признаков» и раньше все так и делали.</span></p><p><img src=".\images\7s3.jpg" referrerpolicy="no-referrer"></p><p><span>Ручной крафтинг был крайне трудоемким и мало эффективным, во-первых, если котик на фотографии прижал ушки или отвернулся, то нейросеть ничего не увидит, а во-вторых, по примеру человеческого взгляда, мы не смотрим только на форму ушей и количество лап, а оцениваем объект по множеству разных признаков, о которых сами даже не задумываемся. А значит, не понимаем и не можем объяснить нейронной сети (алгоритму) какие признаки важны.</span></p><p><span>Таким образом, был сформулирован подход, при котором нейронная сеть  должна сама учиться распознавать и искать эти признаки. Для начала, необходимо выделить базовые признаки, составляя из каких-то базовых линий. Разделим изображение на блоки 8x8 пикселей и выберем какая линия доминирует в каждом из блоков — горизонтальная [-], вертикальная [|] или одна из диагональных [/]. Может быть и так, когда сразу несколько доминирует. В результате мы получим несколько массивов палочек, которые по сути являются простейшими признаками наличия очертаний объектов на картинке. По сути это тоже картинки, просто из палочек. Значит мы можем вновь выбрать блок 8x8 и посмотреть уже, как эти палочки сочетаются друг с другом. А потом еще и еще раз. Такая операция называется свёрткой, откуда и пошло название метода. Свёртку можно представить как слой нейросети, ведь нейрон — абсолютно любая функция.</span></p><p><img src=".\images\7sc.jpg" referrerpolicy="no-referrer"></p><p><span>Когда мы прогоняем через нашу нейросеть кучу фотографий котов, она автоматически расставляет большие веса тем сочетаниям из палочек, которые увидела чаще всего. Причём неважно, это прямая линия спины или сложный геометрический объект типа мордочки — что-то обязательно будет ярко активироваться. На выходе же мы поставим простой перцептрон, который будет смотреть какие сочетания активировались и говорить кому они больше характерны — кошке или собаке.</span></p><p><img src=".\images\CNN.png" referrerpolicy="no-referrer"></p><p><span>Красота идеи в том, что у нас получилась нейросеть, которая сама находит характерные признаки объектов. Больше нет необходимости отбирать их руками. Достаточно загружать миллион изображений с конкретным объектом, из открытых источников и сеть сама составит карты признаков из палочек и научится определять их на новых данных.</span></p><p><img src=".\images\74s.jpg" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h5 id='рекуррентные-нейронные-сети'><span>Рекуррентные нейронные сети</span></h5><p><span>Вторая по популярности архитектура на сегодняшний день. Благодаря рекуррентным сетям у нас есть такие полезные вещи, как машинный перевод текстов и компьютерный синтез речи. На них решают все задачи, связанные с последовательностями — голосовые, текстовые или музыкальные.</span></p><p><span>Текст, речь или музыка — это последовательности. Каждое слово или звук — как бы самостоятельная единица, но которая зависит от предыдущих. Таким образом, становится достаточно легко обучить сеть произносить отдельные слова или буквы. Для этого берем множество размеченных на слова аудиофайлов и обучаем по входному слову выдавать нам последовательность сигналов, похожих на его произношение. Сравниваем с оригиналом от диктора и пытаемся максимально приблизиться к идеалу. Для такого подойдёт даже перцептрон.</span></p><p><img src=".\images\RNN.png" referrerpolicy="no-referrer"></p><p><span>Вот только перцептрон не запоминает что он генерировал ранее и не получается последовательность. Для него каждый запуск как в первый раз. Появилась идея добавить к каждому нейрону память. Так были придуманы рекуррентные сети, в которых каждый нейрон запоминал все свои предыдущие ответы и при следующем запуске использовал их как дополнительный вход. То есть нейрон мог сказать самому себе в будущем, что следующий звук должен звучать повыше, а тут гласная была (очень упрощенный пример).</span></p><p><img src=".\images\7s4.jpg" referrerpolicy="no-referrer"></p><p><span>Но была лишь одна проблема — когда каждый нейрон запоминал все прошлые результаты, в сети накапливалось большое количество входов и обучить такое количество связей становилось нереально. В подобной ситуации человек забывает старое и невостребованное в пользу новых и актуальных знаний, так и у нейросетей. Когда нейросеть не умеет забывать — её нельзя обучить.</span></p><p><img src=".\images\LSTM.png" referrerpolicy="no-referrer"></p><p><span>В результате, сначала проблему решили, через ограничение памяти для  каждого нейрона. Но потом придумали в качестве этой «памяти» использовать специальные ячейки, похожие на память компьютера или регистры процессора. Каждая ячейка позволяет записывать в себя чисоловое значение, прочитать или сбросить — их назвали ячейки долгой и краткосрочной памяти (LSTM).</span></p><p><span>Когда нейрону необходимо сделать самому себе напоминание на будущее — он писал это в ячейку, когда наоборот вся история становилась ненужной (предложение, например, закончилось) — ячейки сбрасывались, оставляя только «долгосрочные» связи, как в классическом перцептроне. Другими словами, сеть обучалась не только устанавливать текущие связи, но и ставить напоминания.</span></p><p><span>Ярким и одним из первых примером применения CNN + RNN, является фейковые видеозаписи выступлений Обамы, для которой весьма неплохо была обучена нейросеть разговаривать его голосом, из массы открытых источников с его выступлениями. На этом примере видно, что имитировать голос — достаточно простая задача для сегодняшних машин. С видео требуется больше мощностей, но это пока.</span></p><blockquote><p><a href='https://youtu.be/cQ54GDm1eL0' target='_blank' class='url'>https://youtu.be/cQ54GDm1eL0</a><span> - You Won’t Believe What Obama Says In This Video! </span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h3 id='резюме'><span>Резюме</span></h3><p><span>Все что выше, это сильное упрощение и всё-таки машинное обучение — это сложно. Для практического применения необходимо владение довольно сложной линейной алгеброй и ... . От этого, увы, никуда не деться. Область машинного обучения настолько разрослась, что уследить за всем почти невозможно. К примеру, ниже набор моделей для решения всего лишь одной задачи (детектирование объекта):</span></p><p><img src=".\images\twbxrs3-fary0wir6wd-e4x_2_i.jpeg" referrerpolicy="no-referrer"></p><p><span>Конечно необязательно разбираться абсолютно во всех аспектах машинного обучения, чтобы научиться применять нейронные сети к вашим задачам, но детально разобрать базовые архитектуры и ключевые решения необходимо и конечно же быть в курсе всех новых исследований.</span></p><p>&nbsp;</p><h3 id='источники'><span>Источники</span></h3><p><span>Машинное обучение для людей: </span><a href='https://vas3k.ru/blog/machine_learning/' target='_blank' class='url'>https://vas3k.ru/blog/machine_learning/</a></p><p><span>Обзор разновидностей архитектур нейронных сетей: </span><a href='https://www.asimovinstitute.org/neural-network-zoo/' target='_blank' class='url'>https://www.asimovinstitute.org/neural-network-zoo/</a><span> (ru: </span><a href='https://habr.com/ru/company/wunderfund/blog/313696/' target='_blank' class='url'>https://habr.com/ru/company/wunderfund/blog/313696/</a><span>)</span></p><p>&nbsp;</p><h3 id='дополнительные-материалы'><span>Дополнительные материалы</span></h3><p><span>Туториалы от Hugging Face с материалами для всех основных задач в NLP, CV и Audio: </span><a href='https://huggingface.co/tasks' target='_blank' class='url'>https://huggingface.co/tasks</a></p><p><span>Учебник по машинному обучению от Яндекс ШАД: </span><a href='https://ml-handbook.ru/' target='_blank' class='url'>https://ml-handbook.ru/</a></p><p><span>Сложность алгоритмов: </span><a href='https://www.bigocheatsheet.com/' target='_blank' class='url'>https://www.bigocheatsheet.com/</a></p><p><span>Карта базовой математики для ML: </span><a href='https://app.learney.me/' target='_blank' class='url'>https://app.learney.me/</a></p><p><span>Machine Learning mindmap: </span><a href='https://github.com/dformoso/machine-learning-mindmap/blob/master/Machine%20Learning.pdf' target='_blank' class='url'>https://github.com/dformoso/machine-learning-mindmap/blob/master/Machine%20Learning.pdf</a></p><p><span>Пять трендов в DL, с исследованиями (с 2021 года) и прогноз: </span><a href='https://ai.googleblog.com/2022/01/google-research-themes-from-2021-and.html' target='_blank' class='url'>https://ai.googleblog.com/2022/01/google-research-themes-from-2021-and.html</a><span> </span></p><p><span>6 Roadmaps in One Place (AI, ML, Data Engineer, DL, DS, Big Data Engineer): </span><a href='https://i.am.ai/roadmap/' target='_blank' class='url'>https://i.am.ai/roadmap/</a></p><p>&nbsp;</p></div></div>
+</body>
+</html>
