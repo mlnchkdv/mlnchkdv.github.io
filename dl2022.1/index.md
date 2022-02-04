@@ -2,11 +2,13 @@
 
 ### 🏆⚖🔬💡💻🔌🔗👨‍💻✍🚀🎯🕵️‍♂️🎲🔎🔑🧬
 
-[РЕГИСТРАЦИЯ](https://forms.gle/1mqSVsDj4tj2Az9r5)
+👋[РЕГИСТРАЦИЯ](https://forms.gle/1mqSVsDj4tj2Az9r5)
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:O30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="320px" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:S30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="320px" frameborder="0" scrolling="no"></iframe>
 
-`Каждое задание оценивается от 0 до 5 баллов.`
+`Каждое задание оценивается от 0 до 5 баллов + баллы за тесты за каждый блок.`
+
+
 
 1. #### История машинного обучения
 
@@ -15,7 +17,7 @@
    Технический стек?
    Объективность машинного обучения? 
 
-   > **Задание 1.1**: сделайте *timeline* развития машинного обучения, включая новые исследования и вклад российских ученых и компаний.
+   > **Задание 1**: сделайте *timeline* развития машинного обучения, включая новые исследования и вклад российских ученых и компаний.
    
    [📖manual + 📝test](./1_history/index.html) | [📊slides](./1_history/slides.html) | [💻homework](https://forms.gle/kH2VeHpnjVLESQn3A) | [💬feedback](https://forms.gle/VfY2cXQMMwdMngCh8)
    
@@ -27,7 +29,7 @@
    Что такое ансамбли?
    Что такое нейронные сети?
 
-   > **Задание 2.1**: в рамках курса оформите глоссарий (в любом формате, словаря, диаграммы, *mindmap*, графа).
+   > **Задание 2**: в рамках курса оформите глоссарий (в любом формате, словаря, диаграммы, *mindmap*, графа).
 
    [📖manual + 📝test](./2_branches/index.html) | [📊slides](./2_branches/slides.html) | [💻homework]() | [💬feedback](https://forms.gle/f6oyf2y2miPDWS1e8)
 
@@ -36,7 +38,7 @@
    Модель перцептрона? 
    Модель многослойного перцептрона?
 
-   > **Задание 3.1**: сделайте обзорную таблицу для 10 функций активации.
+   > **Задание 3**: сделайте обзорную таблицу для 10 функций активации.
 
    [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
 
