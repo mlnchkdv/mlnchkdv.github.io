@@ -277,7 +277,7 @@
 
 https://forms.gle/mZPETMUbJFaPyGLA9
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdWSJsWr6hAfG-vdqPQeJ3CYUODrgnnXcABnXUq5swuhFyiaQ/viewform?embedded=true" width="640" height="1300" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdWSJsWr6hAfG-vdqPQeJ3CYUODrgnnXcABnXUq5swuhFyiaQ/viewform?embedded=true" width="640" height="1400" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
 
 ---
 
@@ -289,7 +289,7 @@ https://forms.gle/mZPETMUbJFaPyGLA9
 
 History of Artificial Intelligence: https://www.javatpoint.com/history-of-artificial-intelligence
 
-https://habr.com/ru/post/401857/
+Про различия между AI, ML и DL: https://habr.com/ru/post/401857/
 
 Про MLOps: https://habr.com/ru/company/vtb/blog/508012/
 
@@ -297,7 +297,9 @@ https://habr.com/ru/post/401857/
 
 ### Дополнительные материалы
 
+Machine Learning Research: https://distill.pub/
+
 SQL тренажер: https://sql-academy.org/ru/trainer
 
-[eng] Справочник по A/B тестам с примерами кода на Python: https://towardsdatascience.com/a-b-testing-a-complete-guide-to-statistical-testing-e3f1db140499
+A/B Testing: A Complete Guide to Statistical Testing: https://towardsdatascience.com/a-b-testing-a-complete-guide-to-statistical-testing-e3f1db140499
 
