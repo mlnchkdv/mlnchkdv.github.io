@@ -18,6 +18,8 @@
    
    [📖manual + 📝test](./1_history/index.html) | [📊slides](./1_history/slides.html) | [💻homework](https://forms.gle/kH2VeHpnjVLESQn3A) | [💬feedback](https://forms.gle/VfY2cXQMMwdMngCh8)
    
+   
+   
 2. #### Разделы машинного обучения
 
    Классификации разделов машинного обучения?
@@ -29,6 +31,8 @@
    > **Задание 2**: в рамках курса оформите глоссарий (в любом формате, словаря, диаграммы, *mindmap*, графа).
 
    [📖manual + 📝test](./2_branches/index.html) | [📊slides](./2_branches/slides.html) | [💻homework]() | [💬feedback](https://forms.gle/f6oyf2y2miPDWS1e8)
+
+   
 
 3. #### Модель нейронной сети
 
