@@ -1,7 +1,5 @@
 # Глубокое обучение 2022.1
 
-### 🏆⚖🔬💡💻🔌🔗👨‍💻✍🚀🎯🕵️‍♂️🎲🔎🔑🧬
-
 👋[РЕГИСТРАЦИЯ](https://forms.gle/1mqSVsDj4tj2Az9r5)
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:S30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="320px" frameborder="0" scrolling="no"></iframe>
@@ -39,7 +37,7 @@
 
    > **Задание 3**: сделайте обзорную таблицу для 10 функций активации.
 
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
+   
 
 4. #### Разработка и запуск нейронных сетей
 
@@ -53,7 +51,7 @@
    > 
    > **Задание 4.3**: добавьте в таблицу сравнения библиотек, другие библиотеки и пункты сравнения.
    
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
+   
    
 5. #### Обучение нейронной сети
 
@@ -62,39 +60,39 @@
 
    > **Задание**: 
 
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
+   
 
 6. #### Улучшение нейронной сети
 
-   123
+   
    
    > **Задание**: 
    
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
+   
 
 7. #### Свёрточные нейронные сети
 
-   123
    
+
    > **Задание**: 
+
    
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
 
 8. #### Рекуррентные нейронные сети
 
-   123
    
+
    > **Задание**: 
+
    
-   [💻manual + 📝test]() | [📊slides]() | [🎬video]() | [🎓homework]() | [💬feedback]()
 
-9. #### +
+9. #### 
 
-10. #### +
+10. #### 
 
-11. #### +
+11. #### 
 
-12. #### +
+12. #### 
 
 ---
 
@@ -102,3 +100,4 @@
 
 Зависимости
 
+Вопросы с собеседований и тестовые задания
