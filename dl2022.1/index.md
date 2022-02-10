@@ -2,7 +2,7 @@
 
 👋[РЕГИСТРАЦИЯ](https://forms.gle/1mqSVsDj4tj2Az9r5)
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:S30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="320px" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTICDRgyAbFdmeEzz9fLQlqDrnkQgoJI9OwcHLyuTjdjrVgaoiiwYoYuSnywafxN67nEHYppcQPCGo8/pubhtml?gid=555074868&amp;range=B1:S30&amp;single=true&amp;widget=false&amp;chrome=false&amp;headers=false" width="684px" height="530px" frameborder="0" scrolling="no"></iframe>
 
 `Каждое задание оценивается от 0 до 5 баллов + баллы за тесты.`
 
