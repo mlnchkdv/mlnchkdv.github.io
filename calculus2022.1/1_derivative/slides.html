@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Производные - Слайды</title>
+
+	<link rel="stylesheet" href="../../src/revealjs/dist/reset.css">
+	<link rel="stylesheet" href="../../src/revealjs/dist/reveal.css">
+	
+	<link rel="stylesheet" href="../../src/revealjs/dist/theme/moon.css">
+
+	<link rel="stylesheet" href="../../src/revealjs/plugin/highlight/monokai.css">
+
+	<style>
+		.reveal .slides p {
+			text-align: justify;
+		}
+		.reveal .slides section>* {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		.reveal .slides h4 {
+			/* text-transform: capitalize; */
+			text-transform: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown data-separator="^---$" data-separator-vertical="^--$" data-separator-notes="^Note:">
+				<script type="text/template">
+					### Производная функции
+					---
+					Производная — это предел отношения приращения функции к приращению ее аргумента при стремлении приращения аргумента к нулю, если такой предел существует
+					--
+					Производная характеризует скорость изменения функции в конкретной точке.
+					--
+					Процесс нахождения функции называется дифференцированием.
+					---
+					#### Производная функции $y = f(x)$
+					$$
+					{y}' = {f}'(x) = \frac{\mathrm{d} y}{\mathrm{d} x} = \frac{\Delta y}{\Delta x}
+					$$
+					--
+
+					--
+					Забыть поставить штрих, либо нарисовать лишний штрих – это **грубая ошибка!** 
+					
+					Функция и её производная – это две разные функции!
+					---
+					<iframe src="https://www.geogebra.org/classic/wptghgfq?embed" width="900" height="700" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+					---
+					
+					---
+					#### Но где производная?
+					--
+					Производная - это функция ...
+					---
+					<iframe src="https://www.geogebra.org/classic/jtz9gyya?embed" width="900" height="700" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+					---
+					### Вопросы?
+				</script>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../src/revealjs/dist/reveal.js"></script>
+	<script src="../../src/revealjs/plugin/math/math.js"></script>
+	<script src="../../src/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../src/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../src/revealjs/plugin/highlight/highlight.js"></script>
+	
+	<script>
+		Reveal.initialize({
+			hash: true,
+			
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+			
+			slideNumber: true,
+			
+			// autoSlide: 15000,
+			// loop: true,
+			
+			// touch: false,
+
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+		});
+		
+		// Activate the overview mode
+		// Reveal.toggleOverview( true );
+		
+		Reveal.configure({
+			// autoSlideMethod: Reveal.navigateRight,
+			
+			// showNotes: true,
+			
+		});
+	</script>
+		
+	</body>
+</html>
