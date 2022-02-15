@@ -6,7 +6,7 @@
 
    Типы данных? Объекты? Вектора? Матрицы? Data Frames? 
 
-   [📊slides](./1_basic/slides.html)
+   [📖manual](./1_basic/index.html) | [📊slides](./1_basic/slides.html)
 
    
 
