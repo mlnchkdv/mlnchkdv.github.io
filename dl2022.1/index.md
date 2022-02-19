@@ -116,9 +116,26 @@
 
 [requirements.txt](./0_intro/requirements.txt):
 
-> 
+> `numpy==1.16.4`
+> `pandas==0.25.0`
+>
+> `tensorboard==1.14.0`
+> `tensorflow-estimator==1.14.0`
+> `tensorflow==1.14`
 
 💡 [Инструкция](https://python.ivan-shamaev.ru/python-virtual-env-packages-virtualenv-venv-requirements-txt/) по управлению *Virtual Environment* (*venv*) для *Python*.
+
+```bash
+# перейдите в директорию своего проекта
+# создайте виртуальную среду
+python -m venv venv
+
+# запустите файл активации виртуальной среды
+.\venv\Scripts\Activate.ps1
+
+# установить пакеты из файла requirements.txt
+pip install -r requirements.txt
+```
 
 
 
