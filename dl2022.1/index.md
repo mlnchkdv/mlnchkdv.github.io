@@ -130,12 +130,23 @@
 
 [requirements.txt](./0_intro/requirements.txt):
 
+> `# работа с данными`
 > `numpy==1.16.4`
 > `pandas==0.25.0`
 >
+> `# web приложения`
+> `streamlit==1.5.1`
+>
+> `# визуализация процесса обучения`
 > `tensorboard==1.14.0`
+>
+> `# фреймворки`
 > `tensorflow-estimator==1.14.0`
 > `tensorflow==1.14`
+> `keras-applications==1.0.8`
+> `keras-preprocessing==1.1.0`
+> `keras==2.2.4`
+> 
 
 💡 [Инструкция](https://python.ivan-shamaev.ru/python-virtual-env-packages-virtualenv-venv-requirements-txt/) по управлению *Virtual Environment* (*venv*) для *Python*.
 
