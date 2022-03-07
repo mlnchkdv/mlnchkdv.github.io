@@ -150,6 +150,8 @@ Keras же, в свою очередь, использует в качестве
 
 Запускать *Google Colaboratory* рекомендуется под *Google Chrome*, и при первой попытке открыть ноутбук (так называется любой документ в *Google Colaboratory*) вам будет предложено установить в браузер приложение *Colaboratory*, чтобы в будущем оно автоматически "подхватывало" файлы такого типа или его можно установить по [ссылке](https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo?hl=ru&utm_source=chrome-ntp-launcher).
 
+Проект с исходным кодом и домашним заданием [тут](https://colab.research.google.com/drive/10-y_ZqYesz5G39-_ul4f-Haglq0awUPt?usp=sharing).
+
 
 
 #### Интерфейс *Google Colaboratory*
