@@ -5,9 +5,9 @@
 `Python` (`Streamlit`, `Scikit-learn`, `TensorFlow`, `Keras`, `PyTorch`, `Pandas`) 
 `R` (`tsibble`, `anomalize`, `shiny`, `ggplot2`)
 `SQL`, `MongoDB`
-`Docker`, `Jenkins`, `Postman`
+`Docker`, `Jenkins`, `Postman`, `Linux(bash)`, `Git`
 `Microsoft Excel`, `Tableau`
-`JavaScript`, `HTML`, `CSS`, `LaTeX`, `Linux(bash)`, `Git`
+`JavaScript`(`highcharts`, `D3`), `HTML`, `CSS`, `LaTeX`
 
 
 
@@ -16,9 +16,9 @@
 **Startups (clients: England, Canada)**   Sep 2021 to present
 ·   Market analysis and evaluation (`Python` and `R`).
 ·   Gathering functional requirements for web service development.
-·   Develop of crypto indicators and realization in charts (`highcharts`).
+·   Development of crypto indicators and realization in charts (`highcharts`).
 ·   Visualization of analytics (`Tableau`).
-·   Prototyping a web application (`Streamlit`).
+·   Prototyping a web application (`Streamlit`, `plotly`).
 
  
 
