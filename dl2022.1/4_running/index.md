@@ -46,6 +46,7 @@
 - [Financial Times Market Data](https://markets.ft.com/data/). Актуальная информация о финансовых рынках со всего мира, которая включает индексы цен на акции, товары и валюту.
 - [Google Trends](https://trends.google.com/trends/?q=google&ctab=0&geo=all&date=all&sort=0). Изучайте и анализируйте данные о поисковой активности в Интернете и трендах по всему миру.
 - [American Economic Association (AEA)](https://www.aeaweb.org/resources/data/us-macro-regional). Хороший источник данных о макроэкономике США.
+- [UN Comtrade](https://comtrade.un.org/). Бесплатный доступ к данным о мировой торговле и соответствующих аналитических таблиц.
 
 #### Компьютерное зрение
 
@@ -617,5 +618,4 @@ python scripts/label_image.py --image image.jpg
 ![](.\images\image1-2-1920x395.png)
 
 50% — что на фото тюльпан, и на 18% — что это одуванчик. А всё потому, что она умеет различать только 5 видов цветов, а не лица.
-
 
