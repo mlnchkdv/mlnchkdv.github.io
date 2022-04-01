@@ -58,7 +58,9 @@ English: Intermediate
 E-MAIL: mlnchkdv@gmail.com
 LN: [in/meldm/](https://www.linkedin.com/in/meldm/)
 GH: [mlnchkdv](https://github.com/mlnchkdv)
-PUBL: [gscholar](https://scholar.google.com/citations?user=XcYTbJsAAAAJ&hl=en) 
+
+[Google Scholar](https://scholar.google.com/citations?user=XcYTbJsAAAAJ&hl=en) 
+[ResearchGate](https://www.researchgate.net/profile/Dmitriy-Melnichuk?ev=hdr_xprf)
 
 
 
