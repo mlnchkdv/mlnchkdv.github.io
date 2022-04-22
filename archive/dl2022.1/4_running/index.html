@@ -1,0 +1,1423 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* noto-sans-sc-300 - latin */
+/* noto-sans-sc-300 - latin */
+  /* noto-sans-sc-regular - latin */
+    /* noto-sans-sc-500 - latin */
+    /* noto-sans-sc-700 - latin */
+    /* noto-sans-sc-900 - latin */
+      
+
+/*** Custom fonts ***/
+@import url('file:///C://Users//meldm//AppData//Roaming//Typora/themes/');
+
+/*** Color setting ***/
+:root {
+  --side-bar-bg-color: #183055;
+  --active-file-bg-color: #2f4566;
+  --active-file-text-color: #ffffff;
+  --active-file-border-color: #757575;
+  --active-search-item-bg-color: #23242b;
+  --item-hover-bg-color: #ececec;
+  --item-hover-text-color: #000000;
+  --control-text-color: #ddd;
+  --window-border: 1px solid #183055;
+  --code-cursor: #f0f0f0;
+}
+
+/*** Btn in search bar ***/
+#filesearch-case-option-btn,
+#filesearch-word-option-btn {
+  background: var(--side-bar-bg-color);
+}
+
+/****** #write basic ******/
+#write {
+  position: static;
+  width: 90%;
+  max-width: 700px;
+  line-height: 1.6;
+  transform: none;
+  height: auto;
+  
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/****** #write h1-h6 ******/
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6,
+#write p,
+#write pre {
+  width: auto;
+}
+
+#write h1::before,
+#write h2::before,
+#write h3::before,
+#write h4::before,
+#write h5::before,
+#write h6::before {
+  position: absolute;
+  right: calc(100% + 10px);
+  bottom: 0;
+  color: #b4b4b4;
+  font-size: 1rem;
+  font-weight: bold;
+  font-variant: 'small-caps';
+  border: 0;
+  border-radius: 0;
+  left: auto;
+  float: none;
+  padding: 0;
+}
+
+#write h1 {
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h1::before {
+  /* content: 'H1'; */
+  bottom: 1rem;
+}
+
+#write h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h2::before {
+  /* content: 'H2'; */
+  bottom: .85rem;
+}
+
+#write h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h3::before {
+  /* content: 'H3'; */
+  top: .44rem;
+  padding: 3px 0 3px 0;
+}
+
+#write h4 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h4::before {
+  /* content: 'H4'; */
+  top: .4rem;
+}
+
+#write h5,
+#write h6 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#write h5::before,
+#write h6::before {
+  top: .2rem;
+}
+
+#write h5::before {
+  /* content: 'H5'; */
+}
+
+#write h6::before {
+  /* content: 'H6'; */
+}
+
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+  color: #ddd;
+  color: var(--heading-char-color);
+  border: 1px solid;
+  border-radius: 3px;
+  position: absolute;
+  left: -1.642857143rem;
+  top: .357142857rem;
+  float: left;
+  font-size: 9px;
+  padding-left: 2px;
+  padding-right: 2px;
+  vertical-align: bottom;
+  font-weight: 400;
+  line-height: 2;
+}
+
+/****** Global Style ******/
+body {
+  margin: 0;
+  font-family: 'Glow Sans SC', -apple-system, sans-serif;
+  font-weight: 500;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%
+}
+
+html,
+body {
+  color: #242A31;
+  /* width: 100%; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+  line-height: 1rem;
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+hr {
+  border-color: #e6ecf1;
+  height: 2px;
+  border-top: 2px solid #e6ecf1;
+}
+
+img {
+  max-width: 80%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+/****** ul ol Style ******/
+
+ul>li>ul>li {
+  list-style-type: circle;
+}
+
+ul>li>ul>li>ul>li {
+  list-style-type: square;
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+  line-height: 1;
+}
+
+ol>li {
+  list-style-type: decimal
+}
+
+ol>li>ol>li {
+  list-style-type: lower-alpha
+}
+
+ol>li>ol>li>ol>li {
+  list-style-type: lower-roman
+}
+
+/****** Table Style ******/
+
+table {
+  padding: 0;
+  word-break: initial;
+}
+
+table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+  background-color: #f5f7f9;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
+
+/****** YAML Style ******/
+pre.md-meta-block {
+  font-size: .85rem !important;
+  color: #5d5d5d;
+  min-height: .8rem;
+  white-space: pre-wrap;
+  background: #f5f7f9;
+  display: block;
+  overflow-x: hidden;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
+
+/****** Global Text ******/
+p {
+  font-size: 16px;
+  font-family: "Glow Sans SC", -apple-system, sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  font-style: normal;
+  color: rgb(59, 69, 78);
+}
+
+a {
+  /* color: rgb(164, 78, 237); */
+  color: rgb(56, 132, 254);
+  font-weight: 500;
+  text-decoration: none;
+  text-decoration-style: none;
+  cursor: pointer;
+  padding: 0 3px 0 3px;
+}
+
+#write a:hover {
+  color: rgb(56, 132, 254);
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+
+strong {
+  font-weight: 700;
+}
+
+mark {
+  background: #87CEFA;
+  padding: 0 2px 0 2px;
+  margin: 0 2px 0 2px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 2;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+
+/****** Print header ******/
+@media print {
+  .typora-export * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  #write h1::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h2::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h3::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h4::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h5::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write h6::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+
+}
+
+
+/****** #write Code Fences ******/
+#write .md-fences {
+  -webkit-font-smoothing: initial;
+  margin: 1rem 0 1rem 0 !important;
+  line-height: 1.43rem;
+  border-radius: 3px;
+  font-size: 0.95rem;
+  word-wrap: normal;
+}
+
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+  padding-left: 30px;
+  line-height: 1.55rem;
+}
+
+#write .CodeMirror-cursors .CodeMirror-cursor {
+  border-left: 2px solid var(--code-cursor);
+}
+
+#write code,
+tt {
+  margin: 0 2px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 0.92rem !important;
+  background: #f5f7f9;
+  display: inline;
+  vertical-align: bottom;
+  line-height: 1.8;
+}
+
+#write .md-footnote {
+  color: var(--main-5);
+  background-color: var(--main-1);
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  padding: 0.75rem 0.15rem 0.75rem 0.15rem;
+  background-color: #183055 !important;
+  color: #f8f8f2 !important;
+  border: none;
+  border-radius: 6px;
+}
+
+
+.code-tooltip {
+  box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+  border-top: 1px solid #eef2f2;
+  background: #183055;
+  border-radius: 6px;
+}
+
+.md-fences {
+  font-size: .9rem;
+  position: relative !important;
+  display: block;
+  page-break-inside: avoid;
+  text-align: left;
+  overflow: visible;
+  white-space: pre;
+  background: inherit;
+}
+
+.md-fences {
+  background-color: #f8f8f8;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+
+.md-fences,
+tt {
+  border-radius: 3px;
+  /* color: #f0f0f0; */
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+/****** Sidebar ******/
+#typora-sidebar * {
+  color: #f0f0f0;
+}
+
+#typora-sidebar .file-tree-node.file-library-file-node.active .file-node-background {
+  border-left: 5px solid #3884ff;
+  height: 2.2rem;
+}
+
+#sidebar-files-menu {
+  border: 1px solid rgba(0, 2, 3, 0.7);
+}
+
+.file-list-item {
+  border-bottom: var(--window-border);
+}
+
+.file-list-item {
+  overflow: hidden;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  border-bottom: var(--window-border);
+  cursor: pointer;
+  padding-right: 8px;
+  padding-top: 12px;
+  padding-left: 24px;
+  transition: top .5s;
+  -webkit-transition: top .5s;
+}
+
+.file-list-item.active {
+  background: #2f4566;
+  /* background: var(--active-file-bg-color); */
+  color: var(--active-file-text-color);
+  border-radius: 12px;
+}
+
+.file-list-item:not(.active) {
+  opacity: .9;
+}
+
+.file-node-content {
+  padding-top: 6px;
+  margin: 0 0 8px 0;
+  cursor: default;
+  color: var(--control-text-color);
+  white-space: nowrap;
+  height: 2.2rem;
+  line-height: 1.5;
+}
+
+.ty-on-drag-enter {
+  background-color: #2f4566;
+  color: var(--item-hover-text-color);
+}
+
+.file-node-content:active {
+  border-radius: 0px !important;
+  background: #2f4566;
+}
+
+.active .file-node-content {
+  font-weight: bold;
+}
+
+.file-node-content:hover {
+  cursor: pointer;
+  border-radius: 0px !important;
+}
+
+.file-node-icon,
+.file-node-open-state {
+  display: block;
+  float: left;
+  line-height: 1.5;
+  min-height: 15px;
+}
+
+.file-node-icon {
+  margin-right: 6px;
+}
+
+.file-list-item-file-name {
+  font-weight: 700;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  line-height: 2;
+}
+
+.sidebar-footer {
+  background: var(--side-bar-bg-color);
+  border-top: 1px #555 solid;
+}
+
+.html-for-mac #file-library-search-input {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  line-height: 16px;
+  margin: 5px 16px 0px 0;
+  width: 0;
+  /* -webkit-flex: 1; */
+  flex: 1;
+  background: 0 0;
+  color: #bbc0ca !important;
+  /* transform: translateY(-3px); */
+  /* overflow: auto; */
+  padding-top: 6px;
+}
+
+#typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+  background: #021d43;
+}
+
+#typora-sidebar #outline-content .outline-item:hover {
+  background: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .show+.menuitem-group-label.show {
+  border-color: #202020;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  border-top: 1px solid #19191c;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu li>a:hover {
+  background: #021d43;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active,
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn:hover {
+  color: #3884FF;
+}
+
+#typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active {
+  background: #001129;
+}
+
+#typora-sidebar .file-list-item.file-library-node:not(.active):hover {
+  background: #243959;
+  border-radius: 12px;
+}
+
+#typora-sidebar .file-tree-node.file-library-file-node:not(.active):hover .file-node-background {
+  background: #243959;
+  border-radius: 12px;
+  height: 2.2rem;
+}
+
+/****** Quote style ******/
+blockquote {
+  position: relative;
+  /*  margin: 1rem 1 1rem 2rem; */
+  padding: 1rem;
+  color: #827676;
+  background-color: #f5f7f9;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+blockquote::before {
+  content: '';
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  height: 100%;
+  width: .30rem;
+  background: #3884ff;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/****** task list style ******/
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item>input {
+  top: -0.2rem;
+  margin-left: -1.6rem;
+  margin-top: calc(1rem + 1px);
+  -webkit-appearance: initial;
+}
+
+.md-task-list-item>input:before {
+  border: 1px solid#0185ff;
+  border-radius: 1rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  content: ' ';
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+  background: #0185ff;
+  border-width: 1px;
+  transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+  opacity: 1;
+}
+
+.md-task-list-item>input:after {
+  opacity: 1;
+  -webkit-transition: opacity 0.05s ease-in-out;
+  -moz-transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.05s ease-in-out;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  content: ' ';
+  opacity: 0;
+}
+
+/****** Source style ******/
+.typora-sourceview-on #write {
+  display: none
+}
+
+#typora-source {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 0;
+  display: none;
+  line-height: 1.5
+}
+
+.mac-seamless-mode #typora-source {
+  top: 20px
+}
+
+#typora-source .CodeMirror {
+  height: 100%;
+  overflow-x: hidden
+}
+
+#typora-source .CodeMirror-gutters {
+  left: initial !important
+}
+
+#typora-source .CodeMirror-lines {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  padding-left: 60px;
+  padding-right: 30px;
+  max-width: 800px;
+  margin: 0 auto
+}
+
+#typora-source .CodeMirror-wrap .CodeMirror-scroll {
+  overflow-y: auto
+}
+
+.CodeMirror-activeline .cm-trailing-space-new-line:after {
+  opacity: .6
+}
+
+.CodeMirror-activeline .cm-starttab .cm-tab:after {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+  width: 100%;
+  opacity: 1
+}
+
+.CodeMirror-activeline .cm-startspace:after,
+.CodeMirror-activeline .cm-trailing-space-new-line:after {
+  opacity: .2
+}
+
+.cm-s-inner .CodeMirror-vscrollbar {
+  display: none !important
+}
+
+#typora-source .CodeMirror-gutter-wrapper {
+  position: absolute !important;
+  left: -6ch !important;
+  min-width: 4ch !important;
+  text-align: right;
+  font-family: monospace;
+  font-size: .8rem;
+  margin-top: .1rem;
+  display: inline-block;
+  opacity: .6
+}
+
+#typora-source .CodeMirror-linenumber {
+  width: auto !important;
+  visibility: hidden
+}
+
+#typora-source .CodeMirror-sizer {
+  margin-left: 0 !important
+}
+
+#typora-source .CodeMirror-gutter {
+  min-width: 4ch !important
+}
+
+#typora-source .CodeMirror-activeline .CodeMirror-linenumber,
+#typora-source .CodeMirror-linenumber.CodeMirror-linenumber-show {
+  visibility: visible
+}
+
+#typora-source .CodeMirror-code>.CodeMirror-activeline::before,
+#typora-source .CodeMirror-code>:first-child::before,
+#typora-source .CodeMirror-code>:last-child::before,
+#typora-source .CodeMirror-code>:nth-child(10n)::before {
+  visibility: visible
+}
+
+.cm-s-typora-default .cm-header1:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 2.2rem;
+}
+
+.cm-s-typora-default .cm-header2:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 2rem;
+}
+
+.cm-s-typora-default .cm-header3:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.6rem;
+}
+
+.cm-s-typora-default .cm-header4:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.4rem;
+}
+
+.cm-s-typora-default .cm-header5:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.2rem;
+}
+
+.cm-s-typora-default .cm-header6:not(.cm-atom):not(.cm-s-inner) {
+  font-size: 1.2rem;
+}
+
+.cm-s-typora-default .cm-header,
+.cm-s-typora-default .cm-property {
+  color: #183055 !important;
+}
+
+pre.CodeMirror-line {
+  page-break-inside: avoid;
+}
+
+/****** Code style ******/
+code {
+  font-size: .9rem;
+  /*   color: #333333; /*  #537AA2;  
+      border: 1px solid #d0d0d0;  */
+  font-family: 'Cascadia Code', Consolas, 'Noto Sans SC', 'Courier New', monospace;
+  padding: .2rem .2rem;
+  border-radius: 3px;
+  background: #f5f7f9 !important;
+  display: inline;
+  vertical-align: bottom;
+  line-height: 1.8;
+}
+
+code,
+pre {
+  font-size: 95% !important;
+  font-weight: normal;
+  font-family: 'Cascadia Code', Consolas, 'Noto Sans SC', 'Courier New', monospace;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial
+}
+
+/****** The flow chart ******/
+pre.md-fences[lang=sequence].md-focus .md-diagram-panel,
+pre.md-fences[lang=flow].md-focus .md-diagram-panel,
+pre.md-fences[lang=mermaid].md-focus .md-diagram-panel {
+  position: -webkit-sticky;
+  border: 1px solid #777;
+  border-radius: 6px;
+  margin-top: 6px;
+}
+
+.code-tooltip .ty-input,
+.code-tooltip input {
+  background-color: transparent;
+  border: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 3px;
+  text-align: center;
+  min-width: 140px;
+  display: inline-block;
+  padding: 0 4px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.enable-diagrams pre.md-fences[lang=sequence] .code-tooltip,
+.enable-diagrams pre.md-fences[lang=flow] .code-tooltip,
+.enable-diagrams pre.md-fences[lang=mermaid] .code-tooltip {
+  right: 8px;
+  bottom: -2.2em;
+}
+
+/****** Windows contral ******/
+.megamenu-menu-list li a.active,
+.megamenu-menu-list:not(.saved) li a:hover {
+  background-color: #285e8e;
+}
+
+/****** Fix ******/
+.md-tab {
+  display: inline-block;
+  white-space: pre;
+  font-family: initial;
+}
+
+div.md-mathjax-preview.mathjax-candidate.mathjax-candidate-show {
+  background-color: white !important;
+  -webkit-user-modify: read-only;
+}
+
+.mathjax-candidate {
+  text-align: center;
+  padding-top: inherit;
+  overflow-x: auto;
+  padding: 10px 0;
+  background-color: white;
+}
+
+input {
+  font-weight: bold;
+  background-color: inherit;
+  background-color: var(--bg-color);
+  color: var(--text-color) !important;
+}
+
+#write input {
+  transform: translateY(-6.5px);
+}
+
+.task-list {
+  padding-left: 0;
+}
+
+.md-task-list-item>input {
+  top: -0.2rem;
+  margin-left: -1.6rem;
+  margin-top: calc(1rem + 1px);
+}
+
+.auto-suggest-container li {
+  padding: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  min-width: 124px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.auto-suggest-container {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .1);
+  position: fixed;
+  background-color: #fff;
+  background-color: var(--bg-color);
+  z-index: 10;
+  font-size: .9rem;
+  display: none;
+  padding: 4px 6px 4px 6px;
+  line-height: 20px;
+}
+
+/****** Code highlight ******/
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+  color: #596774;
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left: 1px solid #f8f8f0;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-inner .cm-keyword {
+  color: rgba(199, 146, 234, 1);
+}
+
+.cm-s-inner .cm-operator {
+  color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-inner .cm-variable-2 {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #82B1FF;
+}
+
+.cm-s-inner .cm-builtin {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-atom {
+  color: #F77669;
+}
+
+.cm-s-inner .cm-number {
+  color: #F77669;
+}
+
+.cm-s-inner .cm-def {
+  color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-inner .cm-string {
+  color: #C3E88D;
+}
+
+.cm-s-inner .cm-string-2 {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-comment {
+  color: #aebcc2;
+}
+
+.cm-s-inner .cm-variable {
+  color: #82B1FF;
+}
+
+.cm-s-inner .cm-tag {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-meta {
+  color: #80CBC4;
+}
+
+.cm-s-inner .cm-attribute {
+  color: #FFCB6B;
+}
+
+.cm-s-inner .cm-property {
+  color: #80CBAE;
+}
+
+.cm-s-inner .cm-qualifier {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-variable-3 {
+  color: #DECB6B;
+}
+
+.cm-s-inner .cm-tag {
+  color: rgba(255, 83, 112, 1);
+}
+
+.cm-s-inner .cm-error {
+  color: rgba(255, 255, 255, 1.0);
+  background-color: #EC5F67;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner.cm-header {
+  color: #334EEA;
+}
+
+.md-fences .code-tooltip {
+  background-color: #263238;
+}
+
+
+
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='⬅глубокое-обучение-20221'><a href='../index.html'><span>⬅Глубокое обучение 2022.1</span></a></h1><h2 id='разработка-и-запуск-нейронных-сетей'><span>Разработка и запуск нейронных сетей</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#⬅глубокое-обучение-20221">⬅Глубокое обучение 2022.1</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#разработка-и-запуск-нейронных-сетей">Разработка и запуск нейронных сетей</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n5"><a class="md-toc-inner" href="#преодобработка-данных">Преодобработка данных</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n10"><a class="md-toc-inner" href="#базовые-источники">Базовые источники</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n22"><a class="md-toc-inner" href="#государственные-датасеты">Государственные датасеты</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n38"><a class="md-toc-inner" href="#данные-о-жилье">Данные о жилье</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n42"><a class="md-toc-inner" href="#экономика-и-финансы">Экономика и финансы</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n56"><a class="md-toc-inner" href="#компьютерное-зрение">Компьютерное зрение</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n80"><a class="md-toc-inner" href="#анализ-тональности-текста">Анализ тональности текста</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n92"><a class="md-toc-inner" href="#обработка-естественного-языка">Обработка естественного языка</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n120"><a class="md-toc-inner" href="#автопилоты">Автопилоты</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n142"><a class="md-toc-inner" href="#медицинские-данные">Медицинские данные</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n147"><a class="md-toc-inner" href="#проектирование-нейронных-сетей">Проектирование нейронных сетей</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n152"><a class="md-toc-inner" href="#фреймворки-глубокого-обучения">Фреймворки глубокого обучения</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n180"><a class="md-toc-inner" href="#запуск-нейронной-сети-в-облаке---на-примере-распознания-рукописных-цифр">Запуск нейронной сети в облаке - на примере распознания рукописных цифр</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n185"><a class="md-toc-inner" href="#интерфейс-google-colaboratory">Интерфейс <em>Google Colaboratory</em></a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n198"><a class="md-toc-inner" href="#обучающий-набор-данных">Обучающий набор данных</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n204"><a class="md-toc-inner" href="#подготовка">Подготовка </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n217"><a class="md-toc-inner" href="#подготовка-данных-для-обучения-сети">Подготовка данных для обучения сети</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n247"><a class="md-toc-inner" href="#создание-нейронной-сети">Создание нейронной сети</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n260"><a class="md-toc-inner" href="#обучение-нейронной-сети-1">Обучение нейронной сети</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n275"><a class="md-toc-inner" href="#анализ-результатов-обучения">Анализ результатов обучения</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n280"><a class="md-toc-inner" href="#сохранение-обученной-нейронной-сети">Сохранение обученной нейронной сети</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n285"><a class="md-toc-inner" href="#использование-сети-для-распознавания-рукописных-цифр">Использование сети для распознавания рукописных цифр</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n300"><a class="md-toc-inner" href="#самостоятельное-исследование">Самостоятельное исследование</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n324"><a class="md-toc-inner" href="#запуск-нейронной-сети-на-компьютере---на-примере-распознания-цветов">Запуск нейронной сети на компьютере - на примере распознания цветов</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n333"><a class="md-toc-inner" href="#создаём-виртуальное-окружение">Создаём виртуальное окружение</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n353"><a class="md-toc-inner" href="#установка-tensorflow">Установка <em>Tensorflow</em> </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n365"><a class="md-toc-inner" href="#устанавка-классификатора">Устанавка классификатора</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n378"><a class="md-toc-inner" href="#загрузка-фотографий-для-обучения">Загрузка фотографий для обучения</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n381"><a class="md-toc-inner" href="#адаптация-скриптов-под-актуальную-версию-tensorflow">Адаптация скриптов под актуальную версию <em>Tensorflow</em></a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n404"><a class="md-toc-inner" href="#обучение-нейронной-сети-2">Обучение нейронной сети</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n414"><a class="md-toc-inner" href="#запуск-нейронной-сети">Запуск нейронной сети</a></span></p></div><p>&nbsp;</p><h3 id='преодобработка-данных'><span>Преодобработка данных</span></h3><p><span>Нейронным сетям для обучения требуется обучающая выборка. Это главный минус, т.к. обычно нужно собрать много данных. </span></p><p><span>К примеру, если мы пишем распознавание лиц в классическом машинном обучении, то нам не нужна база из фотографий – достаточно нескольких фото, по которым человек сам составит алгоритм определения лица, или даже сделает это по памяти, вообще без фото.</span></p><p><span>В случае с нейронными сетями ситуация иная – нужна большая база того, на чем мы хотим обучить нейронную сеть. При этом важно не только собрать базу, но и определенным образом её предобработать.</span></p><p><span>Поэтому очень часто сбор базы производится в том числе фрилансерами или крупными бизнесами (классический пример - сбор данных компанией Google для того, чтобы показывать нам капчи).</span></p><h4 id='базовые-источники'><span>Базовые источники</span></h4><ul><li><a href='https://toolbox.google.com/datasetsearch'><span>Google Dataset Search</span></a><span>. Dataset Search позволяет по ключевому слову искать датасеты по всей Сети.</span></li><li><a href='https://www.kaggle.com/'><span>Kaggle</span></a><span>. Площадка для соревнований по машинному обучению с множеством интересных датасетов. В </span><a href='https://www.kaggle.com/datasets'><span>списке датасетов</span></a><span> можно найти разные нишевые экземпляры — от </span><a href='https://www.kaggle.com/datasets'><span>оценок рамена</span></a><span> до </span><a href='https://www.kaggle.com/ncaa/ncaa-basketball'><span>баскетбольных данных NCAA </span></a><span> и </span><a href='https://www.kaggle.com/aaronschlegel/seattle-pet-licenses'><span>базы лицензий на домашних животных в Сиэтле</span></a><span>.</span></li><li><a href='http://mlr.cs.umass.edu/ml/'><span>UCI Machine Learning Repository</span></a><span>. Один из старейших источников датасетов в Сети и первое место, куда стоит заглянуть в поиске интересных датасетов. Хотя они добавляются пользователями и потому имеют различную степень «чистоты», большинство из них очищены. Данные можно скачивать сразу, без регистрации.</span></li><li><a href='https://www.visualdata.io/'><span>VisualData</span></a><span>. Датасеты для компьютерного зрения, разбитые по категориям. Доступен поиск.</span></li><li><a href='https://guides.library.cmu.edu/machine-learning/datasets'><span>Find Datasets | CMU Libraries</span></a><span>. Коллекция датасетов, предоставленная университетом Карнеги Меллон.</span></li></ul><h4 id='государственные-датасеты'><span>Государственные датасеты</span></h4><ul><li><a href='https://www.data.gov/'><span>Data.gov</span></a><span>. Здесь можно найти данные от разных государственных учреждений США. Они варьируются от государственных бюджетов до школьных оценок.</span></li><li><a href='https://catalog.data.gov/dataset/food-environment-atlas-f4a22'><span>Food Environment Atlas</span></a><span>. Содержит данные о том, как различные факторы (близость магазинов/ресторанов, цены на продукты и тому подобное) влияют на выбор продуктов и качество питания в США.</span></li><li><a href='https://catalog.data.gov/dataset/annual-survey-of-school-system-finances'><span>School system finances</span></a><span>. Данные о финансах школьных систем в США.</span></li><li><a href='https://www.cdc.gov/chronicdisease/data/index.htm'><span>Chronic disease data</span></a><span>. Данные о показателях хронических заболеваний на территории США.</span></li><li><a href='https://nces.ed.gov/'><span>The US National Center for Education Statistics</span></a><span>. Данные об образовательных учреждениях и образовательной демографии в США и во всём мире.</span></li><li><a href='https://www.ukdataservice.ac.uk/'><span>The UK Data Service</span></a><span>. Крупнейшая в Великобритании коллекция социальных, экономических и демографических данных.</span></li><li><a href='https://datausa.io/'><span>Data USA</span></a><span>. Исчерпывающая визуализация общедоступных данных США.</span></li></ul><h4 id='данные-о-жилье'><span>Данные о жилье</span></h4><ul><li><a href='https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html'><span>Boston Housing Dataset</span></a><span>. Содержит информацию о жилье в Бостоне, собранную бюро переписи населения США. Она была получена из </span><a href='http://lib.stat.cmu.edu/datasets/boston'><span>архива StatLib</span></a><span> и широко использовалась в литературе для оценки алгоритмов.</span></li></ul><h4 id='экономика-и-финансы'><span>Экономика и финансы</span></h4><ul><li><a href='https://www.quandl.com/'><span>Quandl</span></a><span>. Хороший источник экономических и финансовых данных — полезен при построении моделей для прогнозирования экономических показателей или цен на акции.</span></li><li><a href='https://data.worldbank.org/'><span>World Bank Open Data</span></a><span>. Наборы данных, охватывающих демографическую ситуацию, огромное количество экономических показателей и индикаторов развития со всего мира.</span></li><li><a href='https://www.imf.org/en/Data'><span>IMF Data</span></a><span>. Международный валютный фонд публикует данные о международных финансах, показателях долга, валютных резервах, инвестициях и ценах на сырьевые товары.</span></li><li><a href='https://markets.ft.com/data/'><span>Financial Times Market Data</span></a><span>. Актуальная информация о финансовых рынках со всего мира, которая включает индексы цен на акции, товары и валюту.</span></li><li><a href='https://trends.google.com/trends/?q=google&amp;ctab=0&amp;geo=all&amp;date=all&amp;sort=0'><span>Google Trends</span></a><span>. Изучайте и анализируйте данные о поисковой активности в Интернете и трендах по всему миру.</span></li><li><a href='https://www.aeaweb.org/resources/data/us-macro-regional'><span>American Economic Association (AEA)</span></a><span>. Хороший источник данных о макроэкономике США.</span></li><li><a href='https://comtrade.un.org/'><span>UN Comtrade</span></a><span>. Бесплатный доступ к данным о мировой торговле и соответствующих аналитических таблиц.</span></li></ul><h4 id='компьютерное-зрение'><span>Компьютерное зрение</span></h4><ul><li><a href='http://xviewdataset.org/#dataset'><span>xView</span></a><span>. Один из самых больших общедоступных наборов воздушных снимков земли. Он содержит изображения различных сцен со всего мира, аннотированных с помощью ограничительных рамок.</span></li><li><a href='http://labelme.csail.mit.edu/Release3.0/browserTools/php/dataset.php'><span>Labelme</span></a><span>. Большой датасет аннотированных изображений.</span></li><li><a href='http://image-net.org/'><span>ImageNet</span></a><span>. Датасет изображений для новых алгоритмов, организованный в соответствии с иерархией WordNet, в которой сотни и тысячи изображений представляют каждый узел иерархии.</span></li><li><a href='https://www.yf.io/p/lsun'><span>LSUN</span></a><span>. Датасет изображений, разбитых по сценам и категориям с частичной разметкой данных.</span></li><li><a href='http://cocodataset.org/#home'><span>MS COCO</span></a><span>. Крупномасштабный датасет для обнаружения и сегментации объектов.</span></li><li><a href='https://www.kaggle.com/jessicali9530/coil100'><span>COIL100</span></a><span>. 100 разных объектов, изображённых под каждым углом в круговом обороте.</span></li><li><a href='http://visualgenome.org/'><span>Visual Genome</span></a><span>. Датасет с ~100 тыс. подробно аннотированных изображений.</span></li><li><a href='https://ai.googleblog.com/2016/09/introducing-open-images-dataset.html'><span>Google’s Open Images</span></a><span>. Коллекция из 9 миллионов URL-адресов к изображениям, «которые были помечены метками, охватывающими более 6000 категорий» под лицензией Creative Commons.</span></li><li><a href='http://vis-www.cs.umass.edu/lfw/'><span>Labelled Faces in the Wild</span></a><span>. Набор из 13 000 размеченных изображений лиц людей для использования приложений, которые предполагают использование технологии распознавания лиц.</span></li><li><a href='http://vision.stanford.edu/aditya86/ImageNetDogs/'><span>Stanford Dogs Dataset</span></a><span>. Содержит 20 580 изображений из 120 пород собак.</span></li><li><a href='http://web.mit.edu/torralba/www/indoor.html'><span>Indoor Scene Recognition</span></a><span>. Датасет для распознавания интерьера зданий. Содержит 15 620 изображений и 67 категорий.</span></li></ul><h4 id='анализ-тональности-текста'><span>Анализ тональности текста</span></h4><ul><li><a href='http://www.cs.jhu.edu/~mdredze/datasets/sentiment/'><span>Multidomain sentiment analysis dataset</span></a><span>. Немного устаревший датасет, который содержит отзывы на товары с Amazon.</span></li><li><a href='http://ai.stanford.edu/~amaas/data/sentiment/'><span>IMDB reviews</span></a><span>. Староватый, относительной небольшой (25 000 отзывов к фильмам) датасет для бинарного анализа тональности.</span></li><li><a href='http://nlp.stanford.edu/sentiment/code.html'><span>Stanford Sentiment Treebank</span></a><span>. Стэнфордский датасет для анализа тональности.</span></li><li><a href='http://help.sentiment140.com/for-students/'><span>Sentiment140</span></a><span>. Популярный датасет с 160 000 твитов с удалёнными смайликами.</span></li><li><a href='https://www.kaggle.com/crowdflower/twitter-airline-sentiment'><span>Twitter US Airline Sentiment</span></a><span>. Набор данных из Twitter об авиакомпаниях США, датируемый февралём 2015 года, разделённый на положительные, негативные и нейтральные твиты.</span></li></ul><h4 id='обработка-естественного-языка'><span>Обработка естественного языка</span></h4><ul><li><a href='https://hotpotqa.github.io/'><span>HotspotQA Dataset</span></a><span>. Датасет с вопросами-ответами, позволяющий создавать системы для ответов на вопросы более понятным способом.</span></li><li><a href='https://www.cs.cmu.edu/~./enron/'><span>Enron Dataset</span></a><span>. Данные электронной почты от высшего руководства Enron.</span></li><li><a href='https://snap.stanford.edu/data/web-Amazon.html'><span>Amazon Reviews</span></a><span>. Содержит около 35 млн отзывов с Amazon за 18 лет. Данные включают информацию о продукте и пользователе, оценки и сам текст отзыва.</span></li><li><a href='https://aws.amazon.com/ru/datasets/google-books-ngrams/'><span>Google Books Ngrams</span></a><span>. Коллекция слов из Google Книги.</span></li><li><a href='http://u.cs.biu.ac.il/~koppel/BlogCorpus.htm'><span>Blogger Corpus</span></a><span>. Коллекция из 681 288 постов с Blogger. Каждый блог содержит как минимум 200 вхождений часто используемых английских слов.</span></li><li><a href='https://code.google.com/archive/p/wiki-links/downloads'><span>Wikipedia Links data</span></a><span>. Датасет, состоящий из веб-страниц, которые удовлетворяют следующим двум условиям: каждая из них содержит хотя бы одну ссылку на Википедию и текст её якоря совпадает или похож на заголовок целевой страницы.</span></li><li><a href='https://www.gutenberg.org/wiki/Gutenberg:Offline_Catalogs'><span>Gutenberg eBooks List</span></a><span>. Аннотированный список электронных книг проекта «Гутенберг».</span></li><li><a href='https://www.isi.edu/natural-language/download/hansard/'><span>Hansards text chunks of Canadian Parliament</span></a><span>. Датасет с 1.3 миллионами пар текстовых файлов, записанных с дебатов 36-го Канадского Парламента.</span></li><li><a href='https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/'><span>Jeopardy</span></a><span>. Архив с более чем 200 000 вопросов с телевикторины Jeopardy.</span></li><li><a href='https://drive.google.com/file/d/1w1TsJB-gmIkZ28d1j7sf1sqcPmHXw352/view'><span>Rotten Tomatoes Reviews</span></a><span>. Архив из более чем 480 000 рецензий с Rotten Tomatoes.</span></li><li><a href='http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/'><span>SMS Spam Collection in English</span></a><span>. Датасет, состоящий из 5574 спам-смс на английском.</span></li><li><a href='https://www.yelp.com/dataset'><span>Yelp Reviews</span></a><span>. Датасет от Yelp, содержащий более 5 млн отзывов.</span></li><li><a href='https://archive.ics.uci.edu/ml/datasets/Spambase'><span>UCI’s Spambase</span></a><span>. Большой датасет спам-писем.</span></li></ul><h4 id='автопилоты'><span>Автопилоты</span></h4><ul><li><a href='https://bdd-data.berkeley.edu/'><span>Berkeley DeepDrive BDD100k</span></a><span>. На данный момент это самый большой датасет для автопилотов. Он содержит более 100 000 видео с более чем 1100 часами записей вождения в разное время дня и в различных погодных условиях.</span></li><li><a href='http://apolloscape.auto/'><span>Baidu Apolloscapes</span></a><span>. Большой датасет для распознавания 26 семантически разных объектов вроде машин, велосипедов, пешеходов, зданий, уличных фонарей и т. д.</span></li><li><a href='https://archive.org/details/comma-dataset'><span>Comma.ai</span></a><span>. Более семи часов езды по шоссе. Датасет включает информацию о скорости машины, ускорении, угле поворота руля и GPS-координатах.</span></li><li><a href='https://robotcar-dataset.robots.ox.ac.uk/'><span>Oxford’s Robotic Car</span></a><span>. Более ста повторений одного маршрута по Оксфорду, заснятого в течение года. В датасет попали разные комбинации погодных условий, трафика и пешеходов, а также более длительные изменения вроде дорожных работ.</span></li><li><a href='https://www.cityscapes-dataset.com/'><span>Cityscape Dataset</span></a><span>. Большой датасет, содержащий записи ста уличных сцен в 50 городах.</span></li><li><a href='http://www.vision.ee.ethz.ch/~timofter/traffic_signs/'><span>KUL Belgium Traffic Sign Dataset</span></a><span>. Более 10 000 аннотаций тысяч разных светофоров в Бельгии.</span></li><li><a href='http://cvrr.ucsd.edu/LISA/datasets.html'><span>LISA. Laboratory for Intelligent &amp; Safe Automobiles, UC San Diego Datasets</span></a><span>. Датасет с дорожными знаками, светофорами, распознанными средствами передвижения и траекториями движения.</span></li><li><a href='https://hci.iwr.uni-heidelberg.de/node/6132'><span>Bosch Small Traffic Light Dataset</span></a><span>. Датасет с 24 000 аннотированных светофоров.</span></li><li><a href='http://www.lara.prd.fr/benchmarks/trafficlightsrecognition'><span>LaRa Traffic Light Recognition</span></a><span>. Ещё один датасет для распознавания светофоров.</span></li><li><a href='http://computing.wpi.edu/dataset.html'><span>WPI datasets</span></a><span>. Датасет для распознавания светофоров, пешеходов и дорожной разметки.</span></li></ul><h4 id='медицинские-данные'><span>Медицинские данные</span></h4><ul><li><a href='https://mimic.physionet.org/'><span>MIMIC-III</span></a><span>. Датасет с обезличенными данными о состоянии здоровья ~40 000 пациентов, находящихся на интенсивной терапии. Он включает демографические данные, показатели жизнедеятельности, лабораторные анализы, лекарства и многое другое.</span></li></ul><p>&nbsp;</p><h3 id='проектирование-нейронных-сетей'><span>Проектирование нейронных сетей</span></h3><p><span>Можно не быть экспертом в какой-либо предметной области, но, будучи экспертом в нейронных сетях решить практически любую задачу.</span></p><p><span>Да, экспертность, безусловно влияет в плюс, т.к. мы можем лучше предобработать данные и, возможно, быстрее решить задачу, но в целом это не является критическим фактором.</span></p><p><span>Если в классическом машинном обучении не являясь экспертом в предметной области (например, атомная энергетика, машиностроение, геологические процессы и т.п.) мы вообще не сможем решить задачу, то здесь это вполне реально.</span></p><p>&nbsp;</p><h3 id='фреймворки-глубокого-обучения'><span>Фреймворки глубокого обучения</span></h3><p><span>Что такое фреймворки и библиотеки? Это набор функций, которые позволяют собирать и обучать нейронную сеть без необходимости глубокого понимания математической базу, лежащей в основе этих процессов.</span></p><p><span>Так, на настоящее время наиболее известными являются следующие библиотеки:</span></p><ul><li><span>TensorFlow (Google)</span></li><li><span>CNTK (Microsoft)</span></li><li><span>Theano (Монреальский институт алгоритмов обучения (MILA))</span></li><li><span>Pytorch (Facebook)</span></li></ul><p><span>Фреймворк Keras - также был разработан Google, и именно с ней мы будем больше всего работать. Мы также немного затронем TensorFlow и Pytorch, но уже ближе к окончанию обучения.</span></p><p><span>В иерархии это выглядит следующим образом, начиная от самых низкоуровневых инструментов:</span></p><p><img src=".\images\42.webp" referrerpolicy="no-referrer"></p><ul><li><span>Сама видеокарта (GPU).</span></li><li><span>CUDA (программно-аппаратная архитектура параллельных вычислений, которая позволяет существенно увеличить вычислительную производительность благодаря использованию графических процессоров фирмы Nvidia).</span></li><li><span>cuDNN (библиотека, содержащая оптимизированные для GPU реализации сверточных и рекуррентных сетей, различных функций активации, алгоритма обратного распространения ошибки и т.п., что позволяет обучать нейронные сети на GPU в несколько раз быстрее, чем просто CUDA).</span></li><li><span>TensorFlow, CNTK, Theano (надстройки над cuDNN).</span></li></ul><p><span>Keras же, в свою очередь, использует в качестве бэкенда TensorFlow и некоторые другие библиотеками, позволяя нам пользоваться уже готовым кодом, написанными именно для создания нейронных сетей.</span></p><p><span>Еще один важный момент, который нужно отметить - это вопрос о том, как со всем этим работает Python. Многие говорят, что он работает медленно.</span></p><p><span>Да, это так, но Keras генерирует не код Python, Keras генерирует код С++, и именно он уже используется непосредственно для работы нейронной сети, поэтому все работает быстро.</span></p><p>&nbsp;</p><h3 id='запуск-нейронной-сети-в-облаке---на-примере-распознания-рукописных-цифр'><span>Запуск нейронной сети в облаке - на примере распознания рукописных цифр</span></h3><p><span>Для облачного запуска воспользуемся сервисом </span><a href='https://neural-university.ru/vocabulary-neural-netwoks#rec118268861'><em><span>Google Colaboratory</span></em></a><span>. В облаке установлен интерпретатор </span><em><span>Python</span></em><span>, различные библиотеки машинного обучения, плюс к этому, выделяется вычислительные ресурсы (</span><em><span>GPU Tesla K80</span></em><span>), которые можно использовать для обучения нейронных сетей.</span></p><p><span>Запускать </span><em><span>Google Colaboratory</span></em><span> рекомендуется под </span><em><span>Google Chrome</span></em><span>, и при первой попытке открыть ноутбук (так называется любой документ в </span><em><span>Google Colaboratory</span></em><span>) вам будет предложено установить в браузер приложение </span><em><span>Colaboratory</span></em><span>, чтобы в будущем оно автоматически &quot;подхватывало&quot; файлы такого типа или его можно установить по </span><a href='https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo?hl=ru&amp;utm_source=chrome-ntp-launcher'><span>ссылке</span></a><span>.</span></p><p><span>Проект с исходным кодом и домашним заданием </span><a href='https://colab.research.google.com/drive/10-y_ZqYesz5G39-_ul4f-Haglq0awUPt?usp=sharing'><span>тут</span></a><span>.</span></p><p>&nbsp;</p><h4 id='интерфейс-google-colaboratory'><span>Интерфейс </span><em><span>Google Colaboratory</span></em></h4><p><span>Первым делом необходимо подключиться к вычислительным ресурсам, которые нам предоставляет </span><em><span>Google</span></em><span>. Для этого в верхней правой части окна нажмите на </span><em><span>Connect - connect to hosted runtime</span></em><span>.</span></p><p><img src=".\images\01_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Ожидаем подключения и видим примерно такую картину:</span></p><p><img src=".\images\02_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Следующим шагом мы идем в верхнее меню и выбираем </span><em><span>Runtime - Change runtime type</span></em><span>:</span></p><p><img src=".\images\03_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В открывшемся окне настроек ноутбука выбираем </span><em><span>Python 3</span></em><span>, а в качестве ускорителя указываем </span><em><span>GPU</span></em><span>, т.е. графическую карту и нажимаем </span><em><span>Save</span></em><span>.</span></p><p><img src=".\images\04_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>И, наконец, последний момент. Если мы работаем с уже готовым ноутбуком и хотим иметь возможность его править, нам нужно сохранить себе его копию, поэтому выбираем в верхнем меню </span><em><span>«File – Save a copy to Drive…»</span></em></p><p><img src=".\images\05_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В результате этого действия копия этого файла сохранится на ваш </span><em><span>Google Drive</span></em><span> и автоматически откроется в соседней вкладке.</span></p><p>&nbsp;</p><h4 id='обучающий-набор-данных'><span>Обучающий набор данных</span></h4><p><span>В качестве обучающего набора рукописные цифр, воспользуемся набором данных MNIST. Это специальный набор данных, в котором собрано большое количество изображений рукописных цифр от 0 до 9.</span></p><blockquote><p><span>Ранее она активно использовалась почтой США при распознавании цифр почтовых индексов, а сейчас она очень часто применяется именно в демонстрационных целях, чтобы показать, как работают несложные нейронные сети.</span></p></blockquote><p><span>Подробнее про датасет MNIST можно посмотреть </span><a href='https://vbystricky.github.io/2017/10/mnist_cnn.html'><span>тут</span></a><span>.</span></p><p>&nbsp;</p><h4 id='подготовка'><span>Подготовка </span></h4><p><span>Первым делом подключаем необходимые библиотеки:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 70.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 38px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -38px; width: 38px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 25px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tensorflow</span>.<span class="cm-property">keras</span>.<span class="cm-property">datasets</span> <span class="cm-keyword">import</span> <span class="cm-variable">mnist</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tensorflow</span>.<span class="cm-property">keras</span>.<span class="cm-property">models</span> <span class="cm-keyword">import</span> <span class="cm-variable">Sequential</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tensorflow</span>.<span class="cm-property">keras</span>.<span class="cm-property">layers</span> <span class="cm-keyword">import</span> <span class="cm-variable">Dense</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tensorflow</span>.<span class="cm-property">keras</span> <span class="cm-keyword">import</span> <span class="cm-variable">utils</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tensorflow</span>.<span class="cm-property">keras</span>.<span class="cm-property">preprocessing</span> <span class="cm-keyword">import</span> <span class="cm-variable">image</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">google</span>.<span class="cm-property">colab</span> <span class="cm-keyword">import</span> <span class="cm-variable">files</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">numpy</span> <span class="cm-keyword">as</span> <span class="cm-variable">np</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">matplotlib</span>.<span class="cm-property">pyplot</span> <span class="cm-keyword">as</span> <span class="cm-variable">plt</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 25px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">scipy</span>.<span class="cm-property">misc</span> <span class="cm-keyword">import</span> <span class="cm-variable">toimage</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 25px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">%</span><span class="cm-variable">matplotlib</span> <span class="cm-variable">inline</span> </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 213px;"></div><div class="CodeMirror-gutters" style="height: 213px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 34px;"></div></div></div></div></pre><p><span>В первой строке мы импортируем предустановленный датасет MNIST с изображениями рукописных цифр, которые мы будем распознавать.</span></p><p><span>Затем мы подключаем библиотеки Sequential и Dense т.к. работаем с полносвязной сетью прямого распространения.</span></p><p><span>Наконец, мы импортируем дополнительные библиотеки, позволяющие нам работать с данными (NumPy, Matplotlib и др.).</span></p><p><span>Сразу обратите внимание на модульную структуру ноутбука, благодаря которой вы можете в любом порядке чередовать блоки кода и текстовые поля.</span></p><p><span>Для того, чтобы добавить новую ячейку кода, текстовое поле или поменять порядок их следования воспользуйтесь, кнопками CODE, TEXT и CELL прямо под основным меню.</span></p><p><img src=".\images\07_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Для того, чтобы добавить комментарий непосредственно к ячейке, сослаться на нее, добавить форму или удалить её, нажмите на три точки в верхней правой части любой ячейки и увидите соответствующее меню.</span></p><p><img src=".\images\08_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Для запуска фрагмента кода нам нужно просто нажать на значок </span><em><span>play</span></em><span> слева вверху от кода. Он появляется при выделении блока с кодом, либо при наведении мышки на пустые квадратные скобки, если блок не выделен.</span></p><p>&nbsp;</p><h4 id='подготовка-данных-для-обучения-сети'><span>Подготовка данных для обучения сети</span></h4><p><span>Следующим шагом с помощью функции </span><code>load_data</code><span> мы подгружаем данные, необходимые для обучения сети, где </span><code>x_train_org</code><span> и </span><code>y_train_org</code><span> – данные обучающей выборки, а </span><code>x_test_org</code><span> и </span><code>y_test_org</code><span> – данные тестовой выборки.</span></p><p><span>Их названий выборок понятно, что обучающую выборку мы используем для того, чтобы обучить сеть, в то время как тестовая используется для того, чтобы проверить, насколько качественно произошло это обучение.</span></p><p><span>Смысл тестовой выборки в том, чтобы проверить, насколько точно отработает наша сеть с данными, с которыми она не сталкивалась ранее. Именно это является самой важной метрикой оценки сети.</span></p><p><img src=".\images\09_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В </span><code>x_train_org</code><span> находятся сами изображения цифр, на которых обучается сеть, а </span><code>y_train_org</code><span> – правильные ответы, какая именно цифра изображена на том или ином изображении.</span></p><blockquote><p><span>Сразу важно отметить, что формат представления правильных ответов на выходе из сети - одномерный массив (вектор), хранящий 10 цифр – 0 или 1. При этом положение единицы в этом векторе и говорит нам о верном ответе.</span></p><p><span>Например, если цифра на картинке изображен 0, то вектор будет выглядеть как в первой строке на картинке ниже.</span></p><p><span>Если на изображении цифра 2, то единица в векторе будет стоять в 3 позиции (как в строке 2).</span></p><p><span>Если же на изображении цифра 9, то единица в векторе будет стоять в последней, десятой позиции.</span></p><p><span>Это объясняется тем, что нумерация в массивах по умолчанию начинается с нуля.</span></p></blockquote><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>3</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 0 -&gt; [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 17px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 2 -&gt; [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 9 -&gt; [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 64px;"></div><div class="CodeMirror-gutters" style="height: 64px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Для проверки, корректно ли загрузились данные, мы можем произвольно указать номер элемента массива с цифрами и посмотреть его содержимое:</span></p><p><img src=".\images\010_colab_interface.png" referrerpolicy="no-referrer"></p><p><span>После запуска этого кода мы увидим цифру 3.</span></p><p><img src=".\images\011_colab_interface.png" referrerpolicy="no-referrer"></p><p><span>Далее мы производим преобразование размерности данных в обучающем наборе картинок – это необходимо для корректной работы с ними в дальнейшем.</span></p><p><img src=".\images\012_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Изначально на вход сети в обучающей выборке подается 60 тыс. изображений размером 28 на 28 пикселей. В тестовой выборке таких изображений 10 тыс. штук. Наша задача - привести их к одномерному массиву (вектору), размерность которого будет не 28 на 28, а 1 на 784, что мы и делаем в коде выше.</span></p><p><span>Следующий наш шаг – это так называемая нормализация данных, их &quot;выравнивание&quot; с целью привести их значения к диапазону от 0 до 1. Дело в том, что до нормализации изображение каждой рукописной цифры (все они представлены в градациях серого) представлено числами от 0 до 255, где 0 представляет собой чёрный цвет, а 255 — белый). Однако для эффективной работы сети нам необходимо привести их к другому диапазону, что мы и делаем, разделив каждое значение на 255.</span></p><p><img src=".\images\013_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Теперь давайте убедимся в том, что в массиве ответов находятся верные ответы. Для этого мы можем запустить код ниже и убедиться, что в указанном нами выше элементе массива 157 действительно хранится ответ, что это цифра 3:</span></p><p><img src=".\images\014_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Следующий шаг – это преобразование массива правильных ответов в формат про который мы уже упоминали выше.</span></p><p><img src=".\images\015_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Производит это преобразование функция </span><code>to_categorical</code><span>, которая трансформирует цифры от нуля до девяти в вектор из десяти цифр, в результате чего наш правильный ответ 3 будет теперь выводиться в ином виде:</span></p><p><img src=".\images\016_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Единица в четвертой позиции этого массива как раз обозначает цифру 3.</span></p><p>&nbsp;</p><h4 id='создание-нейронной-сети'><span>Создание нейронной сети</span></h4><p><span>На этом сбор данных и их простая предобработка завершены. Дальше нам нужно будет создать нейронную сеть и задать её архитектуру. В нашем случае мы создадим последовательную сеть прямого распространения, пример которой мы рассматривали самым первым, когда говорили про типы архитектур.</span></p><p><img src=".\images\017_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Далее мы указываем слои, которые будут использоваться в данной сети, создаем её архитектуру:</span></p><p><img src=".\images\45.webp" referrerpolicy="no-referrer"></p><p><span>Мы добавляем в качестве входного полносвязный слой из 800 нейронов, на вход каждого из которых приходят все 784 значения интенсивности пикселов (это размерность вектора, в который мы преобразовали исходные квадратные картинки) и используем активационную функцию </span><em><span>ReLU</span></em><span>.</span></p><p><img src=".\images\018_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В данном случае количество нейронов (800) уже подобрано эмпирически. При таком количестве нейронная сеть обучается лучше всего (безусловно, на старте своих исследований мы можем пробовать самые разные варианты, постепенно приходя к оптимальному).</span></p><p><span>В качестве выходного слоя у нас будет полносвязный слой из 10 нейронов – по количеству рукописных цифр, которые мы распознаём.</span></p><p><span>И наконец, функция </span><code>softmax</code><span> будет преобразовывать вектор из 10 значений в другой вектор, в котором каждая координата представлена вещественным числом в интервале [0,1] и сумма этих координат равна 1. Эта функция применяется в машинном обучении для задач классификации, когда количество классов больше двух, при этом полученные координаты трактуются как вероятности того, что объект принадлежит к определенному классу.</span></p><p><span>После этого мы компилируем сеть и выходим на экран ее архитектуру.</span></p><p><img src=".\images\019_colab_interface.webp" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h4 id='обучение-нейронной-сети-1'><span>Обучение нейронной сети</span></h4><p><span>Для обработки ошибок мы используем функцию </span><code>categorical_crossentropy</code><span> - её лучше использовать, когда у нас на выходе происходит классификация объектов, а диапазон значений составляет от 0 до 1.</span></p><p><span>В качестве оптимизатора используем </span><code>adam</code><span>, который похож по своей сути на метод обратного распространения ошибки, но с некоторой инерцией, а метрикой оценки качества обучения сети у нас служит точность – </span><code>accuracy</code><span>.</span></p><p><span>После этого мы запускаем обучение сети с помощью метода </span><code>fit</code><span>:</span></p><p><img src=".\images\020_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В качестве параметров мы передаем ему данные обучающей выборки – сами картинки и правильные ответы. Также мы устанавливаем значения для:</span></p><ul><li><code>batch_size=200</code><span> - количество картинок, с которыми идет работа в пределах одной итерации до изменения весов,</span></li><li><code>epochs=20</code><span> - количество повторений циклов обучения для всей выборки из 60 тыс. картинок,</span></li><li><code>verbose=1</code><span> - определение того, какой объем служебной информации о процессе обучения мы увидим (см. картинку ниже)</span></li></ul><p><span>На скриншоте мы можем видеть, как последовательно сменяются эпохи обучения, продолжительностью по 2 с лишним секунды, количество обработанных изображений (везде по 60 тыс.), а также значения ошибки (</span><code>loss</code><span>) и точности распознавания изображений (</span><code>acc</code><span>) по итогам каждой эпохи.</span></p><p>&nbsp;</p><h4 id='анализ-результатов-обучения'><span>Анализ результатов обучения</span></h4><p><span>Мы видим, что значение ошибки по итогам 20 эпох составило 0,0041, а точность - 0,9987, вплотную приблизившись к 100%.</span></p><p><img src=".\images\021_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Обратите внимание, что </span><code>batch_size</code><span> и количество эпох мы подбираем экспериментально в зависимости от текущей задачи, архитектуры сети и входных данных.</span></p><p>&nbsp;</p><h4 id='сохранение-обученной-нейронной-сети'><span>Сохранение обученной нейронной сети</span></h4><p><span>Когда наша сеть обучится, мы можем сохранить её себе на компьютер с помощью метода </span><code>save</code><span>:</span></p><p><img src=".\images\022_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Сначала мы записываем сеть в файл, затем можем проверить, что он сохранился, после чего сохраняем файл на компьютер с помощью метода </span><code>download</code><span>.</span></p><p>&nbsp;</p><h4 id='использование-сети-для-распознавания-рукописных-цифр'><span>Использование сети для распознавания рукописных цифр</span></h4><p><span>Проверим, как наша сеть распознает рукописные цифры, которые она еще не видела. Для этого нам понадобится тестовая выборка, которая, наряду с обучающей, также входит в датасет MNIST.</span></p><p><span>Для начала выберем произвольную цифру из набора тестовых данных и выведем её на экран:</span></p><p><img src=".\images\023_colab_interface.png" referrerpolicy="no-referrer"></p><p><img src=".\images\024_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Увидев, какую цифру нам должна распознать нейронная сеть, подготовимся к ее распознаванию через изменение размерности изображения и его нормализацию:</span></p><p><img src=".\images\025_colab_interface.png" referrerpolicy="no-referrer"></p><p><span>После чего запускаем сам процесс распознавания с помощью метода </span><code>predict</code><span> и смотрим на полученный результат:</span></p><p><img src=".\images\026_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Мы видим результат в уже знакомом нам формате и понимаем, что цифра 2 была распознана нейронной сетью верно.</span></p><p><span>Если мы хотим привести её к обычному виду, мы можем вывести на экран итоговый ответ в более понятном виде благодаря использованию функции </span><code>argmax</code><span>, преобразующей наибольшее значение (в нашем случае единицу) в искомое число, исходя из его позиции в векторе.</span></p><p><img src=".\images\027_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>В первом случае мы распечатали результат работы метода </span><code>predict</code><span> и получили значение 2.</span></p><p><span>Во втором блоке кода мы напрямую распечатали искомый элемент из массива </span><code>y_test_org</code><span> по его индексу, получив значение 2. Таким образом, мы делаем вывод, что сеть распознала данное изображение верно.</span></p><p>&nbsp;</p><h4 id='самостоятельное-исследование'><span>Самостоятельное исследование</span></h4><p><span>Теперь, когда мы получили некие первичные результаты, мы можем продолжить процесс исследования, меняя различные параметры нашей нейронной сети. Например, мы можем поменять количество нейронов во входном слое и уменьшить их количество с 800, например, до 10.</span></p><p><span>Для того, чтобы запустить сеть обучаться повторно после внесенных изменений с нуля, нам необходимо заново пересобрать модель, запустить код с измененными параметрами сети и снова её скомпилировать (в противном случае сеть будет дообучаться, что требуется далеко не всегда).</span></p><p><span>Для этого мы просто заново нажимаем на </span><em><span>play</span></em><span> последовательно во всех трех блоках кода (см. ниже). В результате этих действий вы увидите, что исходные данные изменились, и сеть теперь имеет 2 слоя по 10 нейронов, вместо 800 и 10, которые были ранее.</span></p><p><img src=".\images\028_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>После этого мы можем запустить сеть обучаться повторно и получим иные результаты. Например:</span></p><p><img src=".\images\029_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Здесь мы видим, что за те же 20 эпох сеть смогла достичь точности 93,93%, что значительно ниже, чем в предыдущем случае.</span></p><p><span>Продолжив исследование дальше, мы можем добавить в архитектуру сети еще один слой, допустим также из 10 нейронов и вставить его между уже имеющимися слоями. Таким образом мы создадим скрытый слой и потенциально можем улучшить качество работы сети:</span></p><p><img src=".\images\030_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Мы добавили еще один слой из 10 нейронов, который будет связан с предыдущим слоем также из 10 нейронов. Поэтому значение </span><code>input_dim</code><span> мы установили равным 10 (это опционально, нейронная сеть сработает корректно и без специального указания этого числа).</span></p><p><span>Теперь по итогам обучения сети мы приходим к следующим значениям:</span></p><p><img src=".\images\031_colab_interface.webp" referrerpolicy="no-referrer"></p><p><span>Мы видим точность в 93,95%, т.е. практически идентичную той, что была в предыдущем варианте сети (93,93%), поэтому можем сделать вывод, что это изменение архитектуры практически не повлияло на качество распознавания.</span></p><p><span>И, наконец, давайте проведем еще один эксперимент, сделав так, чтобы все 784 значения приходили на один единственный нейрон входного слоя:</span></p><p><img src=".\images\032_colab_interface.png" referrerpolicy="no-referrer"></p><p><span>Запускаем обучение и смотрим на результат.</span></p><p><img src=".\images\033_colab_interface.png" referrerpolicy="no-referrer"></p><p><span>Как мы видим, даже при одном нейроне в скрытом слое сеть достигла точности почти в 38%. Понятно, что с таким результатом она едва ли найдет практическое применение, однако мы делаем это просто для понимания того, как могут разниться результаты при изменении архитектуры.</span></p><p><span>Итак, завершая разбор кода, следует сделать важную оговорку: то, что мы смотрим точность на обучающей выборке – это просто пример для понимания того, как это работает. В действительности, качество работы сети нужно замерять исключительно на тестовой выборке с данными, с которыми нейронная сеть еще не сталкивалась ранее.</span></p><p><span>И теперь, когда мы немного поэкспериментировали, давайте подведем небольшой итог и посмотрим, как подойти к проведению экспериментов с нейронными сетями системно, чтобы получать действительно статистически значимые результаты.</span></p><p><span>Итак, мы берем одну модель сети, и в цикле формируем из имеющихся данных 100 разных обучающих и тестовых выборок в пропорции 80% - обучающая выборка, и 20% - тестовая. Далее на всех этих данных мы проводим 100 обучений нейронной сети со случайной точки (каждый раз сеть стартует со случайными весами) и получаем некую ошибку на тестовой выборке - среднюю за эти 100 обучений на данной конкретной архитектуре (но с разными комбинациями обучающей и тестовой выборок).</span></p><p><span>Потом берется другая архитектура и делается то же самое. Таким образом мы можем проверить, например несколько десятков вариантов архитектур по 100 обучений на каждой, в результате чего получим статистически значимые результаты своих экспериментов и сможем выбрать самую точную сеть.</span></p><p>&nbsp;</p><h3 id='запуск-нейронной-сети-на-компьютере---на-примере-распознания-цветов'><span>Запуск нейронной сети на компьютере - на примере распознания цветов</span></h3><p><span>ВНИМАНИЕ - ДАННЫЙ БЛОК МОЖЕТ БЫТЬ НЕВЫПОЛНЕН, ТАК КАК НЕ ВСЕ КОМПЬЮТЕРЫ ПОДЕРЖИВАЮТ РАБОТУ С БИБЛИОТЕКОЙ </span><em><span>TENSORFLOW</span></em><span>.</span></p><p><span>Настроим и обучим нейросеть распознавать картинки и говорить, какой цветок мы ей показываем — розу, тюльпан или что-то другое. Мы используем цветы, потому что скачали уже готовый, собранный и размеченный набор фотографий, на котором нейросеть может научиться. </span></p><blockquote><p><span>Если вы хотите, чтобы она научилась распознавать на фото вас или ваших друзей, нужно будет собрать другой датасет и переобучить нейросеть.</span></p></blockquote><p><span>Понадобится </span><em><span>Python</span></em><span> версии </span><em><span>3.8</span></em><span> и выше, обязательно под архитектуру </span><em><span>x64</span></em><span>. Если взять </span><em><span>32</span></em><span>-разрядную версию, то нужная в проекте библиотека </span><em><span>Tensorflow</span></em><span>  работать не будет. Мы используем версию </span><a href='https://www.python.org/downloads/release/python-397/'><em><span>3.9.7</span></em></a><span>. Инструкция по </span><a href='https://thecode.media/py-install/'><span>установке Python</span></a><span>. </span></p><p><span>Все команды, которые есть в проекте, мы будем запускать в командной строке. Чтобы не было ошибок, лучше всего запустить её от имени администратора (в </span><em><span>Windows</span></em><span>) или с правами суперпользователя root (в </span><em><span>Mac OS</span></em><span> и </span><em><span>Linux</span></em><span>).</span></p><p><span>Весь код проекта можно посмотреть </span><a href='https://github.com/mlnchkdv/mlnchkdv.github.io/tree/main/dl2022.1/4_running/flower_classifier'><span>тут</span></a><span>.</span></p><p>&nbsp;</p><h4 id='создаём-виртуальное-окружение'><span>Создаём виртуальное окружение</span></h4><p><span>Чтобы не раскидывать файлы, скрипты и картинки по всему компьютеру, создадим в питоне виртуальное окружение — специальный проект, который хранит все данные внутри своей папки. Он не мешает остальным проектам и не влияет на работу других программ, а также позволяет разворачивать проект на любом другом компьютере, где есть </span><em><span>Python</span></em><span>. Подробнее про </span><em><span>Virtual Environments</span></em><span> встроенный в </span><em><span>Puthon</span></em><span> и запуск файла </span><a href='./flower_classifier/requirements.txt'><span>requirements.txt</span></a><span> смотри в </span><a href='https://python.ivan-shamaev.ru/python-virtual-env-packages-virtualenv-venv-requirements-txt/'><span>инструкции</span></a><span>.</span></p><p><span>Чтобы создать виртуальное окружение, в терминале перейдите в папку проекта и запустите команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python <span class="cm-attribute">-m</span> venv venv</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>В результате, в папке проекта будет создана папка </span><strong><span>venv</span></strong><span> с содержимым:</span></p><p><img src=".\images\python_venv_env.jpg" referrerpolicy="no-referrer"></p><p><span>Далее необходимо активировать виртуальную среду, введя команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.\venv\Scripts\Activate.ps1</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Префикс вашего рабочего каталога изменится на venv. Теперь пока ваша виртуальная среда активирована, </span><strong><span>pip будет устанавливать пакеты в эту конкретную среду</span></strong><span>, и вы сможете импортировать и использовать пакеты в своем приложении Python.</span></p><p><span>Теперь можно устанавливать пакеты в нашу виртуальную среду. Вы можете устанавливать каждый пакет по отдельности, вводя команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install pandas</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Так вы получите последнюю версию пакеты, но можно указывать конкретную версию пакета, чтобы не столкнуться с несовместимостью некоторых новых функций:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install <span class="cm-def">pandas</span><span class="cm-operator">==</span><span class="cm-number">0</span>.25.0</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Для удобства, можно заранее вынести весь список необходимых библиотек в отдельный файл </span><a href='./flower_classifier/requirements.txt'><span>requirements.txt</span></a><span> и установить пакеты сразу все из этого списка, сохраним данный файл в корне проекта и запустим:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install <span class="cm-attribute">-r</span> requirements.txt</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Последняя операция может занять некоторое время. После чего у вас в виртуальном окружении будут установлены все необходимые пакеты для дальнейшей работы.</span></p><p><img src=".\images\consoleVSC.png" referrerpolicy="no-referrer"></p><blockquote><p><code>tensorflow</code><span> - 280 МБ, </span><code>pandas</code><span> - 10 МБ, </span><code>numpy</code><span> - 14 МБ и небольшие зависимые библиотеки будут загружены и установлены автоматически. </span></p></blockquote><p>&nbsp;</p><h4 id='установка-tensorflow'><span>Установка </span><em><span>Tensorflow</span></em><span> </span></h4><p><span>На случай проблем с автоматической установкой </span><em><span>Tensorflow</span></em><span>, рассмотрим этап отдельной установки. Для установки пишем команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 61.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 29px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -29px; width: 29px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -29px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install tensorflow</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 25px;"></div></div></div></div></pre><p><span>Если на вашем компьютере установлен GPU и вы хотите задействовать его, то необходимо отменить установку пакета </span><code>tensorflow</code><span> и установить вместо него пакет </span><code>tensorflow-gpu</code><span>:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>2</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip uninstall tensorflow</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install tensorflow-gpu</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 43px;"></div><div class="CodeMirror-gutters" style="height: 43px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span>Также может потребоваться установить совместимую библиотеку GPU.</span></p><p><span>Чтобы убедиться, что библиотека установилась правильно и работает штатно, проверим её простым тестом. Пишем команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span>Начало командной строки поменялось на </span><code>&gt;&gt;&gt;</code><span> — это значит, что питон готов к приёму команд. Пишем по очереди:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>3</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">hello</span> = <span class="cm-variable">tf</span>.<span class="cm-property">constant</span>(<span class="cm-string">'Hello, TensorFlow'</span>)</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 2px; width: 18px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">sess</span> = <span class="cm-variable">tf</span>.<span class="cm-property">compat</span>.<span class="cm-property">v1</span>.<span class="cm-property">Session</span>()</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-variable">sess</span>.<span class="cm-property">run</span>(<span class="cm-variable">hello</span>))</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 64px;"></div><div class="CodeMirror-gutters" style="height: 64px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span>Если в консоли распечаталось &#39;Hello, TensorFlow&#39;, это значит, что всё работает правильно.</span></p><p>&nbsp;</p><h4 id='устанавка-классификатора'><span>Устанавка классификатора</span></h4><p><span>Задача классификатора — научить нейросеть понимать, чем одни цветы отличаются от других. Если бы мы вместо цветов использовали фото зданий, нейронка бы научилась отличать барокко от роккоко и неоклассицизма.</span></p><p><span>У </span><em><span>Tensorflow</span></em><span> есть уже предобученный классификатор и готовые учебные проекты показывающие разные возможности библиотеки. Воспользуемся одним из таких проектов.</span></p><ol start='' ><li><a href='https://github.com/googlecodelabs/tensorflow-for-poets-2/archive/refs/heads/master.zip'><span>Качаем архив с классификатором</span></a><span>(28 МБ).</span></li><li><span>Распаковываем архив.</span></li></ol><p><img src=".\images\image6-1-1920x454.png" referrerpolicy="no-referrer"></p><ol start='3' ><li><span>Копируем содержимое архива в папку вашего проекта.</span></li></ol><p>&nbsp;</p><h4 id='загрузка-фотографий-для-обучения'><span>Загрузка фотографий для обучения</span></h4><p><span>Скачиваем уже собранный </span><a href='https://drive.google.com/file/d/1_RO4G5D6luaBGvWeQdStPeK426cMrNZk/view?usp=sharing'><span>датасет с цветами</span></a><span>(218 МБ), распаковываем его и копируем в папку вашего проекта.</span></p><p>&nbsp;</p><h4 id='адаптация-скриптов-под-актуальную-версию-tensorflow'><span>Адаптация скриптов под актуальную версию </span><em><span>Tensorflow</span></em></h4><p><span>На текущий момент актуальная версия </span><em><span>tensorflow</span></em><span> — 2.8. Но скрипты и алгоритмы, которые мы используем, были написаны под старую версию, поэтому необходимо их адаптировать под новую версию.</span></p><ol start='' ><li><p><span>Переходим в каталог вашего проекта в папку </span><code>/scripts</code><span> и находим файл </span><code>retrain.py</code><span>.</span></p></li><li><p><span>Открываем его в любом редакторе кода.</span></p></li><li><p><span>Нажимаем </span><code>Ctrl + H</code><span> или </span><code>Command + H</code><span> — включится режим поиска и автозамены текста.</span></p></li><li><p><span>Первая строка (что заменить) → пишем </span><code>tf.</code><span>(с точкой).</span></p></li><li><p><span>Вторая строка (на что заменить) → пишем </span><code>tf.compat.v1.</code><span> (тоже с точкой в конце).</span></p></li><li><p><span>Нажимаем </span><code>Replace All</code><span> (Заменить всё).</span></p></li><li><p><span>То же самое делаем в файле </span><code>label-image.py</code><span>.</span></p></li><li><p><span>В том же файле </span><code>label-image.py</code><span> добавляем после строки 25 «</span><code>import tensorflow as tf</code><span>» такую строку:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tf</span>.<span class="cm-property">compat</span>.<span class="cm-property">v1</span>.<span class="cm-property">disable_eager_execution</span> ()</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre></li></ol><p><span>Благодаря действиям выше мы сможем запустить написанный под старую версию скрипт работать с новой версией.</span></p><p><img src=".\images\retrain.png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h4 id='обучение-нейронной-сети-2'><span>Обучение нейронной сети</span></h4><ol start='' ><li><p><span>В командной строке командой </span><code>cd</code><span> переходим в папку вашего проекта.</span></p></li><li><p><span>Запускаем команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1665px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python scripts/retrain.py <span class="cm-attribute">--output_graph</span><span class="cm-operator">=</span>tf_files/retrained_graph.pb <span class="cm-attribute">--output_labels</span><span class="cm-operator">=</span>tf_files/retrained_labels.txt <span class="cm-attribute">--image_dir</span><span class="cm-operator">=</span>flower_photos</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 43px;"></div><div class="CodeMirror-gutters" style="height: 43px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre></li></ol><p><span>Пошёл процесс обучения. В нём 4000 этапов, по времени занимает примерно 20 минут. За это время нейросеть обработает около 250 фото (это очень мало для нейросети) и научится отличать розу от ландышей:</span></p><p><img src=".\images\image10-1920x771.png" referrerpolicy="no-referrer"></p><p>&nbsp;</p><h4 id='запуск-нейронной-сети'><span>Запуск нейронной сети</span></h4><p><span>Чтобы проверить работу нашей нейросети, скачиваем </span><a href='https://i.pinimg.com/originals/b9/15/f0/b915f0e7361a1d1bb618c422a09f8451.jpg'><span>любой файл с розой</span></a><span> из интернета, кладём его в папку проекта и пишем такую команду:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 19.1667px; left: 63.0938px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 31px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -31px; width: 31px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -31px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 2px; width: 18px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python scripts/label_image.py <span class="cm-attribute">--image</span> image.jpg</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 21px;"></div><div class="CodeMirror-gutters" style="height: 21px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 27px;"></div></div></div></div></pre><p><span>Нейросеть думает, а потом выдаёт ответ в виде процентов. В нашем случае она на 98% уверена, что это роза:</span></p><p><img src=".\images\image5-1-1920x922.png" referrerpolicy="no-referrer"></p><p><span>А вот как нейросеть реагирует </span><a href='https://www.kino-teatr.ru/news/9883/97057.jpg'><span>на фото Цукерберга</span></a><span>:</span></p><p><img src=".\images\image1-2-1920x395.png" referrerpolicy="no-referrer"></p><p><span>50% — что на фото тюльпан, и на 18% — что это одуванчик. А всё потому, что она умеет различать только 5 видов цветов, а не лица.</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
