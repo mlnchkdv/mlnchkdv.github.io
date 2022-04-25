@@ -2,7 +2,7 @@
 
 ### SKILLS
 
-`Python` (`Streamlit`, `Scikit-learn`, `TensorFlow`, `Keras`, `PyTorch`, `Pandas`) 
+`Python` (`PyTorch`, `Keras`, `TensorFlow`, `Scikit-learn`, `Streamlit`, `Pandas`) 
 `R` (`tsibble`, `anomalize`, `shiny`, `ggplot2`)
 `SQL`, `MongoDB`
 `Docker`, `Jenkins`, `Postman`, `Linux(bash)`, `Git`
@@ -14,11 +14,11 @@
 ### WORK EXPERIENCE
 
 **Startups (clients: England, Canada)**   Sep 2021 to present
-·   Market analysis and evaluation (`Python` and `R`).
-·   Gathering functional requirements for web service development.
-·   Development of crypto indicators and realization in charts (`highcharts`).
-·   Visualization of analytics (`Tableau`).
-·   Prototyping a web application (`Streamlit`, `plotly`).
+·   Market analysis and evaluation (`Python` and `R`)
+·   Gathering functional requirements for web service development
+·   Development of crypto indicators and realization in charts (`highcharts`)
+·   Visualization of analytics (`Tableau`)
+·   Prototyping a web application (`Streamlit`, `plotly`)
 
  
 
@@ -28,6 +28,13 @@ Assistant. Department of Functions and Approximations Theory.
 ·   Machine Learning (lections and practice)
 ·   Data analysis with R (lections and practice)
 ·   Computer science and c++ programming (practice)
+
+
+
+**BLOG - Portfolio**
+·   
+·   Easy-to-use view mode of the author's course (`HTML`, `CSS`, `JavaScript`)
+·   
 
 
 
