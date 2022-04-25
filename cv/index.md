@@ -1,4 +1,4 @@
-# <img src="./photo.jpg" style="zoom:7%;" />  Melnichuk Dmitrii
+# <img src="./photo.jpg" style="zoom:7%;"  />   Melnichuk Dmitrii
 
 ### SKILLS
 
@@ -32,9 +32,11 @@ Assistant. Department of Functions and Approximations Theory.
 
 
 **BLOG - Portfolio**
+·   AI - text mining
+·   AI
 ·   
-·   Easy-to-use view mode of the author's course (`HTML`, `CSS`, `JavaScript`)
-·   
+·   Easy-to-use view mode (3 in 1) of the author's course (`HTML`, `CSS`, `JS`)
+·   Articles ...
 
 
 
@@ -71,6 +73,6 @@ GH: [mlnchkdv](https://github.com/mlnchkdv)
 
 
 
-[pfd version](./MelnichukDmitrii_CV.pdf)
+[pfd version](https://mlnchkdv.github.io/cv/MelnichukDmitrii_CV.pdf)
 2022
 
