@@ -23,7 +23,7 @@
  
 
 **SARATOV STATE UNIVERSITY**    Jan 2019 to present
-Assistant. Department of Functions and Approximations Theory.
+[Assistant](https://www.sgu.ru/person/melnichuk-dmitriy-vadimovich). Department of Functions and Approximations Theory.
 ·   Deep Learning (lections and practice)
 ·   Machine Learning (lections and practice)
 ·   Data analysis with R (lections and practice)
@@ -31,12 +31,13 @@ Assistant. Department of Functions and Approximations Theory.
 
 
 
-**BLOG - Portfolio**
+**Portfolio and Public Activities**
 ·   AI - text mining
 ·   AI
-·   
-·   Easy-to-use view mode (3 in 1) of the author's course (`HTML`, `CSS`, `JS`)
-·   Articles ...
+·   AI
+·   Co-founder, speaker and mentor of [ML-Bootcamp (or ML-Crash-Course)]()
+·   Author of [popsci]() and [scholarly]() articles
+·   Creater of [view mode (3 in 1)]() and [book mode]() of the author's courses
 
 
 
@@ -55,6 +56,16 @@ Mathematical support and administration of information systems
 
 
 
+### ACHIEVEMENTS
+
+**RUSSIAN FOUNDATION FOR BASIC RESEARCH (RFBR)**    2019
+19-37-90017
+
+**TEMPUS-GREENCO**    2014
+GREENCO-530270-Tempus-1-2012-1- UK-Tempus-JPCR
+
+
+
 ### LANGUAGES
 
 Russian: Native Language
@@ -64,6 +75,7 @@ English: Intermediate
 
 ### CONTACTS
 
+BLOG: 
 E-MAIL: mlnchkdv@gmail.com
 LN: [in/meldm/](https://www.linkedin.com/in/meldm/)
 GH: [mlnchkdv](https://github.com/mlnchkdv)
