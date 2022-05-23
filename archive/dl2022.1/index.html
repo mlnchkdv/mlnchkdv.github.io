@@ -8,6 +8,10 @@
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
+
+
+
+
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
@@ -1413,6 +1417,27 @@ input {
   background-color: #263238;
 }
 
+
+
+
+
+
+/* Simple */
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+  
+  color: white;
+}
+::-webkit-scrollbar-thumb {        
+  box-shadow: inset 0 0 0 10px;
+}
+*:hover::-webkit-scrollbar-thumb {
+  color: rgba(0, 0, 0, 0.3);
+}
 
 
 </style><title>index</title>
