@@ -1,0 +1,1311 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --main-color: rgba(128, 30, 255, 1);
+    --shadow-color : rgb(178, 80, 255);
+    --transplate-color : rgba(128, 30, 255, 0.1);
+    --dark-color : rgb(70, 18, 137);
+    --light-color : rgb(248, 242, 255);
+    --font-color : rgb(12, 12, 12);
+    --base-font : "Glow Sans", "Microsoft YaHei", serif;
+    --title-font: "Roboto Slab", "Times", serif;
+    --blockquote-font : "Times", "Roboto Slab", serif;
+    --blockquote-color : rgba(117, 117, 117, 0.9);
+    --monospace: "Cascadia code", "Courier New", monospace; 
+
+    /* --background : url("https://cdn.jsdelivr.net/gh/LSTM-Kirigaya/KImage/Img/2k.jpg"); */
+
+    --quote-title-font-size : 0.9em;
+    --quote-tag-font-size : 1.1em;
+
+    /* typora GUI config */
+    --sidebar-font-color : black;
+    --main-panel-font-color : black;
+}
+
+/* global setting */
+body {
+    font-family: "Roboto Slab", "SimHei", serif;
+    /* background-color: rgb(255, 255, 255); */
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: initial;
+}
+
+
+/* write is a wrapper of writable region */
+#write {
+    position: static;
+    /* width: 90%; */
+    /* max-width: 1000px; */
+	max-width: 700px;
+    min-height: calc(100vh - 6rem);
+	min-width: calc(100vw - 45rem);
+    line-height: 1.6;
+    transform: none;
+    height: auto;
+    caret-color: var(--main-color);
+	
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+#write h1, h2, h3, h4, h5, h6 {
+    color: var(--font-color);
+    font-family: var(--title-font);
+    font-weight: 800;
+    line-height: 1.5;
+    margin: 0 0 1em 0;
+}
+
+#write h1 {
+    font-size: 40px;
+    margin: 0 0 1.0em 0;
+    line-height: 1.3; 
+    border-bottom: solid 3px var(--main-color);
+    width: fit-content;
+}
+
+#write h2 {
+    font-size: 28px;
+    border-radius: .5em;
+    width: fit-content;
+}
+
+#write h2::before {
+    content: "H2";
+    border-radius: .3em;
+    font-size: .8em;
+    padding: 3px 7px;
+    margin-right: 15px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+#write h3 {
+    font-size: 24px;
+    border-radius: .3em; 
+    width: fit-content;
+}
+
+#write h3::before {
+    content: "H3";
+    color : white;
+    font-size: 0.8em;
+    background-color: var(--main-color);
+    border-radius: .3em;
+    margin-right: 12px;
+    padding: 4px 7px;
+}
+
+#write h4 {
+    font-size: 20px;
+}
+
+#write h5 {
+    font-size: 16px;
+}
+
+#write hr {
+    width: 60%;
+    text-align:center;
+    border-bottom: solid 1.8px var(--main-color);
+    margin: 4.5em auto;
+}
+
+
+#write img {
+    border-radius: 1.5em !important;
+    box-shadow: 0 0 10px 3px rgba(134, 136, 137, 0.8);
+    transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+}
+
+/* #write img:hover {
+    box-shadow: 0 0 10px 5px var(--shadow-color);
+    transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+} */
+
+
+#write blockquote {
+    padding: 10px 10px;
+    font-size: var(--quote-title-font-size);
+    color: var(--blockquote-color);
+    border-left: 6px solid var(--main-color);
+    background: var(--light-color);
+    border-radius : 0.5em;
+    font-family: var(--blockquote-font);
+    line-height: 35px;
+}
+
+#write blockquote span {
+    word-break: break-all;
+}
+
+#write blockquote h1 {
+    font-weight: 200;
+    font-size: var(--quote-tag-font-size);
+    border-bottom: none;
+    font-family: var(--base-font);
+    line-height: 35px;
+}
+
+#write blockquote h1::before {
+    content: "Tips";
+    background-color: var(--main-color);
+    font-family: var(--title-font);
+    color: white;
+    font-size: var(--quote-tag-font-size);
+    border-radius: .3em;
+    padding: 3px 7px;
+    margin-right: 15px;
+}
+
+#write blockquote h2 {
+    font-weight: 200;
+    font-size: var(--quote-tag-font-size);
+    font-family: var(--base-font);
+    line-height: 35px;
+}
+
+#write blockquote h2::before {
+    content: "Warning";
+    background-color: rgb(207, 210, 16);
+    font-family: var(--title-font);
+    color: white;
+    font-size: var(--quote-tag-font-size);
+    border-radius: .3em;
+    padding: 3px 7px;
+    margin-right: 15px;
+}
+
+#write blockquote h3 {
+    font-weight: 200;
+    font-size: var(--quote-tag-font-size);
+    font-family: var(--base-font);
+    line-height: 35px;
+}
+
+#write blockquote h3::before {
+    content: "Error";
+    background-color: rgb(224, 66, 66);
+    font-family: var(--title-font);
+    color: white;
+    font-size: var(--quote-tag-font-size);
+    border-radius: .3em;
+    padding: 3px 7px;
+    margin-right: 15px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    vertical-align: baseline;
+    border-width: 0;
+}
+
+#write blockquote h4 {
+    font-weight: 200;
+    font-size: var(--quote-tag-font-size);
+    font-family: var(--base-font);
+    line-height: 35px;
+}
+
+#write blockquote h4::before {
+    content: "Remind";
+    background-color: var(--shadow-color);
+    font-family: var(--title-font);
+    color: white;
+    font-size: var(--quote-tag-font-size);
+    border-radius: .3em;
+    padding: 3px 7px;
+    margin-right: 15px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    vertical-align: baseline;
+    border-width: 0;
+}
+
+#write blockquote h5 {
+    font-weight: 200;
+    font-size: var(--quote-tag-font-size);
+    font-family: var(--base-font);
+    line-height: 35px;
+}
+
+#write blockquote h5::before {
+    content: "Remind";
+    background-color: var(--shadow-color);
+    font-family: var(--title-font);
+    color: white;
+    font-size: var(--quote-tag-font-size);
+    border-radius: .3em;
+    padding: 3px 7px;
+    margin-right: 15px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    vertical-align: baseline;
+    border-width: 0;
+}
+
+
+/* code block */
+#write pre.md-fences {
+	padding: 1rem 0.5rem 1rem;
+	display: block;
+	-webkit-overflow-scrolling: touch;
+	/* box-shadow: 0 0 6px 2px rgba(151, 151, 151, 0.9); */
+    /* border-top: rgb(51, 51, 51) solid 35px; */
+    border-top: rgb(244, 244, 244) solid 35px;
+    background-color: rgb(244, 244, 244);
+}
+
+
+pre.md-fences::before {
+	content: ' ';
+	background: var(--main-color);
+	box-shadow: 23px 0 rgb(128, 128, 128), 45px 0 gray;
+	border-radius: 50%;
+	margin-top: -2.3rem;
+	position: absolute;
+	left: 15px;
+	height: 12px;
+	width: 12px;
+}
+
+#write pre.md-fences {
+	line-height: 1.5rem;
+	font-size: .9rem;
+	font-weight: 300;
+	border-radius: .7em;
+    font-family: var(--monospace) !important;
+}
+
+/* inline code */
+code {
+    margin: 0 2px;
+    padding: 4px 6px;
+    color: #666363;
+    white-space: pre-wrap;
+    background: var(--light-color);
+    border-radius: 8px;
+}
+
+#write blockquote code {
+    margin: 0 2px;
+    padding: 4px 6px;
+    color: white;
+    white-space: pre-wrap;
+    background: var(--main-color);
+    border-radius: 8px;
+}
+
+kbd,
+samp,
+tt,
+var {
+	font-family: var(--monospace) !important;
+}
+
+
+/* YAML */
+pre.md-meta-block {
+    font-size: .8rem;
+    min-height: .8rem;
+    white-space: pre-wrap;
+    background: var(--main-color);
+    display: block;
+    overflow-x: hidden;
+    padding: 15px;
+    font-family: var(--monospace);
+    border-radius: 1.2em;
+    color: white;
+    caret-color: white;
+}
+
+
+/* Math */
+#math-inline-preview-content .MathJax {
+    color: white !important;
+}
+
+/* table */
+#write table
+{
+    width: 95%;
+    border-collapse: collapse;
+    text-align: center;
+    font-family: var(--monospace);
+    margin: 20px;
+}
+#write table td, table th
+{
+    border: 1px solid transparent;
+    color: rgb(18, 18, 18);
+    height: 30px;
+    padding: 10px;
+    border-radius: .5em;
+    transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+}
+#write table td {
+    font-family: var(--title-font);
+}
+#write table thead th
+{
+    background-color: var(--shadow-color);
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+table tr:nth-child(odd)
+{
+    background: white;
+}
+table tr:nth-child(even)
+{
+    background: var(--light-color);
+}
+table td:hover {
+  background-color: var(--shadow-color) !important;
+  color: white !important;
+  box-shadow: 0 0 10px 5px var(--shadow-color);
+  transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+}
+
+
+/* main element consisting of your text */
+p {
+    color: var(--font-color);
+    margin: 0 0 2em 0;  
+    font-weight: 500;
+    line-height: 1.6;
+    font-family: var(--base-font);
+}
+
+a {
+    color: var(--main-color);
+    font-weight: 500;
+    text-decoration: none;
+    text-decoration-style: none;
+    cursor: pointer;
+    padding: 0 3px 0 3px;
+}
+
+
+/* list */
+
+ol,
+ul {
+  padding-left: 2em;
+  line-height: 2;
+}
+
+ul>li>ul>li {
+    list-style-type: circle;
+  }
+  
+ul>li>ul>li>ul>li {
+    list-style-type: square;
+}
+
+
+iframe {
+    border-radius: 1.2em;
+    box-shadow: 0 0 8px 3px rgba(181, 181, 182, 0.9);
+}
+
+
+/* checkbox */
+.md-task-list-item:hover > input:before,
+input[type='checkbox']:hover:before {
+	opacity: 1;
+	transition: 0.3s;
+	background-color: var(--shadow-color);
+}
+
+.task-list-item input::before {
+    content: "";
+    display: inline-block;
+	border-radius: .3em;
+    vertical-align: middle;
+    border: 1.2px solid var(--main-color);
+    background-color: #ffffff;
+	width: 1.1rem;
+    height: 1.1rem;
+	margin-left: -0.1rem;
+    margin-right: 0.1rem;
+    margin-top: -0.68rem; 
+}
+
+.task-list-item input:checked::before {
+    padding-left: 0.125em;
+    content: '✔';
+    color:white;
+	background-color: var(--main-color);
+    font-size: 0.8rem;
+    line-height: 0.95rem;
+    margin-top: -0.68rem;
+	transition: background-color 200ms ease-in-out;
+}
+
+
+
+
+
+#footer-word-count-label {
+    font-family: var(--title-font) !important;
+    color: white;
+    padding: 1px 8px;
+    border-radius: 1.0em;
+    background-color: var(--main-color);
+}
+
+/* bg color when text is selected */
+div::selection {
+background: var(--main-color);
+color: white;
+}
+  
+div::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+div::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+blockquote::selection {
+background: var(--main-color);
+color: white;
+}
+
+blockquote::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+blockquote::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+p::selection {
+background: var(--main-color);
+color: white;
+}
+
+p::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+p::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+label::selection {
+background: var(--main-color);
+color: white;
+}
+
+label::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+label::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+span::selection {
+background: var(--main-color);
+color: white;
+}
+
+span::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+span::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+h1::selection {
+background: var(--main-color);
+color: white;
+}
+
+h1::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+h1::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+h2::selection {
+background: var(--main-color);
+color: white;
+}
+
+h2::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+h2::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+h3::selection {
+background: var(--main-color);
+color: white;
+}
+
+h3::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+h3::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+h4::selection {
+background: var(--main-color);
+color: white;
+}
+
+h4::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+h4::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+h5::selection {
+background: var(--main-color);
+color: white;
+}
+
+h5::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+h5::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+code::selection {
+background: var(--main-color);
+color: white;
+}
+
+code::-moz-selection {
+background: var(--main-color);
+color: white;
+}
+
+code::-webkit-selection {
+background: var(--main-color);
+color: white;
+}
+
+
+/* outside */
+
+
+#megamenu-content {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#megamenu-menu-panel {
+    font-family: var(--title-font);
+    padding: 10px;
+}
+
+.megamenu-menu-panel {
+    padding: 10px;
+}
+
+
+.megamenu-menu-header-title-menu {
+    color: var(--sidebar-font-color);
+}
+
+.megamenu-menu-header-title-back {
+    color: var(--sidebar-font-color);
+}
+
+
+/* sidebar */
+.megamenu-menu-header {
+    width: 60%;
+    text-align:center;
+    border-bottom: solid 3px var(--main-color);
+}
+#megamenu-menu-sidebar {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--sidebar-font-color);
+    box-shadow: 0 0 8px 4px rgb(100 100 100 / 80%);
+    margin-top: 3%;
+    height: 92%;
+    border-radius: 0 4em 4em 0;
+}
+#megamenu-back-btn {
+    border-radius: 1.2em;
+    color: var(--main-color);
+    transition: all linear .3s;
+    padding: 0 0 10px;
+}
+
+#megamenu-back-btn:hover {
+    background-color: var(--main-color);
+    color: white;
+    border: 2px solid white;
+    transition: all linear .3s;
+}
+
+#megamenu-menu-list > li {
+    transition: all linear .3s;
+}
+
+#megamenu-menu-list > li:hover {
+    transition: all linear .3s;
+    border-top-left-radius: 1.2em;
+    border-bottom-left-radius: 1.2em;
+}
+
+#megamenu-menu-list > li:focus {
+    transition: all linear .3s;
+    color : white;
+    background-color: var(--shadow-color);
+    width: fit-content;
+    border-top-right-radius: 1.2em;
+    border-bottom-right-radius: 1.2em;
+}
+
+.dropdown-menu .divider {
+    width: 30%;
+    color: var(--main-color);
+    background-color: var(--main-color);
+}
+.megamenu-menu-list li a {
+    transition: all linear .3s;
+    width: fit-content;
+    padding-right: 60px;
+}
+
+.megamenu-menu-list li a:hover {
+    transition: all linear .3s;
+    color: white !important;
+    background-color: var(--main-color) !important;
+    border-bottom-right-radius: 2em;
+    border-top-right-radius: 2em;
+}
+
+.megamenu-menu-list li a.active, .megamenu-menu-list:not(.saved) li a:hover {
+    color: white !important;
+    background-color: var(--main-color) !important;
+    border-bottom-right-radius: 2em;
+    border-top-right-radius: 2em;
+}
+
+
+/* open */
+#m-open-local,
+#m-import-local {
+    border-radius: 1.2em;
+}
+
+#m-open-local:hover,
+#m-import-local:hover {
+    border: 1px solid var(--shadow-color);
+}
+
+#recent-file-panel-search-input {
+    border-radius: 1.2em;
+    transition: all linear .3s;
+    font-family: var(--title-font);
+}
+#recent-file-panel-action-btn {
+    border-radius: 1.2em;  
+}
+
+#recent-file-panel-search-input:hover {
+    transition: all linear .3s;
+    box-shadow: 0 0 10px 3px var(--shadow-color);
+}
+
+#recent-file-panel-search-input:focus {
+    transition: all linear .3s;
+    color: white;
+    border: none;
+    background-color: var(--shadow-color);
+}
+
+/* side bar Ctrl Shift 2 */
+/* .typora-node.pin-outline:not(.megamenu-opened):not(.typora-sourceview-on) #typora-sidebar {
+    display: block;
+    left: 0;
+    transition: left .3s;
+    border-radius: 0em 3em 3em 0em;
+    box-shadow: 0 0 8px 3px rgb(100 100 100 / 80%);
+    margin-top: 20px;
+    margin-bottom: 5%;
+    height: 95%;
+    padding-right: 10px;
+} */
+
+.info-panel-tab-border {
+    color: var(--main-color) !important;
+    background-color: var(--main-color) !important;
+}
+
+.outline-content {
+    padding: 3px 18px 3px 0;
+}
+
+.outline-item {
+    margin-left: -20px;
+    margin-right: -20px;
+    border-left: 20px solid transparent;
+    border-right: 16px solid transparent;
+}
+
+.outline-item:hover {
+    background-color: var(--shadow-color);
+    color: white;
+}
+
+.active-tab-files  #info-panel-tab-file .info-panel-tab-title {
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px 5px;
+    border-radius: 1.2em;
+    transition: all linear .3s;
+}
+
+.active-tab-outline #info-panel-tab-outline .info-panel-tab-title {
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px 5px;
+    border-radius: 1.2em;
+    transition: all linear .3s;
+}
+
+.ty-show-search #info-panel-tab-search  .info-panel-tab-title {
+    background-color: var(--main-color);
+    color: white;
+    padding: 5px 5px;
+    border-radius: 1.2em;
+    transition: all linear .3s;
+}
+
+
+#file-library-search-input {
+    border-radius: .5em;
+}
+
+#file-library-search-input:focus {
+    border: 2px solid var(--main-color);
+}
+
+.info-panel-tab-border {
+    display: none;
+}
+div#file-library-list-children {
+    transition: all linear .3s;
+}
+
+.file-list-item.active {
+    border-top-right-radius: 2.2em;
+    border-bottom-right-radius: 2.2em;
+    width: fit-content;
+    background-color: var(--main-color) !important;
+    color: white;
+    transition: all linear .3s;
+}
+
+.outline-item-active {
+    border-top-right-radius: 2.2em;
+    border-bottom-right-radius: 2.2em;
+    width: fit-content;
+    background-color: var(--main-color) !important;
+    color: white;
+    transition: all linear .3s;
+}
+
+
+/* theme */
+.theme-preview-div.active, .theme-preview-div.active:hover {
+    border-color: var(--main-color);
+}
+#theme-preview-grid {
+    max-width: 100% !important;
+}
+#open-theme-folder-btn {
+    transition: all .3s;
+    border-radius: 2em;
+    border: none;
+    color: white !important;
+    background-color: var(--main-color);
+}
+#open-theme-folder-btn:hover {
+    transition: all .3s;
+    color: white !important;
+    background-color: var(--shadow-color);
+}
+
+/* export */
+.long-btn {
+    transition: all .3s;
+    border-radius: 2em;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+}
+
+.long-btn:hover {
+    transition: all .3s;
+    color: white !important;
+    background-color: var(--main-color);
+}
+
+.long-btn-wrap {
+    padding: 10px;
+}
+
+.megamenu-section-export {
+    font-family: var(--title-font) !important;
+}
+
+
+.megamenu-menu-panel h1 {
+    padding-bottom: 10px;
+    width: fit-content !important;
+    border-bottom: var(--main-color) solid 3px;
+}
+
+.megamenu-menu-panel h2::before {
+    content: "H2";
+    border-radius: .3em;
+    font-size: 25px;
+    padding: 3px 7px;
+    margin: 5px 15px 5px 1px;
+    background-color: var(--main-color);
+    color: white;
+}
+
+
+/* modal exit dialog */
+.btn-primary {
+    transition: all .3 linear;
+    border-radius: 1.2em;
+    background-color: var(--main-color);
+}
+
+.btn-default {
+    transition: all .3 linear;
+    border-radius: 1.2em;
+    border: var(--main-color) 3px solid;
+    color: var(--main-color);
+    background-color: white;
+}   
+
+.btn-primary:hover,
+.btn-default:hover {
+    transition: all .3 linear;
+    color: white;
+    background-color: var(--shadow-color);  
+}
+
+.btn-primary:focus,
+.btn-default:focus {
+    transition: all .3 linear;
+    color: white;
+    background-color: var(--main-color);
+}
+
+.modal-content {
+    border-radius: 1.5em;
+    border: none;
+}
+
+.ImgCaption {
+    padding-top: 0;
+    margin-top: 0;
+    border-bottom: 2px solid var(--shadow-color);
+    width: fit-content;
+  }
+
+/* Perference */
+.nav-group-item-item:hover {
+    transition: all .3s;
+    border: 2px solid var(--main-color);
+}
+.nav-group-item.active {
+    color: white;
+    font-family: var(--title-font);
+    transition: all .3s;
+    border-radius: 1.5em;
+    padding: 6px 11px 6px 11px;
+}
+.nav-group-item {
+    transition: all .3s;
+    border-radius: 1.5em;
+    width: fit-content;
+    cursor: pointer;
+}
+.nav-group-item.active, .nav-group-item:active {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+.pane-group {
+    font-family: var(--title-font);
+}
+
+input:not([type=range]):not([type=color]) {
+    outline: none;
+    border: 2px solid var(--main-color);
+    border-radius: .7em;
+    font-size: 16px;
+}
+
+input:not([type=range]):not([type=color]):focus {
+    border-radius: .7em;
+    color: white;
+    background-color: var(--main-color);
+    box-shadow: 0 0 6px 3px var(--shadow-color);
+    transition: all .3s linear;
+}
+
+.pane select,
+.pane .btn {
+    border-radius: 0.7em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.pane .btn:hover {
+    color: white !important;
+    transition: all .3s linear;
+    background-color: var(--main-color);
+}
+
+.label-input-group td:hover {
+    box-shadow: none;
+}
+
+.label-input-group .row:hover {
+    color: black;
+    background-color: white;
+}
+
+#write.enable-diagrams>[mermaid-type=gantt].md-fences:not(.md-focus) {
+    width: inherit !important;
+    margin-left: inherit !important;
+}
+
+/* TODO fix the bug below */
+#footer-word-count-info table, #footer-word-count-info td, #footer-word-count-info tr {
+    border: none!important;
+    background: inherit !important;
+    font-size: 13.5px!important;
+    text-align: left!important;
+    padding: 0;
+    -webkit-user-select: initial;
+    user-select: initial;
+    margin: 0!important;
+    line-height: 1.8;
+}
+
+
+</style><title>index</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='⬅глубокое-обучение-20221'><a href='../index.html'><span>⬅Глубокое обучение 2022.1</span></a></h1><h2 id='история-машинного-обучения'><span>История машинного обучения</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#⬅глубокое-обучение-20221">⬅Глубокое обучение 2022.1</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2"><a class="md-toc-inner" href="#история-машинного-обучения">История машинного обучения</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#терминология">Терминология</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n10"><a class="md-toc-inner" href="#искусственный-интеллект">Искусственный интеллект</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n17"><a class="md-toc-inner" href="#машинное-обучение">Машинное обучение</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n21"><a class="md-toc-inner" href="#глубокое-обучение">Глубокое обучение</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n28"><a class="md-toc-inner" href="#вехи-развития-машинного-обучения">Вехи развития машинного обучения</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n40"><a class="md-toc-inner" href="#становление-искусственного-интеллекта-1943-1952">Становление искусственного интеллекта (1943-1952)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n45"><a class="md-toc-inner" href="#рождение-искусственного-интеллекта-1952-1956">Рождение искусственного интеллекта (1952-1956)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n50"><a class="md-toc-inner" href="#золотые-годы---ранний-энтузиазм-1956-1974">Золотые годы - ранний энтузиазм (1956-1974)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n54"><a class="md-toc-inner" href="#первая-зима-искусственного-интеллекта-1974-1980">Первая зима искусственного интеллекта (1974-1980)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n58"><a class="md-toc-inner" href="#бум-искусственного-интеллекта-1980-1987">Бум искусственного интеллекта (1980-1987)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n62"><a class="md-toc-inner" href="#вторая-зима-искусственного-интеллекта-1987-1993">Вторая зима искусственного интеллекта (1987-1993)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n66"><a class="md-toc-inner" href="#формирование-рынка-1993-2011">Формирование рынка (1993-2011)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n71"><a class="md-toc-inner" href="#deep-learning-big-data-и-ai-2011-">Deep learning, big data и AI (2011-...)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n79"><a class="md-toc-inner" href="#таблица">Таблица</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n323"><a class="md-toc-inner" href="#навыки">Навыки</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n350"><a class="md-toc-inner" href="#фреймворки">Фреймворки</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n356"><a class="md-toc-inner" href="#mlops">MLOps</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n376"><a class="md-toc-inner" href="#тест">Тест</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n380"><a class="md-toc-inner" href="#источники">Источники</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n387"><a class="md-toc-inner" href="#дополнительные-материалы">Дополнительные материалы</a></span></p></div><h3 id='терминология'><span>Терминология</span></h3><p><img id="img1" onclick="toggleFullScreen('img1')" src="./images/hype.png" alt="ml hype curve" style="zoom: 25%;" /></p><blockquote><p><span>Актуальные </span><a href='https://trends.google.ru/trends/explore?date=all&amp;q=Machine%20Learning'><span>данные</span></a><span> на Google Trends.</span></p></blockquote><p><span>Искусственный интеллект, машинное обучение и глубокое обучение уже сейчас являются неотъемлемой частью многих предприятий — от  беспилотных транспортных средств и способности обыгрывать человека в такие игры, как </span><a href='http://www.techrepublic.com/article/ai-just-beat-the-worlds-4-best-poker-players-what-it-means/'><span>покер</span></a><span> и Го, до автоматизированного обслуживания клиентов. Часто эти термины используются как синонимы, но между ними есть различия. </span></p><p>&nbsp;</p><h4 id='искусственный-интеллект'><span>Искусственный интеллект</span></h4><p><span>Термин  искусственный интеллект — широкое понятие, касающееся передового машинного интеллекта. В 1956 году на конференции по искусственному интеллекту в Дартмуте эта технология была описана следующим образом: «Каждый аспект обучения или любая другая особенность интеллекта могут быть в принципе так точно описаны, что машина сможет сымитировать их». К искусственному интеллекту можно относить — от компьютерных программ для игры в шахматы до систем распознавания речи, таких, например, как голосовой помощник </span><a href='http://www.techrepublic.com/article/amazon-alexa-the-smart-persons-guide/'><span>Amazon Alexa</span></a><span>, способный воспринимать речь и отвечать на вопросы. В целом системы искусственного интеллекта можно разделить на три группы: ограниченный искусственный интеллект (</span><em><span>Narrow AI</span></em><span>), общий искусственный интеллект (</span><em><span>AGI</span></em><span>) и сверхразумный искусственный интеллект.</span></p><p><img src=".\images\ii_2.png" referrerpolicy="no-referrer"></p><p><span>К ограниченному искусственному интеллекту, т.е. способных решать только одну конкретную задачу, относятся такие программы,  как </span><a href='http://www.techrepublic.com/article/ibm-watson-the-inside-story-of-how-the-jeopardy-winning-supercomputer-was-born-and-what-it-wants-to-do-next/'><em><span>Deep Blue</span></em></a><span> компании IBM, которая в 1996 году обыграла в шахматы Гарри Каспарова, или программа </span><a href='http://www.techrepublic.com/article/google-deepmind-the-smart-persons-guide/'><em><span>AlphaGo</span></em></a><span> компании </span><em><span>Google DeepMind</span></em><span>, которая в 2016 году обыграла чемпиона мира по Го Ли Седоля. </span></p><p><span>Общий искусственный интеллект (</span><em><span>AGI</span></em><span>), стоит на одном уровне с человеческим интеллектом и может выполнять много разных задач.</span></p><p><span>А сверхразумный искусственный интеллект стоит на ступень выше человеческого. </span><a href='http://www.techrepublic.com/article/evolution-to-ai-will-be-more-radical-than-ape-to-human-says-nick-bostrom/'><span>Ник Бостром</span></a><span> описывает его следующим образом: это «интеллект, который намного умнее, чем лучший человеческий мозг, практически во всех областях, в том числе в научном творчестве, общей мудрости и социальных навыках». Другими словами, это когда машины станут намного умнее нас.</span></p><p>&nbsp;</p><h4 id='машинное-обучение'><span>Машинное обучение</span></h4><p><span>Машинное обучение является одним из направлений искусственного интеллекта. Основной принцип заключается в том, что машины получают данные и «обучаются» на них. Системы машинного обучения позволяют быстро применять знания, полученные при обучении на больших наборах данных, что позволяет им преуспевать в таких задачах, как распознавание лиц, распознавание речи, распознавание объектов, перевод, и многих других. В отличие от программ с закодированными вручную инструкциями для выполнения конкретных задач, машинное обучение позволяет системе научиться самостоятельно распознавать шаблоны и делать прогнозы.</span></p><p><span>В то время, как обе программы — и </span><em><span>Deep Blue</span></em><span>, и </span><em><span>DeepMind</span></em><span>, являются примерами использования искусственного интеллекта, Deep Blue была построена на заранее запрограммированном наборе правил, так что она никак не связана с машинным обучением. С другой стороны, DeepMind является примером машинного обучения: программа обыграла чемпиона мира по Го, обучая себя на большом наборе данных ходов, сделанных опытными игроками.</span></p><p>&nbsp;</p><h4 id='глубокое-обучение'><span>Глубокое обучение</span></h4><p><span>Глубокое обучение является подмножеством машинного обучения. Оно использует некоторые методы машинного обучения для решения реальных задач, используя нейронные сетей, которые могут имитировать человеческое принятие решений. Глубокое обучение может быть дорогостоящим и требует огромных массивов данных для обучения. Это объясняется тем, что существует огромное количество параметров, которые необходимо настроить для алгоритмов обучения, чтобы избежать ложных срабатываний. Например, алгоритму глубокого обучения может быть дано указание «узнать», как выглядит кошка. Чтобы произвести обучение, потребуется огромное количество изображений для того, чтобы научиться различать мельчайшие детали, которые позволяют отличить кошку от, гепарда или пантеры, или лисицы.</span></p><p><span>Как уже упоминалось выше, в марте 2016 года искусственным интеллектом была достигнута крупная победа, когда программа </span><em><span>AlphaGo DeepMind</span></em><span> обыграла чемпиона мира по Го Ли Седоля в 4 из 5 игр с использованием глубокого обучения. Как объясняют в </span><em><span>Google</span></em><span>, система глубокого обучения работала путем комбинирования «</span><a href='https://en.wikipedia.org/wiki/Monte_Carlo_tree_search'><span>метода Монте-Карло для поиска в дереве</span></a><span> с глубокими нейронными сетями, которые прошли обучение с учителем на играх профессионалов и обучения с подкреплением на играх с собой».</span></p><p><img src=".\images\mashinnoe-obuchenie-dlya-nespecialistov.jpg" style="zoom:25%;" /></p><p><img src=".\images\uf0t6gyvgn4ooh_14jda1locmmq.jpeg" style="zoom: 33%;" /></p><p><img src=".\images\ai-ml-ds.png" style="zoom: 50%;" /></p><p>&nbsp;</p><h3 id='вехи-развития-машинного-обучения'><span>Вехи развития машинного обучения</span></h3><p><img src=".\images\AI_History.png" style="zoom: 25%;" /></p><blockquote><p><a href='./images/AI History.svg'><span>Диаграмма</span></a><span> в высоком качестве.</span></p></blockquote><p><span>Как уже было сказано выше, глубокое обучение уходит своими корнями в 1950-е годы, когда были созданы первые искусственные нейронные сети, основой для которых служили упрощенные модели биологических нейронов. Среди этих моделей наибольшей популярностью пользовалась система на основе </span><strong><span>перцептрона</span></strong><span>, предложенная Френком Розенблаттом. Будучи подключенной к «глазу» в виде фото-элементов, она могла обучаться распознаванию различные типов объектов.</span></p><p><span>Интерес к модели </span><strong><span>многослойного перцептрона</span></strong><span> (</span><em><span>multilayer perceptron</span></em><span> — </span><em><span>MLP</span></em><span>) продлился до 1969 года, когда Марвин Минский и Сеймур Пейперт выпустили книгу </span><em><span>Perceptrons</span></em><span> (</span><em><span>MIT Press</span></em><span>). В ней доказывалось, что линейный перцептрон неспособен классифицировать поведение нелинейной функции (</span><em><span>XOR</span></em><span> — исключающее ИЛИ). Публикация привела к сокращению инвестиций в исследования моделей нейронных сетей, пока в 1980-х не появилось новое поколение исследователей.</span></p><p><span>Рост вычислительных мощностей и развитие </span><strong><span>метода обратного распространения ошибки</span></strong><span> (известного в различных формах еще с 1960-х годов, но почти не применявшегося до 1980-х) стимулировал возрождение интереса к нейронным сетям. Первые </span><strong><span>свёрточные нейронные сети</span></strong><span> объединили в себе эти возможности с моделью визуального распознавания (на основе имевшихся к тому времени сведений о строении мозга млекопитающих) сложных изображений, как рукописные цифры и лица. В результате за счет применения одной и той же «подсети» к различным участкам изображения и агрегирования результатов в </span><strong><span>высокоуровневые признаки</span></strong><span> и был достигнут поразительный результат, для того времени.</span></p><p><span>В 1990-х — начало 2000-х годов интерес к нейронным сетям вновь спал, поскольку популярными стали более понятные модели и методы (на подобии метода опорных векторов и деревьев решений). В компьютерном зрении стало популярным </span><strong><span>конструирование признаков</span></strong><span> (</span><em><span>feature engineering</span></em><span>) — создание детекторов признаков для небольших элементов изображения и последующее их объединение вручную в нечто, что позволяет распознавать более сложные формы. Позже выяснится, что </span><strong><span>сети глубокого обучения</span></strong><span> учатся распознавать аналогичные признаки и объединять их похожим способом.</span></p><p><span>В конце 2000-х, с появлением мощных </span><strong><span>графических процессоров</span></strong><span> (</span><em><span>GPU</span></em><span>) стало возможным использовать параллельное обучение для большого числа нейронов в нейронной сети. </span></p><p><span>Другим немаловажным фактором стала доступность Интернета и накопившиеся большие тренировочные наборы данных. Если раньше исследователи тренировали свои классификаторы на тысячах изображений, то теперь количество доступных изображений исчисляется десятками и сотнями миллионов. </span></p><p><img src=".\images\8795b2b383896c1d6724ffe910e83864.jpg" style="zoom: 25%;" /></p><p>&nbsp;</p><h4 id='становление-искусственного-интеллекта-1943-1952'><span>Становление искусственного интеллекта (1943-1952)</span></h4><p><strong><span>1943</span></strong><span>: Первая работа, в которой была предложена модель искусственных нейронов, от </span><em><span>Warren McCulloch</span></em><span> и </span><em><span>Walter Pits</span></em><span> в 1943 году.</span></p><p><strong><span>1949</span></strong><span>: </span><em><span>Donald Hebb</span></em><span> продемонстрировал теорию об изменениях силы связи между нейронами в результате постоянно повторяющейся стимуляции. Его правило теперь называется </span><a href='https://ru.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BE%D1%80%D0%B8%D1%8F_%D0%A5%D0%B5%D0%B1%D0%B1%D0%B0'><em><span>Hebbian learning</span></em></a><span> или теория Хебба о нейронных (клеточных) ансамблях.</span></p><p><strong><span>1950</span></strong><span>: Алан Тьюринг публикует работу «Вычислительные машины и интеллект», в которой он предложил проверять способность программ демонстрировать интеллектуальное поведение, эквивалентное человеческому интеллекту, впоследствии называнным тестом Тьюринга.</span></p><p>&nbsp;</p><h4 id='рождение-искусственного-интеллекта-1952-1956'><span>Рождение искусственного интеллекта (1952-1956)</span></h4><p><strong><span>1955</span></strong><span>: Аллен Ньюэлл и Герберт А. Саймон создали «первую программу искусственного интеллекта», которая была названа «</span><em><span>Logic Theorist</span></em><span> — теоретик логики». Эта программа доказала 38 из 52 математических теорем, а также нашла новые и более элегантные доказательства некоторых теорем.</span></p><p><strong><span>1956</span></strong><span>: Термин «</span><em><span>Artificial Intelligence</span></em><span> — искусственный интеллект» впервые, в академической среде, был употреблен ученым Джон Маккарти на Дартмутской конференции. </span></p><p><span>В этот период были созданы языки программирования высокого уровня, такие как </span><em><span>FORTRAN</span></em><span>, </span><em><span>LISP</span></em><span> и </span><em><span>COBOL</span></em><span>.</span></p><p>&nbsp;</p><h4 id='золотые-годы---ранний-энтузиазм-1956-1974'><span>Золотые годы - ранний энтузиазм (1956-1974)</span></h4><p><strong><span>1966</span></strong><span>: Исследователи сделали упор на разработку алгоритмов, которые могут решать математические задачи. Джозеф Вейзенбаум создал первого чат-бота, который был назван </span><em><span>ELIZA</span></em><span>.</span></p><p><strong><span>1972</span></strong><span>: в Японии был создан первый интеллектуальный человекоподобный робот, получивший название </span><em><span>WABOT-1</span></em><span>.</span></p><p>&nbsp;</p><h4 id='первая-зима-искусственного-интеллекта-1974-1980'><span>Первая зима искусственного интеллекта (1974-1980)</span></h4><p><span>Нехватка финансирования со стороны правительств для исследований в области ИИ. Низкая производительность оборудования.</span></p><p><span>Интерес общественности к искусственному интеллекту был снижен.</span></p><p>&nbsp;</p><h4 id='бум-искусственного-интеллекта-1980-1987'><span>Бум искусственного интеллекта (1980-1987)</span></h4><p><strong><span>1980</span></strong><span>: После зимнего периода ИИ вернулся с «экспертной системой». Экспертные системы были запрограммированы так, чтобы имитировать способность человека-эксперта принимать решения.</span></p><p><strong><span>1980</span></strong><span>: в Стэнфордском университете состоялась первая национальная конференция Американской ассоциации искусственного интеллекта.</span></p><p>&nbsp;</p><h4 id='вторая-зима-искусственного-интеллекта-1987-1993'><span>Вторая зима искусственного интеллекта (1987-1993)</span></h4><p><span>Инвесторы и правительства снова прекратили финансирования исследований искусственного интеллекта из-за высокой стоимости и неэффективного результата. </span></p><p><span>Экспертная система </span><em><span>XCON</span></em><span> предназначенная для достижения конкретных целей при решении задач с большим числом переменных, доказала эффективность с точки зрения затрат.</span></p><p>&nbsp;</p><h4 id='формирование-рынка-1993-2011'><span>Формирование рынка (1993-2011)</span></h4><p><strong><span>1997</span></strong><span>: </span><em><span>Deep Blue</span></em><span> от </span><em><span>IBM</span></em><span> обыграл чемпиона мира по шахматам Гарри Каспарова.</span></p><p><strong><span>2002</span></strong><span>: впервые ИИ вошел в дом в виде робота-пылесоса </span><em><span>Roomba</span></em><span>.</span></p><p><strong><span>2006</span></strong><span>: компании, </span><em><span>Facebook</span></em><span>, </span><em><span>Twitter</span></em><span> и </span><em><span>Netflix</span></em><span>, начали использовать ИИ.</span></p><p>&nbsp;</p><h4 id='deep-learning-big-data-и-ai-2011-'><span>Deep learning, big data и AI (2011-...)</span></h4><p><strong><span>2011</span></strong><span>:  </span><em><span>Watson</span></em><span> от </span><em><span>IBM</span></em><span> победил в викторине «</span><em><span>Jeopardy</span></em><span>», где ему пришлось решать сложные вопросы и загадки. Watson доказал, что он понимает естественный язык и может быстро решать сложные вопросы.</span></p><p><strong><span>2012</span></strong><span>: </span><em><span>Google</span></em><span> запустил функцию приложения для Android «</span><em><span>Google now</span></em><span>», которая могла предоставлять пользователю информацию в виде предсказаний.</span></p><p><strong><span>2014</span></strong><span>: Чат-бот «</span><em><span>Eugene Goostman</span></em><span>» выиграл соревнование в известном «тесте Тьюринга».</span></p><p><strong><span>2018</span></strong><span>: «</span><em><span>Project Debater</span></em><span>» от IBM провел дебаты на сложные темы с двумя профессиональными ораторами и показал отличные результаты.</span></p><p><strong><span>2019</span></strong><span>: </span><em><span>Google</span></em><span> продемонстрировал виртуального помощника «</span><em><span>Duplex</span></em><span>», который записался к парикмахеру, а дама на другой стороне не заметила, что разговаривает с машиной.</span></p><p><span>Сейчас искусственный интеллект развился до поразительного уровня. Концепция глубокого обучения на больших данных и науки о данных переживает пик востребованности и популярности. В настоящее время такие компании, как </span><em><span>Google</span></em><span>, </span><em><span>Facebook</span></em><span>, </span><em><span>IBM</span></em><span> и </span><em><span>Amazon</span></em><span>, работают с ИИ и во многом задают направление всей новой индустрии.</span></p><p>&nbsp;</p><h4 id='таблица'><span>Таблица</span></h4><p><span>Ниже расширенная версия хронологии формирования и развития искусственного интеллекта, где отдельно помечены ключевые 💡 - открытия и 👷‍♂️- внедрения.</span></p><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th><span>Год</span></th><th style='text-align:left;' ><span>Описание</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1763, 1812</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Bayes%27_theorem'><span>Bayes Theorem</span></a><span> and its predecessors. This theorem and its applications underlie inference, describing the probability of an event occurring based on prior knowledge.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1805</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Least_squares'><span>Least Square Theory</span></a><span> by French mathematician Adrien-Marie Legendre. This theory, which you will learn about  in our Regression unit, helps in data fitting.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1913</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Markov_chain'><span>Markov Chains</span></a><span> named after Russian mathematician Andrey Markov is used to describe a sequence of possible events based on a previous state.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1943</span></td><td style='text-align:left;' ><span>Впервые сформулирована математическая модель нейрона. Electronic brain by McCulloch and Pitts</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1950</span></td><td style='text-align:left;' ><a href='https://zen.yandex.ru/media/id/5a20825dad0f22233a285e05/test-tiuringa-razumnost-poznaetsia-v-obscenii-5a83ffe2256d5c8bcd782434'><span>Тест Тьюринга</span></a><span>, в котором программа своими ответами должен убедить собеседника в своей человечности, что свидетельствует о способности  мыслить и наличие разумности.</span></td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>1952</span></td><td style='text-align:left;' ><span>Создана одна из первых программ игры в шашки.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1956</span></td><td style='text-align:left;' ><span>Впервые использован термин «искусственный интеллект (Artificial Intelligence)» ученым Джоном Маккарти на Дартмутской конференции.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1957</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Perceptron'><span>Perceptron</span></a><span> is a type of linear classifier invented by American psychologist Frank Rosenblatt that underlies advances in deep learning.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1958</span></td><td style='text-align:left;' ><span>LISP</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1959</span></td><td style='text-align:left;' ><span>Решатель общих проблем (General Problem Solver) от Newell, Simon и Shaw.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1960</span></td><td style='text-align:left;' ><span>ADALINE by Widorow and Hoff - первая функция стоимости.</span></td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>1964</span></td><td style='text-align:left;' ><span>Joseph Weizenbaum создал первого чат-бота ELIZA.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1964</span></td><td style='text-align:left;' ><span>Универсальный Байесовский метод.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1965</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1965</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1966</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1966</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1967</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Nearest_neighbor'><span>Nearest Neighbor</span></a><span> is an algorithm originally designed to map routes. In an ML context it is used to  detect patterns.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1968</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1969</span></td><td style='text-align:left;' ><span>XOR problem - перцептрон не может выполнить исключающий ИЛИ.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1970</span></td><td style='text-align:left;' ><span>INTERNIST</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1970</span></td><td style='text-align:left;' ><a href='https://wikipedia.org/wiki/Backpropagation'><span>Backpropagation</span></a><span> is used to train </span><a href='https://wikipedia.org/wiki/Feedforward_neural_network'><span>feedforward neural networks</span></a><span>.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1972</span></td><td style='text-align:left;' ><span>PROLOG</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1972</span></td><td style='text-align:left;' ><span>Shakey</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1973</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1974</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1979</span></td><td style='text-align:left;' ><span>CNN</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1982</span></td><td style='text-align:left;' ><span>Bayesian Network</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1982</span></td><td style='text-align:left;' ><span>RNN are artificial neural networks derived from feedforward neural networks that create temporal graphs.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1983</span></td><td style='text-align:left;' ><span>SOAP</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1986</span></td><td style='text-align:left;' ><span>Backpropagation</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1987</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1989</span></td><td style='text-align:left;' ><span>LeNet</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1991</span></td><td style='text-align:left;' ><span>Учреждена ежегодная премия Лёбнера (AI Loebner), в рамках которой </span><a href='https://robo-sapiens.ru/novosti/ii-nauchilsya-videt-myisli-cheloveka/'><span>искусственные интеллекты</span></a><span> соревнуются в прохождении теста Тьюринга.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1992</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1994</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1995</span></td><td style='text-align:left;' ><span>MNIST</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1995</span></td><td style='text-align:left;' ><span>SVM</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>1996</span></td><td style='text-align:left;' ><span>DeepBlue vs Kasparov</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>1997</span></td><td style='text-align:left;' ><span>LSTM</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>2006</span></td><td style='text-align:left;' ><span>Deep Boltzman Machine</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2009</span></td><td style='text-align:left;' ><span>ImageNet</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2010</span></td><td style='text-align:left;' ><span>Создан </span><a href='https://www.kaggle.com/'><span>Kaggle</span></a><span> для организации конкурсов по исследованию данных.</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>2012</span></td><td style='text-align:left;' ><span>AlexNet</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>2013</span></td><td style='text-align:left;' ><span>Word2Vec</span></td></tr><tr><td style='text-align:center;' ><span>💡</span></td><td><span>2014</span></td><td style='text-align:left;' ><span>GAN</span></td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>2015</span></td><td style='text-align:left;' ><span>Опубликована в свободный доступ библиотека </span><a href='https://www.tensorflow.org/'><span>TensorFlow</span></a><span>, разработанная </span><a href='https://ru.wikipedia.org/wiki/Google_Brain'><span>Google Brain</span></a><span>.</span></td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>2015</span></td><td style='text-align:left;' ><span>Опубликован в свободный доступ библиотека </span><a href='https://ru.wikipedia.org/wiki/Keras'><span>Keras</span></a><span> для работы с фреймворком </span><a href='https://ru.wikipedia.org/wiki/TensorFlow'><span>TensorFlow</span></a><span>.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2015</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2015</span></td><td style='text-align:left;' ><span>Чат-бот «Соня Гусева» имитирующий поведение 14-летней девочки  на русском языке прошел тест Тьюринга.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2016</span></td><td style='text-align:left;' ><span>Победа AlphaGo от DeepMind в игре Go с мировым чемпионом.</span></td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>2016</span></td><td style='text-align:left;' ><span>Опубликована в свободный доступ библиотека </span><a href='https://pytorch.org/'><span>PyTorch</span></a><span>.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2017</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2018</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>👷‍♂️</span></td><td><span>2018</span></td><td style='text-align:left;' ><span>MLOps</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2019</span></td><td style='text-align:left;' ><span>Победа AlphaStar от DeepMind в игре Starcraft II.</span></td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2020</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2021</span></td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:center;' >&nbsp;</td><td><span>2022</span></td><td style='text-align:left;' >&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='навыки'><span>Навыки</span></h3><p><img src=".\images\Соты технологий.png" style="zoom: 40%;" /></p><p><span>Список необходимых навыков для специалиста глубокого обучения, довольно обширен и может меняться от вакансии к вакансии, в силу совершенно разных бизнес-процессов и инфраструктур на местах. Можно выделить лишь ключевые навыки необходимые для работы по данной специальности: </span></p><ul><li><span>Высшая математика в большинстве своём статистика</span></li><li><span>Python и базовые библиотеки</span></li><li><span>SQL</span></li><li><span>Алгоритмы и структуры данных</span></li><li><span>Базовые алгоритмы ML </span></li><li><span>Предобработка данных и отбор признаков</span></li><li><span>Метрики, функции ошибки </span></li><li><span>Визуализация</span></li><li><span>A/B тестирование</span></li><li><span>Docker</span></li><li><span>Git</span></li></ul><p>&nbsp;</p><h4 id='фреймворки'><span>Фреймворки</span></h4><p><strong><span>Фреймворки глубокого обучения</span></strong><span> </span><em><span>TensorFlow</span></em><span>, </span><em><span>Theano</span></em><span>, </span><em><span>PyTorch</span></em><span> и </span><em><span>Torch</span></em><span>, позволяют конструировать сложные нейронные сети, а библиотеки наподобие </span><em><span>Keras</span></em><span>, предоставляют еще больший уровень абстракции и облегченный уровень входа.</span></p><p><span>Для визуализации процесса обучения нейронных сетей, написанных на </span><em><span>TensorFlow</span></em><span>, используют </span><a href='https://www.tensorflow.org/tensorboard/get_started'><em><span>TensoreBoard</span></em></a><span>. А в качестве универсального фреймворка визуализации и управления, используется </span><a href='https://medium.com/nuances-of-programming/%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%B0%D1%8F-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D0%B8-%D1%80%D0%B0%D0%B7%D0%B2%D0%B5%D1%80%D1%82%D1%8B%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B4%D0%B0%D1%88%D0%B1%D0%BE%D1%80%D0%B4%D0%B0-%D1%81%D0%BE-streamlit-4b668ef25dc2'><em><span>Streamlit</span></em></a><span>, позволяет  создавать дашборды и интерфейсы для управления процессами машинного обучения в виде web-приложений, и используется, как правило, для создания прототипов проектов.</span></p><blockquote><p><span>Иногда, даже в рамках задач решаемых нейросетями, может потребоваться использование методов классического машинного обучения и для этого, за свою простоту и доступность, может потребоваться библиотека </span><a href='https://datastart.ru/blog/read/chto-takoe-scikit-learn-gayd-po-populyarnoy-biblioteke-python-dlya-nachinayuschih'><em><span>Scikit-learn</span></em></a><span>. Данная библиотека поддерживает: предварительную обработку данных,  уменьшение размерности, выбор моделей, регрессии, классификации, кластерный анализ. Но не поддерживает: нейронные сети, самоорганизующиеся карты (сети Кохонена), обучение ассоциативным правилам, обучение с подкреплением (</span><em><span>reinforcement learning</span></em><span>).</span></p></blockquote><p>&nbsp;</p><h4 id='mlops'><span>MLOps</span></h4><p><img src=".\images\bf091c902ecac0f567e343f4989d6d4d.png" style="zoom:60%;" /></p><p><em><span>MLOps</span></em><span> — объединение технологий и процессов машинного обучения и подходов к внедрению разработанных моделей в бизнес-процессы. Цепочка разработки продукта начинается задолго до разработки модели. Ее первым шагом является определение задачи бизнеса, гипотезы о ценности, которую можно извлечь из данных, и бизнес-идеи по ее применению. </span></p><p><span>Само понятие </span><em><span>MLOps</span></em><span> возникло как аналогия понятия </span><em><span>DevOps</span></em><span> применительно к моделям и технологиям машинного обучения. </span><em><span>DevOps</span></em><span> — это подход к разработке ПО, позволяющий повысить скорость внедрения отдельных изменений при сохранении гибкости и надежности с помощью ряда подходов, среди которых непрерывная разработка, разделение функций на ряд независимых микросервисов, автоматизированное тестирование и деплоймент отдельных изменений, глобальный мониторинг работоспособности, система оперативного реагирования на выявленные сбои и др. </span></p><p><span>С появлением определенной критической массы моделей машинного обучения, внедренных в бизнес-процессы предприятий, было замечено сильное сходство жизненного цикла математических моделей машинного обучения и жизненного цикла ПО. Разница только в том, что алгоритмы моделей создаются с помощью инструментов и методов машинного обучения. Поэтому естественным образом возникла идея применить и адаптировать для моделей машинного обучения уже известные подходы к разработке ПО. Таким образом, в жизненном цикле моделей машинного обучения можно выделить следующие ключевые этапы:</span></p><ul><li><span>определение бизнес-идеи;</span></li><li><span>обучение модели;</span></li><li><span>тестирование и внедрение модели в бизнес-процесс;</span></li><li><span>эксплуатация модели.</span></li></ul><p><span>Когда в процессе эксплуатации возникает необходимость изменить или дообучить модель на новых данных, цикл запускается заново — модель дорабатывается, тестируется, и публикуется (деплоится) новая версия.</span></p><blockquote><p><span>Почему дообучить, а не переобучить? Термин «переобучение модели» имеет двоякое толкование: среди специалистов он означает дефект модели, когда модель хорошо предсказывает, фактически повторяет прогнозируемый параметр на обучающей выборке, но гораздо хуже работает на внешней выборке данных. Естественно, такая модель является браком, поскольку данный дефект не позволяет ее применять.</span></p></blockquote><p><img src=".\images\data-sciene-lifecycle-model-flow.png" style="zoom: 33%;" /></p><p><img src=".\images\Artificial-Intelligence-Machine-Learning-Data-Science-Pipeline.png" style="zoom: 44%;" /></p><p>&nbsp;</p><h3 id='тест'><span>Тест</span></h3><p><a href='https://forms.gle/mZPETMUbJFaPyGLA9' target='_blank' class='url'>https://forms.gle/mZPETMUbJFaPyGLA9</a></p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdWSJsWr6hAfG-vdqPQeJ3CYUODrgnnXcABnXUq5swuhFyiaQ/viewform?embedded=true" width="640" height="1400" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe><hr /><h3 id='источники'><span>Источники</span></h3><p><span>Пример организации MLOps цикла у Neoflex: </span><a href='https://www.neoflex.ru/solutions/neoflex-mlops-center' target='_blank' class='url'>https://www.neoflex.ru/solutions/neoflex-mlops-center</a></p><p><span>7 questions for DL: </span><a href='https://jameskle.com/writes/deep-learning-infrastructure-tooling' target='_blank' class='url'>https://jameskle.com/writes/deep-learning-infrastructure-tooling</a></p><p><span>History of Artificial Intelligence: </span><a href='https://www.javatpoint.com/history-of-artificial-intelligence' target='_blank' class='url'>https://www.javatpoint.com/history-of-artificial-intelligence</a></p><p><span>Про различия между AI, ML и DL: </span><a href='https://habr.com/ru/post/401857/' target='_blank' class='url'>https://habr.com/ru/post/401857/</a></p><p><span>Про MLOps: </span><a href='https://habr.com/ru/company/vtb/blog/508012/' target='_blank' class='url'>https://habr.com/ru/company/vtb/blog/508012/</a></p><p>&nbsp;</p><h3 id='дополнительные-материалы'><span>Дополнительные материалы</span></h3><p><span>Machine Learning Research: </span><a href='https://distill.pub/' target='_blank' class='url'>https://distill.pub/</a></p><p><span>SQL тренажер: </span><a href='https://sql-academy.org/ru/trainer' target='_blank' class='url'>https://sql-academy.org/ru/trainer</a></p><p><span>A/B Testing: A Complete Guide to Statistical Testing: </span><a href='https://towardsdatascience.com/a-b-testing-a-complete-guide-to-statistical-testing-e3f1db140499' target='_blank' class='url'>https://towardsdatascience.com/a-b-testing-a-complete-guide-to-statistical-testing-e3f1db140499</a></p><p>&nbsp;</p><script>
+    //function toggleFullScreen(id) {
+    //document.getElementById(id).requestFullscreen()
+    //}
+
+    //document.addEventListener("click", function (event) {
+    //if (event.target.tagName === "img") {
+    //console.log("+");
+    //event.target.requestFullscreen();
+    //};
+    //});
+
+    document.querySelectorAll("img").forEach((item, index, arr) => {
+        item.addEventListener("click", (event) => {
+            event.target.requestFullscreen();
+
+
+            document.addEventListener('keyup', (e) => {
+                if (e.keyCode == '39') {
+                    // right arrow
+                    arr[index + 1].requestFullscreen();
+                    item = arr[index + 1];
+                    index++;
+                } else if (e.keyCode == '37') {
+                    // left arrow
+                    arr[index - 1].requestFullscreen();
+                    item = arr[index - 1];
+                    index--;
+                }
+            });
+
+            //document.addEventListener('fullscreenchange', ()=>{
+               // if (document.fullscreenElement) {
+                //    console.log('Fullscreen');
+              //  } else {
+               //    console.log('Normal');
+               // }
+            //});
+            
+            //window.addEventListener('resize', (evt) => { 
+                //if (window.innerHeight == screen.height) {
+                    //console.log('FULL SCREEN');
+                //} else {
+                    //console.log('NORMAL SCREEN');
+                //}
+            //});
+
+        });
+    });
+</script><p>&nbsp;</p></div></div>
+</body>
+</html>
