@@ -1,13 +1,13 @@
-# <img src="./photo.jpg" style="zoom:7%;"  />   Melnichuk Dmitrii
+# <img src="./photo.jpg" style="zoom:7%;"  />   Ph.D. Dmitrii V. Melnichuk
 
 ### SKILLS
 
 `Python` (`PyTorch`, `Keras`, `TensorFlow`, `Scikit-learn`, `Streamlit`, `Pandas`) 
-`R` (`tsibble`, `anomalize`, `shiny`, `ggplot2`)
+`R` (`tidytext`, `shiny`, `ggplot2`)
 `SQL`, `MongoDB`
 `Docker`, `Jenkins`, `Postman`, `Linux(bash)`, `Git`
 `Microsoft Excel`, `Tableau`
-`JavaScript`(`highcharts`, `D3`), `HTML`, `CSS`, `LaTeX`
+`Svelte`, `JavaScript`(`highcharts`, `D3`), `CSS`(`tailwindcss`), `HTML`, `LaTeX`
 
 
 
