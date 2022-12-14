@@ -1,13 +1,14 @@
-# <img src="./photo.jpg" style="zoom:7%;"  />   Ph.D. Dmitrii V. Melnichuk
+# <img src="./photo.jpg" style="zoom:7%;"  />   Ph.D. Dmitriy V. Melnichuk
 
 ### SKILLS
 
-`Python` (`PyTorch`, `Keras`, `TensorFlow`, `Scikit-learn`, `Streamlit`, `Pandas`) 
+`Python` (`PyTorch`, `Keras`, `TensorFlow`, `Scikit-learn`, `Streamlit`, `Pandas`, `Dash`, `telebot`) 
 `R` (`tidytext`, `shiny`, `ggplot2`)
+`Web3` (`web3.py`, `web3.js`), `ERC20` 
 `SQL`, `MongoDB`
 `Docker`, `Jenkins`, `Postman`, `Linux(bash)`, `Git`
 `Microsoft Excel`, `Tableau`
-`Svelte`, `JavaScript`(`highcharts`, `D3`), `CSS`(`tailwindcss`), `HTML`, `LaTeX`
+`JavaScript`(`Three.js`, `highcharts`, `D3`), `CSS`(`tailwindcss`), `HTML`, `LaTeX`
 
 
 
@@ -75,7 +76,7 @@ English: Intermediate
 
 ### CONTACTS
 
-BLOG: 
+BLOG: mlnchk.pro
 E-MAIL: mlnchkdv@gmail.com
 LN: [in/meldm/](https://www.linkedin.com/in/meldm/)
 GH: [mlnchkdv](https://github.com/mlnchkdv)
