@@ -8,7 +8,7 @@
 `SQL`, `MongoDB`
 `Docker`, `Jenkins`, `Postman`, `Linux(bash)`, `Git`
 `Microsoft Excel`, `Tableau`
-`JavaScript`(`Three.js`, `highcharts`, `D3`), `CSS`(`tailwindcss`), `HTML`, `LaTeX`
+`JavaScript`(`Three.js`, `highcharts`, `D3`, `WebGL`), `CSS`(`tailwindcss`), `HTML`,  `Browser extensions`, `LaTeX`
 
 
 
@@ -59,6 +59,11 @@ Mathematical support and administration of information systems
 
 ### ACHIEVEMENTS
 
+Историки…
+
+**RUSSIAN SCIENCE FOUNDATION (RSF)**    2022
+23-21-00305
+
 **RUSSIAN FOUNDATION FOR BASIC RESEARCH (RFBR)**    2019
 19-37-90017
 
@@ -83,6 +88,8 @@ GH: [mlnchkdv](https://github.com/mlnchkdv)
 
 [Google Scholar](https://scholar.google.com/citations?user=XcYTbJsAAAAJ&hl=en) 
 [ResearchGate](https://www.researchgate.net/profile/Dmitriy-Melnichuk?ev=hdr_xprf)
+[elibrary](https://www.elibrary.ru/author_profile.asp?id=1021510)
+[ORCID](https://orcid.org/0000-0002-6689-8904)
 
 
 
