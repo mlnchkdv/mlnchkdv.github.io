@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как математика меняет нашу жизнь | MathML</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        gray: { 50: '#fcfcfc', 100: '#f3f4f6', 200: '#e5e7eb', 300: '#d1d5db', 400: '#9ca3af', 500: '#6b7280', 600: '#4b5563', 700: '#374151', 800: '#1f2937', 900: '#111827' },
+                        blue: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb' },
+                        emerald: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669' },
+                        rose: { 50: '#fff1f2', 100: '#ffe4e6', 500: '#f43f5e', 600: '#e11d48' },
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 500: '#f59e0b', 600: '#d97706' },
+                        violet: { 50: '#f5f3ff', 100: '#ede9fe', 500: '#8b5cf6', 600: '#7c3aed' },
+                        orange: { 50: '#fff7ed', 100: '#ffedd5', 500: '#f97316', 600: '#ea580c' },
+                        indigo: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- KaTeX for Math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        /* Custom UI Elements */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 0.25rem;
+            cursor: pointer;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            transition: background 0.15s ease;
+        }
+        input[type=range]:hover::-webkit-slider-runnable-track {
+            background: #d1d5db;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -0.375rem;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover, input[type=range]:active::-webkit-slider-thumb {
+            border-color: #9ca3af;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transform: scale(1.1);
+        }
+
+        /* Custom Toggle */
+        .toggle-checkbox:checked { right: 0; border-color: #10b981; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #10b981; }
+        .toggle-checkbox { right: calc(100% - 1.25rem); z-index: 1; border-color: #e5e7eb; transition: all 0.2s ease; }
+        .toggle-label { width: 2.25rem; height: 1.25rem; background-color: #e5e7eb; border-radius: 9999px; transition: all 0.2s ease; }
+        
+        /* D3 Tooltip */
+        .d3-tooltip {
+            position: absolute;
+            opacity: 0;
+            background-color: #ffffff;
+            color: #111827;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            pointer-events: none;
+            z-index: 50;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            max-width: max-content;
+            line-height: 1.4;
+        }
+
+        /* General Styles */
+        .draggable { cursor: grab; }
+        .draggable:active { cursor: grabbing; }
+        .interactive-svg { touch-action: none; }
+        .matrix-scroll::-webkit-scrollbar { height: 0.375rem; width: 0.375rem; }
+        .matrix-scroll::-webkit-scrollbar-track { background: transparent; }
+        .matrix-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+        
+        svg text { font-family: 'Inter', sans-serif; }
+
+        /* Accordion transition detail */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="font-medium tracking-tighter text-xl flex items-center gap-1 text-gray-900">
+                MATH<span class="text-blue-600">ML</span>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-gray-500 overflow-x-auto">
+                <a href="#intro" class="hover:text-gray-900 transition-colors">Введение</a>
+                <a href="#bayes" class="hover:text-gray-900 transition-colors">Байес</a>
+                <a href="#graphs" class="hover:text-gray-900 transition-colors">Графы</a>
+                <a href="#ml-demo" class="hover:text-gray-900 transition-colors">Алгоритмы</a>
+                <a href="#neuron" class="hover:text-gray-900 transition-colors">Нейросети</a>
+                <a href="#real-world" class="hover:text-gray-900 transition-colors">ИИ в жизни</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="intro" class="relative pt-24 pb-16 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-medium border border-blue-100/50">
+                <iconify-icon icon="solar:lightbulb-minimalistic-linear"></iconify-icon> Интерактивный учебник
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-medium tracking-tight text-gray-900 mb-6 leading-tight">
+                Математика — это не скучные <br class="hidden sm:block"> формулы, а язык будущего
+            </h1>
+            <p class="text-base sm:text-lg text-gray-500 leading-relaxed max-w-3xl mx-auto">
+                Представьте, что математика — это набор правил, которые заставляют компьютер прокладывать маршруты, распознавать лица и понимать текст. Этот гайд создан специально для студентов и абитуриентов, чтобы без сложных терминов показать, как школьные знания превращаются в технологии Искусственного Интеллекта.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-32">
+
+        <!-- Section: Bayes & Monty Hall -->
+        <section id="bayes" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Теорема Байеса: Как обновлять знания</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Наш мозг часто ошибается при оценке вероятностей. Теорема Байеса — это математический алгоритм, который позволяет «пересчитать» шансы, когда появляется новая информация. На этом принципе работают медицинские тесты и фильтры спама.
+                </p>
+            </div>
+
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm overflow-hidden flex flex-col lg:flex-row">
+                <!-- Interactive Game -->
+                <div class="p-8 lg:p-10 lg:w-1/2 flex flex-col border-b lg:border-b-0 lg:border-r border-gray-100 bg-gray-50/50">
+                    <div class="mb-6 space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-50 text-violet-600 text-xs font-medium">
+                            <iconify-icon icon="solar:gamepad-linear"></iconify-icon> Интерактив: Парадокс Монти Холла
+                        </div>
+                        <h3 class="text-xl tracking-tight font-medium text-gray-900">Выиграйте автомобиль!</h3>
+                        <p class="text-sm text-gray-500">За одной дверью машина, за двумя другими — козы. Выберите дверь, а затем посмотрите, как изменится вероятность после подсказки ведущего.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mb-8" id="mh-doors">
+                        <!-- Doors generated by JS -->
+                    </div>
+
+                    <div id="mh-status-box" class="mt-auto p-4 bg-white border border-gray-200 rounded-xl text-center space-y-4 shadow-sm min-h-[7rem] flex flex-col justify-center">
+                        <p id="mh-message" class="text-sm font-medium text-gray-700">Ждем вашего выбора...</p>
+                        <div id="mh-actions" class="hidden flex gap-3 justify-center">
+                            <button id="mh-btn-stay" class="px-4 py-2 text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Оставить выбор</button>
+                            <button id="mh-btn-switch" class="px-4 py-2 text-xs font-medium text-white bg-violet-500 hover:bg-violet-600 rounded-lg transition-colors shadow-sm">Сменить дверь</button>
+                        </div>
+                        <button id="mh-btn-reset" class="hidden mx-auto px-4 py-2 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors flex items-center gap-1">
+                            <iconify-icon icon="solar:refresh-linear"></iconify-icon> Сыграть еще раз
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formula and explanation -->
+                <div class="p-8 lg:p-10 lg:w-1/2 bg-white flex flex-col justify-center space-y-6">
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Интуиция говорит нам, что если осталось две двери, шансы 50/50. Но математика неумолима: <b>меняя выбор, вы удваиваете шансы на победу (с 33.3% до 66.6%)</b>. Секрет в том, что ведущий знает, где машина, и его действие дает вам информацию.
+                    </p>
+                    
+                    <div class="text-xl font-medium text-gray-900 py-6 bg-gray-50 rounded-xl text-center border border-gray-100 overflow-x-auto relative">
+                        $$P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}$$
+                        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-200 to-transparent"></div>
+                    </div>
+
+                    <details class="group bg-white rounded-xl border border-gray-200 overflow-hidden transition-all">
+                        <summary class="flex items-center justify-between p-4 cursor-pointer font-medium text-sm text-gray-900 hover:bg-gray-50">
+                            <span class="flex items-center gap-2"><iconify-icon icon="solar:book-linear" class="text-violet-500"></iconify-icon> Разбор формулы простыми словами</span>
+                            <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform group-open:rotate-180 text-gray-400"></iconify-icon>
+                        </summary>
+                        <div class="p-4 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2 space-y-3">
+                            <p><strong>$P(A)$ — Априорная вероятность:</strong> Ваше изначальное убеждение до получения новых фактов. До открытия дверей шанс, что вы угадали сразу — 1/3.</p>
+                            <p><strong>$P(B|A)$ — Правдоподобие:</strong> Насколько новые факты согласуются с вашим убеждением. Ведущий <i>обязан</i> открыть дверь с козой.</p>
+                            <p><strong>$P(A|B)$ — Апостериорная вероятность:</strong> Ваше обновленное убеждение. Формула доказывает: вероятность того, что машина находится за оставшейся закрытой дверью, забирает на себя шансы открытой двери.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Graphs & Dijkstra -->
+        <section id="graphs" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Теория графов: Как строятся маршруты</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Когда вы заказываете такси или строите маршрут в навигаторе, программа не смотрит на реальную дорогу. Она видит «Граф» — набор точек (перекрестков) и линий (дорог). Алгоритм Дейкстры находит самый быстрый путь, складывая время прохождения (веса) каждой дороги.
+                </p>
+            </div>
+
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm flex flex-col lg:flex-row overflow-hidden">
+                <!-- Explanations -->
+                <div class="lg:w-1/3 p-8 border-b lg:border-b-0 lg:border-r border-gray-100 bg-gray-50/50 flex flex-col justify-center space-y-6">
+                    <div class="inline-flex items-center w-max gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-medium">
+                        <iconify-icon icon="solar:map-arrow-square-linear"></iconify-icon> Алгоритм Дейкстры
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Алгоритм работает как вода, разливающаяся от начальной точки: он проверяет все соседние узлы, записывает самое короткое расстояние до них, и так шаг за шагом находит оптимальный маршрут до цели.
+                    </p>
+
+                    <div class="space-y-3 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Инструкция</div>
+                        <ol class="list-decimal list-inside text-sm text-gray-700 space-y-2">
+                            <li>Кликните на <span class="font-medium text-emerald-600">Начальную точку</span>.</li>
+                            <li>Кликните на <span class="font-medium text-rose-500">Конечную точку</span>.</li>
+                            <li>Наблюдайте, как алгоритм находит кратчайший путь (он выделится цветом).</li>
+                        </ol>
+                        <button id="dijkstra-reset" class="mt-4 w-full px-4 py-2 text-xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center justify-center gap-1">
+                            <iconify-icon icon="solar:refresh-linear"></iconify-icon> Сбросить
+                        </button>
+                    </div>
+                </div>
+
+                <!-- D3 Visualization -->
+                <div class="lg:w-2/3 p-4 relative bg-white min-h-[350px] flex items-center justify-center">
+                    <div id="graph-container" class="w-full h-full min-h-[300px] interactive-svg"></div>
+                    
+                    <!-- Stats overlay -->
+                    <div id="dijkstra-stats" class="absolute top-6 right-6 bg-white/90 backdrop-blur border border-gray-200 rounded-xl p-4 shadow-sm text-sm hidden">
+                        <div class="text-gray-500 text-xs mb-1">Кратчайший путь</div>
+                        <div id="dijkstra-path-text" class="font-medium text-gray-900 tracking-tight">A → C → D</div>
+                        <div class="mt-2 text-xs flex justify-between items-center pt-2 border-t border-gray-100">
+                            <span class="text-gray-500">Общий вес:</span>
+                            <span id="dijkstra-weight-text" class="font-medium text-emerald-600">12 мин</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: ML Algorithms -->
+        <section id="ml-demo" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Основы ML: Как машины находят закономерности</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Машинное обучение (ML) — это когда компьютер ищет шаблоны в данных сам, без жестко заданных правил. Здесь мы рассмотрим два базовых подхода: Классификацию (определение категории) и Регрессию (предсказание числа).
+                </p>
+            </div>
+
+            <!-- Demo 1: KNN -->
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm flex flex-col-reverse lg:flex-row overflow-hidden mb-8">
+                <div class="lg:w-2/3 p-6 relative bg-white flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-gray-100">
+                    <div class="absolute top-4 left-6 flex gap-4 text-xs">
+                        <div class="flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-blue-500"></div> Класс A</div>
+                        <div class="flex items-center gap-1"><div class="w-3 h-3 rounded bg-orange-500"></div> Класс B</div>
+                    </div>
+                    <div id="knn-container" class="w-full h-80 interactive-svg cursor-crosshair mt-4"></div>
+                    <div class="text-center text-xs text-gray-400 mt-2">Кликните в любое место, чтобы добавить новую точку и классифицировать её.</div>
+                </div>
+
+                <div class="lg:w-1/3 p-8 bg-gray-50/50 flex flex-col justify-center space-y-6">
+                    <div class="inline-flex items-center w-max gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-medium">
+                        <iconify-icon icon="solar:users-group-rounded-linear"></iconify-icon> Классификация (KNN)
+                    </div>
+                    
+                    <h3 class="text-lg font-medium tracking-tight text-gray-900">Скажи мне, кто твой друг</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Алгоритм K-Ближайших Соседей (KNN) определяет новую точку просто смотря на то, к какой группе принадлежит большинство её соседей. 
+                    </p>
+
+                    <div class="space-y-4 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-medium text-gray-700">Значение K (соседей)</span>
+                            <span id="knn-k-val" class="text-gray-900 font-medium px-2 py-1 bg-gray-100 rounded">3</span>
+                        </div>
+                        <input type="range" id="knn-k-slider" min="1" max="9" step="2" value="3">
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            Если K=3, алгоритм смотрит на 3 ближайшие точки. Если 2 из них синие, новая точка тоже становится синей.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Linear Regression -->
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm flex flex-col lg:flex-row overflow-hidden">
+                <div class="lg:w-1/3 p-8 border-b lg:border-b-0 lg:border-r border-gray-100 bg-gray-50/50 flex flex-col justify-center space-y-6">
+                    <div class="inline-flex items-center w-max gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-medium">
+                        <iconify-icon icon="solar:chart-square-linear"></iconify-icon> Линейная Регрессия
+                    </div>
+                    
+                    <h3 class="text-lg font-medium tracking-tight text-gray-900">Предсказание будущего</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Вместо того чтобы делить данные на классы, регрессия проводит прямую линию через точки, чтобы предсказывать новые значения. Цель — минимизировать суммарную ошибку (красные пунктирные линии).
+                    </p>
+
+                    <div class="space-y-4 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-500">Наклон линии ($w$)</span>
+                                <span id="reg-w-val" class="text-gray-900 font-medium">1.0</span>
+                            </div>
+                            <input type="range" id="reg-w-slider" min="0" max="2" step="0.1" value="1">
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-500">Сдвиг ($b$)</span>
+                                <span id="reg-b-val" class="text-gray-900 font-medium">0.0</span>
+                            </div>
+                            <input type="range" id="reg-b-slider" min="-2" max="5" step="0.1" value="0">
+                        </div>
+                        <div class="pt-3 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-xs font-medium text-gray-700">Средняя ошибка (MSE):</span>
+                            <span id="reg-mse" class="text-sm font-medium text-rose-500">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 p-6 relative bg-white flex flex-col justify-center">
+                    <div id="regression-container" class="w-full h-80 interactive-svg"></div>
+                    <div class="text-center text-xs text-gray-400 mt-2">Передвигайте ползунки слева, чтобы линия как можно точнее описывала тренд точек.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Artificial Neuron -->
+        <section id="neuron" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Анатомия искусственного нейрона</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Современные нейросети — это огромная сеть из простейших математических функций. Каждый отдельный нейрон принимает решения на основе входящих данных, подобно тому, как мы взвешиваем "за" и "против" в повседневной жизни.
+                </p>
+            </div>
+
+            <!-- Deep Explanation Box -->
+            <div class="bg-blue-50/50 border border-blue-100/80 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-1">
+                        <iconify-icon icon="solar:clapperboard-edit-linear" class="text-xl"></iconify-icon>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-base font-medium text-gray-900">Жизненная аналогия: Пойти ли в кино?</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Представьте, что вы решаете, пойти ли сегодня вечером в кино. Искусственный нейрон принимает такое же решение, используя простую математику:
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside ml-1">
+                            <li><b>Входы ($x$):</b> Факторы. Идет ли дождь? Хорошие ли отзывы на фильм? Есть ли у вас свободное время? (1 — да, 0 — нет).</li>
+                            <li><b>Веса ($w$):</b> Важность. Если вы ненавидите гулять под дождем, вес дождя будет отрицательным (он отталкивает от похода в кино). А хорошие отзывы — положительным.</li>
+                            <li><b>Смещение ($b$):</b> Ваш характер. Если вы домосед по натуре, ваш базовый порог будет отрицательным — вас нужно сильно уговаривать.</li>
+                            <li><b>Активация ($\sigma$):</b> Итоговое решение. Нейрон складывает все факторы с учетом их веса и превращает в вероятность от 0% до 100%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive 1: Neuron anatomy -->
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm flex flex-col lg:flex-row overflow-hidden">
+                <!-- Controls -->
+                <div class="lg:w-5/12 p-8 border-b lg:border-b-0 lg:border-r border-gray-100 bg-gray-50/50 flex flex-col gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between border-b border-gray-200 pb-2">
+                            <h3 class="text-sm font-medium text-gray-900">1. Входящие данные ($x$)</h3>
+                            <span class="text-xs text-gray-400">Сигналы извне</span>
+                        </div>
+                        <div class="flex gap-4 justify-between px-2">
+                            <!-- Toggles -->
+                            <div class="flex flex-col items-center gap-2">
+                                <label class="text-xs font-medium text-gray-600 text-center">Дождь<br>($x_1$)</label>
+                                <div class="relative inline-block w-9 h-5 align-middle select-none">
+                                    <input type="checkbox" id="n-x1" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer mt-0.5 ml-0.5" checked="">
+                                    <label for="n-x1" class="toggle-label block overflow-hidden cursor-pointer"></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <label class="text-xs font-medium text-gray-600 text-center">Отзывы<br>($x_2$)</label>
+                                <div class="relative inline-block w-9 h-5 align-middle select-none">
+                                    <input type="checkbox" id="n-x2" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer mt-0.5 ml-0.5" checked="">
+                                    <label for="n-x2" class="toggle-label block overflow-hidden cursor-pointer"></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <label class="text-xs font-medium text-gray-600 text-center">Время<br>($x_3$)</label>
+                                <div class="relative inline-block w-9 h-5 align-middle select-none">
+                                    <input type="checkbox" id="n-x3" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer mt-0.5 ml-0.5" checked="">
+                                    <label for="n-x3" class="toggle-label block overflow-hidden cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mt-2">
+                        <div class="flex items-center justify-between border-b border-gray-200 pb-2">
+                            <h3 class="text-sm font-medium text-gray-900">2. Веса ($w$) и Смещение ($b$)</h3>
+                            <span class="text-xs text-gray-400">Параметры обучения</span>
+                        </div>
+                        
+                        <div class="space-y-3 px-2">
+                            <div class="space-y-1 group">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-gray-500">Важность дождя ($w_1$)</span>
+                                    <span id="val-w1" class="text-gray-900 font-medium">-1.5</span>
+                                </div>
+                                <input type="range" id="n-w1" min="-2" max="2" step="0.1" value="-1.5">
+                            </div>
+                            <div class="space-y-1 group">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-gray-500">Важность отзывов ($w_2$)</span>
+                                    <span id="val-w2" class="text-gray-900 font-medium">1.2</span>
+                                </div>
+                                <input type="range" id="n-w2" min="-2" max="2" step="0.1" value="1.2">
+                            </div>
+                            <div class="space-y-1 group">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-gray-500">Важность времени ($w_3$)</span>
+                                    <span id="val-w3" class="text-gray-900 font-medium">0.8</span>
+                                </div>
+                                <input type="range" id="n-w3" min="-2" max="2" step="0.1" value="0.8">
+                            </div>
+                            <div class="space-y-1 group pt-2">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-gray-500">Домосед? (Смещение, $b$)</span>
+                                    <span id="val-b" class="text-gray-900 font-medium">-1.0</span>
+                                </div>
+                                <input type="range" id="n-b" min="-3" max="3" step="0.1" value="-1">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Visualization -->
+                <div class="lg:w-7/12 p-8 relative flex flex-col items-center justify-between min-h-[350px]">
+                    <div class="absolute top-6 left-6 flex flex-col gap-1 text-xs text-gray-500">
+                        <div class="flex items-center gap-2"><div class="w-3 h-0.5 bg-emerald-500"></div> За кино (+ вес)</div>
+                        <div class="flex items-center gap-2"><div class="w-3 h-0.5 bg-rose-500"></div> Против кино (- вес)</div>
+                    </div>
+                    
+                    <div id="neuron-svg-container" class="w-full h-64 interactive-svg mt-8 lg:mt-0"></div>
+                    
+                    <div class="w-full flex flex-col xl:flex-row gap-4 items-center justify-between bg-gray-50 p-4 rounded-xl border border-gray-100 shadow-inner">
+                        <div class="space-y-1 w-full xl:w-auto text-center xl:text-left">
+                            <div class="text-xs text-gray-500">Взвешенная сумма ($z$):</div>
+                            <div id="math-z" class="text-sm font-medium text-gray-900 overflow-x-auto">$$z = \sum (w_i \cdot x_i) + b$$</div>
+                        </div>
+                        <iconify-icon icon="solar:round-alt-arrow-right-linear" class="hidden xl:block text-2xl text-gray-300"></iconify-icon>
+                        <div class="space-y-1 w-full xl:w-auto text-center xl:text-left">
+                            <div class="text-xs text-gray-500 flex items-center justify-center xl:justify-start gap-1">
+                                Активация <span class="group relative cursor-help border-b border-dashed border-gray-400">Сигмоида<span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Превращает любое число в значение от 0 до 1 (вероятность).</span></span>:
+                            </div>
+                            <div id="math-a" class="text-sm font-medium text-blue-600 overflow-x-auto">$$\sigma(z) = \frac{1}{1 + e^{-z}}$$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive 2: Decision Boundary -->
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm flex flex-col-reverse lg:flex-row overflow-hidden">
+                <div class="lg:w-2/3 p-6 relative bg-white flex flex-col justify-center border-t lg:border-t-0 lg:border-r border-gray-100">
+                    <div id="decision-boundary-container" class="w-full h-80 interactive-svg relative"></div>
+                    <div class="absolute top-6 left-8 flex gap-4 text-xs bg-white/80 px-2 py-1 rounded backdrop-blur-sm border border-white/50">
+                        <div class="flex items-center gap-1"><div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div> Положительный класс (1)</div>
+                        <div class="flex items-center gap-1"><div class="w-2.5 h-2.5 rounded-full bg-rose-500"></div> Отрицательный класс (0)</div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/3 p-8 bg-gray-50/50 flex flex-col justify-center space-y-6">
+                    <div class="inline-flex items-center w-max gap-2 px-3 py-1 rounded-full bg-violet-50 text-violet-600 text-xs font-medium">
+                        <iconify-icon icon="solar:ruler-angular-linear"></iconify-icon> Геометрия нейрона
+                    </div>
+                    
+                    <h3 class="text-lg font-medium tracking-tight text-gray-900">Разделение пространства</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Математически, нейрон с двумя входами рисует прямую линию на графике. Одна сторона от линии — это решение "Да" (синяя зона), другая — "Нет" (серая зона).
+                    </p>
+
+                    <div class="space-y-4 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs text-gray-500"><span>Вес $w_1$ (ось X)</span><span id="db-w1-val" class="font-medium text-gray-900">1.0</span></div>
+                            <input type="range" id="db-w1" min="-3" max="3" step="0.1" value="1">
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs text-gray-500"><span>Вес $w_2$ (ось Y)</span><span id="db-w2-val" class="font-medium text-gray-900">-1.0</span></div>
+                            <input type="range" id="db-w2" min="-3" max="3" step="0.1" value="-1">
+                        </div>
+                        <div class="space-y-1 pt-2">
+                            <div class="flex justify-between text-xs text-gray-500"><span>Смещение $b$ (положение)</span><span id="db-b-val" class="font-medium text-gray-900">0.0</span></div>
+                            <input type="range" id="db-b" min="-5" max="5" step="0.1" value="0">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2 leading-relaxed">Подвигайте ползунки, чтобы линия аккуратно разделила зеленые и красные точки.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section: Gradient Descent -->
+        <section id="gradient" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Как машины учатся: Градиентный спуск</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Когда нейросеть ошибается, она вычисляет «Функцию потерь» — насколько ее ответ далек от идеала. Цель обучения — найти самую нижнюю точку (минимум ошибки). Алгоритм вычисляет наклон графика (производную) и делает шаг вниз. Длина этого шага называется Learning Rate.
+                </p>
+            </div>
+
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm overflow-hidden flex flex-col">
+                <div class="p-5 border-b border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-rose-50 text-rose-600 rounded-lg flex items-center justify-center">
+                            <iconify-icon icon="solar:graph-down-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-medium tracking-tight">Ландшафт ошибки</h3>
+                            <p class="text-xs text-gray-500">Кликните по графику, чтобы задать начальную точку, и запустите спуск.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 bg-white px-4 py-2.5 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex flex-col w-32">
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-500" title="Learning Rate - размер шага при спуске">Шаг (LR)</span>
+                                <span id="val-lr" class="font-medium text-gray-900">0.05</span>
+                            </div>
+                            <input type="range" id="grad-lr" min="0.01" max="0.15" step="0.01" value="0.05">
+                        </div>
+                        <div class="w-px h-8 bg-gray-200"></div>
+                        <button id="grad-step" class="text-xs font-medium text-gray-700 hover:text-blue-600 transition-colors flex items-center gap-1">
+                            <iconify-icon icon="solar:round-alt-arrow-right-linear" class="text-lg"></iconify-icon> Шаг
+                        </button>
+                        <button id="grad-auto" class="text-xs font-medium text-white bg-gray-900 hover:bg-gray-800 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 shadow-sm">
+                            <iconify-icon icon="solar:play-linear" class="text-sm"></iconify-icon> Авто
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-6 relative bg-white">
+                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-2 border border-gray-200 rounded-xl text-xs space-y-1 shadow-sm z-10 hidden sm:block">
+                        <div class="text-gray-500 font-medium mb-1 border-b border-gray-100 pb-1">Функция ошибки</div>
+                        <div class="text-gray-800">$$E(x) = x^4 - 3x^2 + 2$$</div>
+                        <div class="text-rose-500 mt-1">Красная точка — текущая ошибка</div>
+                    </div>
+                    <div id="gradient-container" class="w-full h-80 interactive-svg cursor-crosshair"></div>
+                </div>
+            </div>
+            
+            <details class="max-w-3xl mx-auto group bg-white rounded-xl border border-gray-200 overflow-hidden transition-all shadow-sm">
+                <summary class="flex items-center justify-between p-4 cursor-pointer font-medium text-sm text-gray-900 hover:bg-gray-50">
+                    <span class="flex items-center gap-2"><iconify-icon icon="solar:danger-triangle-linear" class="text-amber-500"></iconify-icon> Проблема локального минимума</span>
+                    <iconify-icon icon="solar:alt-arrow-down-linear" class="transition-transform group-open:rotate-180 text-gray-400"></iconify-icon>
+                </summary>
+                <div class="p-4 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                    Обратите внимание: на графике две «ямы». Если вы начнете спуск слева, точка скатится в левую яму и остановится. Это называется <b>локальный минимум</b> — алгоритм думает, что нашел лучшее решение, хотя справа есть яма глубже (глобальный минимум). В реальных нейросетях ландшафт имеет миллионы измерений, и математики придумывают хитрые алгоритмы (например, Adam), чтобы выпрыгивать из таких мелких ям.
+                </div>
+            </details>
+        </section>
+
+        <!-- Section: Deep Learning (Attention) -->
+        <section id="deep-learning" class="space-y-8 scroll-mt-24">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-50 text-violet-600 text-xs font-medium border border-violet-100/50 mb-2">
+                    <iconify-icon icon="solar:magic-stick-3-linear"></iconify-icon> Технология ChatGPT (Трансформеры)
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Механизм Внимания (Self-Attention)</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Как нейросеть понимает смысл текста? Слово «замок» может значить здание или дверной механизм. Алгоритм вычисляет математическую схожесть между каждым словом в предложении, формируя контекст. Чем крепче смысловая связь, тем ярче цвет. Наведите курсор на слова.
+                </p>
+            </div>
+            
+            <div class="bg-white border border-gray-200/80 rounded-2xl shadow-sm p-6 lg:p-10 flex flex-col lg:flex-row gap-10 lg:gap-16 overflow-hidden items-center">
+                <div class="lg:w-1/2 flex flex-col w-full h-full justify-center">
+                    <h3 class="text-lg font-medium tracking-tight mb-2 text-gray-900">Предложение как граф связей</h3>
+                    <p class="text-sm text-gray-500 mb-8 leading-relaxed">
+                        Компьютер превращает каждое слово в вектор (список из сотен чисел). Затем он умножает эти вектора друг на друга (скалярное произведение из геометрии). Большой результат = сильная логическая связь.
+                    </p>
+                    
+                    <!-- Sentence visualization -->
+                    <div id="attention-sentence-container" class="w-full h-40 relative flex items-center justify-between border-b border-gray-100 pb-4 interactive-svg"></div>
+                </div>
+
+                <div class="lg:w-1/2 w-full flex flex-col items-center border-t lg:border-t-0 lg:border-l border-gray-100 pt-8 lg:pt-0 pl-0 lg:pl-10">
+                    <h3 class="text-sm font-medium tracking-tight mb-4 text-gray-900 self-start">Матрица весов внимания (Тепловая карта)</h3>
+                    <div class="w-full overflow-x-auto matrix-scroll pb-2 bg-gray-50/50 p-4 rounded-xl border border-gray-200 shadow-inner">
+                        <div id="attention-matrix-container" class="w-[300px] h-[300px] mx-auto interactive-svg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Real World AI -->
+        <section id="real-world" class="space-y-8 scroll-mt-24 pt-12 border-t border-gray-200">
+            <div class="space-y-3 text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-medium tracking-tight text-gray-900">Где это работает в реальной жизни?</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    Математика, описанная выше, не лежит в учебниках мертвым грузом. Прямо сейчас эти алгоритмы выполняются миллиарды раз в секунду на серверах по всему миру, обеспечивая работу привычных нам сервисов.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+                        <iconify-icon icon="solar:eye-scan-linear" class="text-xl"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-medium text-gray-900 mb-2">Компьютерное зрение</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Сверточные нейросети распознают опухоли на рентгеновских снимках точнее врачей и помогают беспилотным авто видеть пешеходов.</p>
+                    <div class="text-[10px] uppercase font-medium text-gray-400 tracking-wider">Матрицы, Интегралы</div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-4">
+                        <iconify-icon icon="solar:chat-round-line-linear" class="text-xl"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-medium text-gray-900 mb-2">Генеративный ИИ</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Модели вроде GPT пишут код, сочиняют эссе и переводят языки, предсказывая следующее слово на основе механизма Внимания.</p>
+                    <div class="text-[10px] uppercase font-medium text-gray-400 tracking-wider">Вероятности, Векторы</div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                        <iconify-icon icon="solar:music-note-slider-2-linear" class="text-xl"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-medium text-gray-900 mb-2">Рекомендательные системы</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Ленты TikTok, Spotify и YouTube используют кластеризацию (как KNN), чтобы находить людей с похожими вкусами и предлагать им контент.</p>
+                    <div class="text-[10px] uppercase font-medium text-gray-400 tracking-wider">Статистика, Графы</div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-4">
+                        <iconify-icon icon="solar:chart-square-linear" class="text-xl"></iconify-icon>
+                    </div>
+                    <h3 class="text-base font-medium text-gray-900 mb-2">Прогнозная аналитика</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-4">Банки предсказывают риск невыплаты кредита, а метеорологи — погоду, используя алгоритмы регрессии на основе исторических данных.</p>
+                    <div class="text-[10px] uppercase font-medium text-gray-400 tracking-wider">Матанализ, Регрессия</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center space-y-6">
+            <h2 class="text-xl font-medium tracking-tight text-gray-900">Готовы изучать математику осознанно?</h2>
+            <p class="text-sm text-gray-500 max-w-md text-center">За каждой прорывной технологией стоят линейная алгебра, матанализ и теория вероятностей.</p>
+            <p class="text-xs text-gray-400 mt-8 font-medium">© 2026 Образовательный проект для студентов.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+        // Global Tooltip
+        const tooltip = d3.select("body").append("div").attr("class", "d3-tooltip text-xs");
+        const showTooltip = (event, content) => {
+            tooltip.html(content).style("opacity", 1)
+                .style("left", (event.pageX + 15) + "px").style("top", (event.pageY - 20) + "px")
+                .style("transform", "scale(1)");
+        };
+        const hideTooltip = () => { tooltip.style("opacity", 0).style("transform", "scale(0.95)"); };
+
+        // --- 1. Monty Hall Paradox ---
+        function initMontyHall() {
+            // (Same implementation as original)
+            const doorsContainer = document.getElementById('mh-doors');
+            const messageEl = document.getElementById('mh-message');
+            const actionsEl = document.getElementById('mh-actions');
+            const resetBtn = document.getElementById('mh-btn-reset');
+            
+            let state = 'pick';
+            let winningDoor, selectedDoor, openedDoor;
+
+            function setupGame() {
+                doorsContainer.innerHTML = '';
+                state = 'pick';
+                winningDoor = Math.floor(Math.random() * 3);
+                selectedDoor = -1;
+                openedDoor = -1;
+                messageEl.textContent = "Выберите одну из трех дверей.";
+                actionsEl.classList.add('hidden');
+                resetBtn.classList.add('hidden');
+
+                for (let i = 0; i < 3; i++) {
+                    const btn = document.createElement('button');
+                    btn.className = 'bg-white border-2 border-gray-200 hover:border-violet-300 rounded-xl p-4 flex flex-col items-center justify-center h-24 transition-all group relative overflow-hidden shadow-sm hover:shadow-md';
+                    btn.innerHTML = `<iconify-icon icon="solar:door-closed-linear" class="text-3xl text-gray-400 group-hover:text-violet-500 transition-colors"></iconify-icon><span class="text-xs font-medium text-gray-500 mt-2">Дверь ${i+1}</span>`;
+                    btn.onclick = () => handleDoorClick(i);
+                    doorsContainer.appendChild(btn);
+                }
+            }
+
+            function handleDoorClick(i) {
+                if (state !== 'pick') return;
+                selectedDoor = i;
+                let availableToOpen = [0, 1, 2].filter(d => d !== selectedDoor && d !== winningDoor);
+                openedDoor = availableToOpen[Math.floor(Math.random() * availableToOpen.length)];
+                
+                updateDoorsUI();
+                messageEl.innerHTML = `Вы выбрали Дверь ${selectedDoor+1}. Ведущий открывает Дверь ${openedDoor+1}, там <b>коза</b>.<br>Измените выбор?`;
+                actionsEl.classList.remove('hidden');
+                state = 'decide';
+            }
+
+            function updateDoorsUI() {
+                const buttons = doorsContainer.children;
+                for (let i = 0; i < 3; i++) {
+                    const btn = buttons[i];
+                    btn.className = 'rounded-xl p-4 flex flex-col items-center justify-center h-24 transition-all relative overflow-hidden shadow-sm border-2 ';
+                    if (i === openedDoor) {
+                        btn.classList.add('bg-gray-100', 'border-gray-200', 'opacity-70');
+                        btn.innerHTML = `<span class="text-2xl">🐐</span><span class="text-xs font-medium text-gray-400 mt-2">Коза</span>`;
+                        btn.disabled = true;
+                    } else if (i === selectedDoor && state === 'decide') {
+                        btn.classList.add('bg-violet-50', 'border-violet-400', 'ring-2', 'ring-violet-100');
+                        btn.innerHTML = `<iconify-icon icon="solar:door-closed-linear" class="text-3xl text-violet-600"></iconify-icon><span class="text-xs font-medium text-violet-600 mt-2">Ваш выбор</span>`;
+                    } else {
+                        btn.classList.add('bg-white', 'border-gray-200');
+                        btn.innerHTML = `<iconify-icon icon="solar:door-closed-linear" class="text-3xl text-gray-400"></iconify-icon><span class="text-xs font-medium text-gray-500 mt-2">Дверь ${i+1}</span>`;
+                    }
+                }
+            }
+
+            function finishGame(didSwitch) {
+                state = 'end';
+                actionsEl.classList.add('hidden');
+                let finalDoor = didSwitch ? [0, 1, 2].find(d => d !== selectedDoor && d !== openedDoor) : selectedDoor;
+                let won = finalDoor === winningDoor;
+                
+                const buttons = doorsContainer.children;
+                for (let i = 0; i < 3; i++) {
+                    const btn = buttons[i];
+                    btn.className = 'rounded-xl p-4 flex flex-col items-center justify-center h-24 transition-all relative overflow-hidden shadow-sm border-2 ';
+                    if (i === winningDoor) {
+                        btn.classList.add('bg-emerald-50', 'border-emerald-400');
+                        btn.innerHTML = `<span class="text-2xl">🚗</span><span class="text-xs font-medium text-emerald-600 mt-2">Авто!</span>`;
+                    } else if (i === openedDoor) {
+                        btn.classList.add('bg-gray-100', 'border-gray-200', 'opacity-70');
+                        btn.innerHTML = `<span class="text-2xl">🐐</span><span class="text-xs font-medium text-gray-400 mt-2">Коза</span>`;
+                    } else {
+                        btn.classList.add('bg-rose-50', 'border-rose-300', 'opacity-70');
+                        btn.innerHTML = `<span class="text-2xl">🐐</span><span class="text-xs font-medium text-rose-500 mt-2">Коза</span>`;
+                    }
+                }
+
+                messageEl.innerHTML = won ? 
+                    `<span class="text-emerald-600 font-medium">Победа!</span> Вы ${didSwitch ? 'сменили' : 'оставили'} дверь.` : 
+                    `<span class="text-rose-500 font-medium">Проигрыш.</span> Вы ${didSwitch ? 'сменили' : 'оставили'} дверь.`;
+                resetBtn.classList.remove('hidden');
+            }
+
+            document.getElementById('mh-btn-stay').onclick = () => finishGame(false);
+            document.getElementById('mh-btn-switch').onclick = () => finishGame(true);
+            resetBtn.onclick = setupGame;
+            setupGame();
+        }
+
+        // --- 2. Graphs & Dijkstra ---
+        function initDijkstra() {
+            // (Same implementation as original)
+            const width = 500, height = 300;
+            const svg = d3.select("#graph-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            const nodes = [
+                {id: 'A', x: 50, y: 150}, {id: 'B', x: 180, y: 60}, {id: 'C', x: 180, y: 240},
+                {id: 'D', x: 320, y: 150}, {id: 'E', x: 450, y: 150}
+            ];
+            
+            const links = [
+                {source: 0, target: 1, weight: 4}, {source: 0, target: 2, weight: 2},
+                {source: 1, target: 2, weight: 5}, {source: 1, target: 3, weight: 10},
+                {source: 2, target: 3, weight: 3}, {source: 3, target: 4, weight: 7},
+                {source: 2, target: 4, weight: 12}
+            ];
+
+            let state = 'select_start'; let startNode = null; let endNode = null;
+            const g = svg.append("g");
+            
+            const linkSelection = g.selectAll(".link").data(links).enter().append("g");
+            linkSelection.append("line").attr("class", "edge-line")
+                .attr("x1", d => nodes[d.source].x).attr("y1", d => nodes[d.source].y)
+                .attr("x2", d => nodes[d.target].x).attr("y2", d => nodes[d.target].y)
+                .attr("stroke", "#e5e7eb").attr("stroke-width", 4).attr("stroke-linecap", "round")
+                .style("transition", "stroke 0.3s, stroke-width 0.3s");
+
+            linkSelection.append("text")
+                .attr("x", d => (nodes[d.source].x + nodes[d.target].x) / 2)
+                .attr("y", d => (nodes[d.source].y + nodes[d.target].y) / 2 - 8)
+                .attr("text-anchor", "middle").attr("fill", "#9ca3af").attr("font-size", "12px").attr("font-weight", "500")
+                .text(d => d.weight);
+
+            const nodeSelection = g.selectAll(".node").data(nodes).enter().append("g")
+                .attr("transform", d => `translate(${d.x},${d.y})`).style("cursor", "pointer")
+                .on("click", (e, d) => {
+                    if (state === 'select_start') { startNode = d; state = 'select_end'; updateVisuals(); } 
+                    else if (state === 'select_end') { if (d === startNode) return; endNode = d; state = 'done'; runDijkstra(); }
+                });
+
+            nodeSelection.append("circle").attr("class", "node-circle").attr("r", 20).attr("fill", "#ffffff").attr("stroke", "#d1d5db").attr("stroke-width", 3).style("transition", "all 0.3s");
+            nodeSelection.append("text").attr("dy", "0.3em").attr("text-anchor", "middle").attr("fill", "#4b5563").attr("font-size", "14px").attr("font-weight", "500").text(d => d.id);
+
+            function runDijkstra() {
+                let dist = {}; let prev = {}; let unvisited = new Set(nodes.map(n => n.id));
+                nodes.forEach(n => { dist[n.id] = Infinity; prev[n.id] = null; });
+                dist[startNode.id] = 0;
+
+                while(unvisited.size > 0) {
+                    let u = Array.from(unvisited).reduce((minNode, node) => dist[node] < dist[minNode] ? node : minNode, Array.from(unvisited)[0]);
+                    unvisited.delete(u);
+                    if (u === endNode.id) break;
+
+                    let neighbors = links.filter(l => nodes[l.source].id === u || nodes[l.target].id === u);
+                    neighbors.forEach(link => {
+                        let v = nodes[link.source].id === u ? nodes[link.target].id : nodes[link.source].id;
+                        if (unvisited.has(v)) {
+                            let alt = dist[u] + link.weight;
+                            if (alt < dist[v]) { dist[v] = alt; prev[v] = u; }
+                        }
+                    });
+                }
+                let pathNodes = []; let u = endNode.id;
+                while(u) { pathNodes.unshift(u); u = prev[u]; }
+
+                let pathEdges = [];
+                for(let i=0; i<pathNodes.length-1; i++) {
+                    let s = pathNodes[i], t = pathNodes[i+1];
+                    let link = links.find(l => (nodes[l.source].id === s && nodes[l.target].id === t) || (nodes[l.source].id === t && nodes[l.target].id === s));
+                    pathEdges.push(link);
+                }
+
+                svg.selectAll(".edge-line").attr("stroke", d => pathEdges.includes(d) ? "#10b981" : "#e5e7eb").attr("stroke-width", d => pathEdges.includes(d) ? 6 : 4);
+                svg.selectAll(".node-circle").attr("stroke", d => pathNodes.includes(d.id) ? "#10b981" : "#d1d5db");
+
+                document.getElementById('dijkstra-stats').classList.remove('hidden');
+                document.getElementById('dijkstra-path-text').textContent = pathNodes.join(' → ');
+                document.getElementById('dijkstra-weight-text').textContent = dist[endNode.id] + ' мин';
+            }
+
+            function updateVisuals() {
+                svg.selectAll(".node-circle")
+                    .attr("stroke", d => d === startNode ? "#10b981" : (d === endNode ? "#f43f5e" : "#d1d5db"))
+                    .attr("fill", d => d === startNode ? "#ecfdf5" : (d === endNode ? "#fff1f2" : "#ffffff"));
+            }
+
+            document.getElementById('dijkstra-reset').onclick = () => {
+                state = 'select_start'; startNode = null; endNode = null;
+                svg.selectAll(".edge-line").attr("stroke", "#e5e7eb").attr("stroke-width", 4);
+                svg.selectAll(".node-circle").attr("stroke", "#d1d5db").attr("fill", "#ffffff");
+                document.getElementById('dijkstra-stats').classList.add('hidden');
+            };
+        }
+
+        // --- 3. ML Demo (KNN) ---
+        function initKNN() {
+            // (Same implementation as original)
+            const width = 500, height = 300;
+            const svg = d3.select("#knn-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            let points = [];
+            for(let i=0; i<20; i++) {
+                points.push({x: 100 + Math.random()*150, y: 50 + Math.random()*150, class: 'A'});
+                points.push({x: 300 + Math.random()*150, y: 100 + Math.random()*150, class: 'B'});
+            }
+
+            const g = svg.append("g");
+            const edgesGroup = g.append("g");
+            const pointsGroup = g.append("g");
+
+            pointsGroup.selectAll(".base-point").data(points).enter().append("circle")
+                .attr("class", "base-point").attr("cx", d => d.x).attr("cy", d => d.y).attr("r", 6)
+                .attr("fill", d => d.class === 'A' ? "#3b82f6" : "#f97316").attr("opacity", 0.8);
+
+            let newPoint = null;
+
+            svg.append("rect").attr("width", width).attr("height", height).attr("fill", "transparent").style("cursor", "crosshair")
+                .on("click", (e) => {
+                    let coords = d3.pointer(e);
+                    newPoint = {x: coords[0], y: coords[1]};
+                    classify();
+                });
+
+            document.getElementById('knn-k-slider').addEventListener('input', (e) => {
+                document.getElementById('knn-k-val').textContent = e.target.value;
+                if(newPoint) classify();
+            });
+
+            function classify() {
+                let k = parseInt(document.getElementById('knn-k-slider').value);
+                let dists = points.map(p => ({
+                    point: p,
+                    dist: Math.sqrt(Math.pow(p.x - newPoint.x, 2) + Math.pow(p.y - newPoint.y, 2))
+                }));
+                dists.sort((a,b) => a.dist - b.dist);
+                let neighbors = dists.slice(0, k);
+                
+                let countA = neighbors.filter(n => n.point.class === 'A').length;
+                let finalClass = countA > k/2 ? 'A' : 'B';
+                let finalColor = finalClass === 'A' ? "#3b82f6" : "#f97316";
+
+                edgesGroup.selectAll("*").remove();
+                pointsGroup.selectAll(".new-point").remove();
+
+                edgesGroup.selectAll("line").data(neighbors).enter().append("line")
+                    .attr("x1", newPoint.x).attr("y1", newPoint.y)
+                    .attr("x2", d => d.point.x).attr("y2", d => d.point.y)
+                    .attr("stroke", "#9ca3af").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 4").attr("opacity", 0);
+                
+                edgesGroup.selectAll("line").transition().duration(400).attr("opacity", 1);
+
+                pointsGroup.append("circle").attr("class", "new-point").attr("cx", newPoint.x).attr("cy", newPoint.y).attr("r", 8)
+                    .attr("fill", "#9ca3af").attr("stroke", "#ffffff").attr("stroke-width", 2)
+                    .transition().delay(500).duration(300).attr("fill", finalColor).attr("r", 10);
+            }
+        }
+
+        // --- 4. Linear Regression ---
+        function initRegression() {
+            const width = 500, height = 300;
+            const svg = d3.select("#regression-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            const g = svg.append("g").attr("transform", "translate(40, 20)");
+            const innerW = width - 60, innerH = height - 50;
+
+            const xScale = d3.scaleLinear().domain([0, 10]).range([0, innerW]);
+            const yScale = d3.scaleLinear().domain([0, 10]).range([innerH, 0]);
+
+            g.append("g").attr("transform", `translate(0,${innerH})`).call(d3.axisBottom(xScale).ticks(5)).attr("color", "#d1d5db");
+            g.append("g").call(d3.axisLeft(yScale).ticks(5)).attr("color", "#d1d5db");
+
+            const points = [
+                {x: 1, y: 2}, {x: 2, y: 3.5}, {x: 4, y: 4.5}, 
+                {x: 5, y: 5}, {x: 7, y: 8}, {x: 8, y: 7.5}
+            ];
+
+            const lineGroup = g.append("g");
+            const residualsGroup = g.append("g");
+            
+            g.selectAll(".reg-point").data(points).enter().append("circle")
+                .attr("class", "reg-point").attr("cx", d => xScale(d.x)).attr("cy", d => yScale(d.y))
+                .attr("r", 5).attr("fill", "#6366f1");
+
+            const regLine = lineGroup.append("line")
+                .attr("stroke", "#111827").attr("stroke-width", 3).attr("stroke-linecap", "round");
+
+            function update() {
+                let w = parseFloat(document.getElementById('reg-w-slider').value);
+                let b = parseFloat(document.getElementById('reg-b-slider').value);
+                
+                document.getElementById('reg-w-val').textContent = w.toFixed(1);
+                document.getElementById('reg-b-val').textContent = b.toFixed(1);
+
+                let y1 = w * 0 + b;
+                let y2 = w * 10 + b;
+
+                regLine.attr("x1", xScale(0)).attr("y1", yScale(y1))
+                       .attr("x2", xScale(10)).attr("y2", yScale(y2));
+
+                let mse = 0;
+                residualsGroup.selectAll("*").remove();
+                
+                points.forEach(p => {
+                    let predY = w * p.x + b;
+                    mse += Math.pow(p.y - predY, 2);
+                    
+                    // Draw residual line only if it fits on screen reasonably
+                    if(predY >= -5 && predY <= 15) {
+                        residualsGroup.append("line")
+                            .attr("x1", xScale(p.x)).attr("y1", yScale(p.y))
+                            .attr("x2", xScale(p.x)).attr("y2", yScale(predY))
+                            .attr("stroke", "#f43f5e").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 4").attr("opacity", 0.7);
+                    }
+                });
+                
+                mse = mse / points.length;
+                document.getElementById('reg-mse').textContent = mse.toFixed(2);
+            }
+
+            document.getElementById('reg-w-slider').addEventListener('input', update);
+            document.getElementById('reg-b-slider').addEventListener('input', update);
+            update();
+        }
+
+        // --- 5. Artificial Neuron ---
+        function initNeuron() {
+            // (Same implementation as original)
+            const width = 600, height = 300;
+            const svg = d3.select("#neuron-svg-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            const defs = svg.append("defs");
+            defs.append("marker").attr("id", "arrowhead").attr("viewBox", "-0 -5 10 10").attr("refX", 20).attr("refY", 0)
+                .attr("orient", "auto").attr("markerWidth", 6).attr("markerHeight", 6)
+                .append("path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", "#9ca3af");
+
+            const nodes = [
+                { id: 'x1', x: 100, y: 50, type: 'in' },
+                { id: 'x2', x: 100, y: 150, type: 'in' },
+                { id: 'x3', x: 100, y: 250, type: 'in' },
+                { id: 'out', x: 350, y: 150, type: 'out' }
+            ];
+
+            const g = svg.append("g");
+            const edges = g.selectAll(".edge").data([0, 1, 2]).enter().append("line")
+                .attr("x1", nodes[0].x).attr("x2", nodes[3].x).attr("y2", nodes[3].y)
+                .attr("marker-end", "url(#arrowhead)").style("transition", "all 0.3s");
+
+            const circles = g.selectAll(".node").data(nodes).enter().append("circle")
+                .attr("cx", d => d.x).attr("cy", d => d.y).attr("r", d => d.type==='out'? 30 : 20)
+                .attr("stroke", "#ffffff").attr("stroke-width", 3).attr("class", "drop-shadow-sm transition-colors");
+
+            const labels = g.selectAll(".label").data(nodes).enter().append("text")
+                .attr("x", d => d.x).attr("y", d => d.y).attr("dy", "0.3em").attr("text-anchor", "middle")
+                .attr("fill", "#ffffff").attr("font-size", "14px").attr("font-weight", "500").text(d => d.id === 'out' ? 'Σ' : d.id);
+
+            function update() {
+                let xVals = [
+                    document.getElementById('n-x1').checked ? 1 : 0,
+                    document.getElementById('n-x2').checked ? 1 : 0,
+                    document.getElementById('n-x3').checked ? 1 : 0
+                ];
+                let wVals = [
+                    parseFloat(document.getElementById('n-w1').value),
+                    parseFloat(document.getElementById('n-w2').value),
+                    parseFloat(document.getElementById('n-w3').value)
+                ];
+                let b = parseFloat(document.getElementById('n-b').value);
+
+                document.getElementById('val-w1').textContent = wVals[0].toFixed(1);
+                document.getElementById('val-w2').textContent = wVals[1].toFixed(1);
+                document.getElementById('val-w3').textContent = wVals[2].toFixed(1);
+                document.getElementById('val-b').textContent = b.toFixed(1);
+
+                let z = (wVals[0]*xVals[0] + wVals[1]*xVals[1] + wVals[2]*xVals[2]) + b;
+                let a = 1 / (1 + Math.exp(-z));
+
+                edges.attr("y1", (d,i) => nodes[i].y)
+                    .attr("stroke", (d,i) => wVals[i] >= 0 ? "#10b981" : "#f43f5e")
+                    .attr("stroke-width", (d,i) => Math.max(1, Math.abs(wVals[i]) * 4))
+                    .attr("opacity", (d,i) => xVals[i] === 1 ? 1 : 0.2);
+
+                circles.attr("fill", (d,i) => {
+                    if (d.type === 'in') return xVals[i] === 1 ? "#3b82f6" : "#d1d5db";
+                    return d3.interpolateRgb("#cbd5e1", "#3b82f6")(a); 
+                });
+
+                let zStr = `z = (${wVals[0].toFixed(1)})\\cdot ${xVals[0]} + (${wVals[1].toFixed(1)})\\cdot ${xVals[1]} + (${wVals[2].toFixed(1)})\\cdot ${xVals[2]} + (${b.toFixed(1)}) = ${z.toFixed(2)}`;
+                let aStr = `\\sigma(z) = \\frac{1}{1 + e^{-(${z.toFixed(2)})}} = ${a.toFixed(2)}`;
+                
+                katex.render(zStr, document.getElementById('math-z'), {throwOnError: false, displayMode: true});
+                katex.render(aStr, document.getElementById('math-a'), {throwOnError: false, displayMode: true});
+            }
+
+            ['n-x1','n-x2','n-x3','n-w1','n-w2','n-w3','n-b'].forEach(id => {
+                document.getElementById(id).addEventListener('input', update);
+            });
+            setTimeout(update, 500);
+        }
+
+        // --- 6. Decision Boundary ---
+        function initDecisionBoundary() {
+            const width = 500, height = 300;
+            const svg = d3.select("#decision-boundary-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            // Defs for clipping and grid
+            const defs = svg.append("defs");
+            defs.append("clipPath").attr("id", "grid-clip").append("rect").attr("width", width).attr("height", height);
+
+            const g = svg.append("g").attr("clip-path", "url(#grid-clip)");
+
+            const xScale = d3.scaleLinear().domain([-5, 5]).range([0, width]);
+            const yScale = d3.scaleLinear().domain([-5, 5]).range([height, 0]);
+
+            // Create a background grid of rectangles to show activation landscape
+            const gridSize = 20; 
+            const cells = [];
+            for(let x = 0; x < width; x += gridSize) {
+                for(let y = 0; y < height; y += gridSize) {
+                    cells.push({ cx: x + gridSize/2, cy: y + gridSize/2, x: x, y: y });
+                }
+            }
+
+            const bgRects = g.append("g").selectAll("rect").data(cells).enter().append("rect")
+                .attr("x", d => d.x).attr("y", d => d.y)
+                .attr("width", gridSize).attr("height", gridSize)
+                .attr("stroke", "rgba(255,255,255,0.1)");
+
+            // Axes
+            g.append("g").attr("transform", `translate(0,${yScale(0)})`).call(d3.axisBottom(xScale).ticks(5)).attr("color", "rgba(0,0,0,0.1)");
+            g.append("g").attr("transform", `translate(${xScale(0)},0)`).call(d3.axisLeft(yScale).ticks(5)).attr("color", "rgba(0,0,0,0.1)");
+
+            const boundaryLine = g.append("line").attr("stroke", "#111827").attr("stroke-width", 2);
+
+            // Add some points to separate
+            const dbPoints = [
+                {x: -2, y: 3, c: 1}, {x: -3, y: 1, c: 1}, {x: -1, y: 4, c: 1}, {x: 1, y: 2, c: 1}, {x: -4, y: 2, c: 1},
+                {x: 2, y: -2, c: 0}, {x: 3, y: -1, c: 0}, {x: 4, y: -3, c: 0}, {x: 1, y: -4, c: 0}, {x: 4, y: 1, c: 0}
+            ];
+
+            g.append("g").selectAll("circle").data(dbPoints).enter().append("circle")
+                .attr("cx", d => xScale(d.x)).attr("cy", d => yScale(d.y)).attr("r", 5)
+                .attr("fill", d => d.c === 1 ? "#10b981" : "#f43f5e").attr("stroke", "#ffffff").attr("stroke-width", 1.5);
+
+            function update() {
+                let w1 = parseFloat(document.getElementById('db-w1').value);
+                let w2 = parseFloat(document.getElementById('db-w2').value);
+                let b = parseFloat(document.getElementById('db-b').value);
+                
+                document.getElementById('db-w1-val').textContent = w1.toFixed(1);
+                document.getElementById('db-w2-val').textContent = w2.toFixed(1);
+                document.getElementById('db-b-val').textContent = b.toFixed(1);
+
+                // Update heatmap
+                bgRects.attr("fill", d => {
+                    let rx = xScale.invert(d.cx);
+                    let ry = yScale.invert(d.cy);
+                    let z = w1*rx + w2*ry + b;
+                    let a = 1 / (1 + Math.exp(-z));
+                    return d3.interpolateRgb("#fff1f2", "#ecfdf5")(a); // Red to Green
+                });
+
+                // Update line mathematically: w1*x + w2*y + b = 0
+                // We draw the line far enough to cover the screen
+                if (Math.abs(w2) > 0.01) {
+                    let x1 = -10; let y1 = (-w1*x1 - b)/w2;
+                    let x2 = 10;  let y2 = (-w1*x2 - b)/w2;
+                    boundaryLine.attr("x1", xScale(x1)).attr("y1", yScale(y1)).attr("x2", xScale(x2)).attr("y2", yScale(y2));
+                } else {
+                    // Vertical line
+                    let xVal = -b / w1;
+                    boundaryLine.attr("x1", xScale(xVal)).attr("y1", yScale(-10)).attr("x2", xScale(xVal)).attr("y2", yScale(10));
+                }
+            }
+
+            document.getElementById('db-w1').addEventListener('input', update);
+            document.getElementById('db-w2').addEventListener('input', update);
+            document.getElementById('db-b').addEventListener('input', update);
+            update();
+        }
+
+        // --- 7. Gradient Descent ---
+        function initGradientDescent() {
+            // (Same implementation as original)
+            const width = 600, height = 300;
+            const svg = d3.select("#gradient-container").append("svg")
+                .attr("viewBox", `0 0 ${width} ${height}`).attr("width", "100%").attr("height", "100%");
+            
+            const g = svg.append("g").attr("transform", "translate(40, 20)");
+            const innerW = width - 80, innerH = height - 40;
+
+            const f = x => Math.pow(x, 4) - 3 * Math.pow(x, 2) + 2;
+            const df = x => 4 * Math.pow(x, 3) - 6 * x;
+
+            const xScale = d3.scaleLinear().domain([-2.2, 2.2]).range([0, innerW]);
+            const yScale = d3.scaleLinear().domain([-1, 6]).range([innerH, 0]);
+
+            g.append("g").attr("transform", `translate(0,${yScale(0)})`).call(d3.axisBottom(xScale).ticks(5)).attr("color", "#e5e7eb").call(g=>g.select(".domain").attr("stroke-width", 2));
+            g.append("g").call(d3.axisLeft(yScale).ticks(5)).attr("color", "#e5e7eb").call(g=>g.select(".domain").attr("stroke-width", 2));
+
+            const line = d3.line().x(d => xScale(d)).y(d => yScale(f(d))).curve(d3.curveBasis);
+            const xVals = d3.range(-2.2, 2.3, 0.1);
+            g.append("path").datum(xVals).attr("fill", "none").attr("stroke", "#d1d5db").attr("stroke-width", 3).attr("d", line);
+
+            let history = []; let currentX = null; let autoInterval = null;
+
+            const pathGroup = g.append("g");
+            const pointGroup = g.append("g");
+            const activePoint = g.append("circle").attr("r", 6).attr("fill", "#f43f5e").attr("stroke", "#fff").attr("stroke-width", 2).style("opacity", 0);
+
+            g.append("rect").attr("width", innerW).attr("height", innerH).attr("fill", "transparent").style("cursor", "crosshair")
+                .on("click", (e) => {
+                    clearInterval(autoInterval);
+                    let coords = d3.pointer(e);
+                    currentX = Math.max(-2.2, Math.min(2.2, xScale.invert(coords[0])));
+                    history = [currentX];
+                    drawState();
+                });
+
+            function drawState() {
+                if (!history.length) return;
+                const pathData = history.map(x => [xScale(x), yScale(f(x))]);
+                const histLine = d3.line()(pathData);
+                
+                pathGroup.selectAll("*").remove();
+                if(pathData.length > 1) {
+                    pathGroup.append("path").attr("d", histLine).attr("fill", "none").attr("stroke", "#111827").attr("stroke-width", 2).attr("stroke-dasharray", "4 4");
+                }
+
+                const circles = pointGroup.selectAll("circle").data(history);
+                circles.enter().append("circle").attr("r", 3).attr("fill", "#9ca3af")
+                    .merge(circles).attr("cx", d => xScale(d)).attr("cy", d => yScale(f(d))).style("opacity", (d,i) => i === history.length-1 ? 0 : 0.6);
+                circles.exit().remove();
+
+                activePoint.attr("cx", xScale(currentX)).attr("cy", yScale(f(currentX))).style("opacity", 1);
+            }
+
+            function step() {
+                if (currentX === null) return;
+                let lr = parseFloat(document.getElementById('grad-lr').value);
+                let grad = df(currentX);
+                currentX = currentX - lr * grad;
+                
+                if (currentX > 3 || currentX < -3) { currentX = Math.max(-2.2, Math.min(2.2, currentX)); clearInterval(autoInterval); }
+                
+                history.push(currentX);
+                if (history.length > 50) history.shift();
+                drawState();
+
+                if (Math.abs(grad) < 0.01 && autoInterval) clearInterval(autoInterval);
+            }
+
+            document.getElementById('grad-lr').addEventListener('input', (e) => { document.getElementById('val-lr').textContent = e.target.value; });
+            document.getElementById('grad-step').addEventListener('click', () => { clearInterval(autoInterval); step(); });
+            document.getElementById('grad-auto').addEventListener('click', () => {
+                if (currentX === null) currentX = 2.0;
+                history=[currentX];
+                clearInterval(autoInterval);
+                autoInterval = setInterval(step, 100);
+            });
+        }
+
+        // --- 8. Deep Learning: Attention mechanism ---
+        function initAttention() {
+            // (Same implementation as original)
+            const words = ['Кошка', 'спала', 'на', 'мягком', 'коврике'];
+            const weights = [
+                [0.50, 0.30, 0.05, 0.05, 0.10],
+                [0.40, 0.40, 0.10, 0.05, 0.05],
+                [0.05, 0.10, 0.30, 0.20, 0.35],
+                [0.05, 0.05, 0.10, 0.40, 0.40],
+                [0.10, 0.10, 0.20, 0.30, 0.30]
+            ];
+
+            const mWidth = 300, mHeight = 300, margin = {top: 40, right: 10, bottom: 10, left: 60};
+            const innerW = mWidth - margin.left - margin.right;
+            const innerH = mHeight - margin.top - margin.bottom;
+
+            const svg = d3.select("#attention-matrix-container").append("svg")
+                .attr("viewBox", `0 0 ${mWidth} ${mHeight}`).attr("width", "100%").attr("height", "100%");
+            const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const scale = d3.scaleBand().domain(words).range([0, innerW]).padding(0.08);
+            const colorScale = d3.scaleSequential(d3.interpolatePurples).domain([0, 0.6]);
+
+            g.append("g").call(d3.axisTop(scale)).selectAll("text").attr("transform", "rotate(-30)").style("text-anchor", "start").attr("dx", "0.5em").attr("class", "text-xs font-medium text-gray-500").call(g=>g.select(".domain").remove());
+            g.append("g").call(d3.axisLeft(scale)).selectAll("text").attr("class", "text-xs font-medium text-gray-500").call(g=>g.select(".domain").remove());
+            g.selectAll(".tick line").remove();
+
+            let cells = [];
+            words.forEach((r, i) => words.forEach((c, j) => cells.push({ rIdx: i, cIdx: j, val: weights[i][j] })));
+
+            g.selectAll("rect").data(cells).enter().append("rect")
+                .attr("x", d => scale(words[d.cIdx])).attr("y", d => scale(words[d.rIdx]))
+                .attr("width", scale.bandwidth()).attr("height", scale.bandwidth())
+                .attr("fill", d => colorScale(d.val)).attr("rx", 6)
+                .attr("class", "transition-all duration-200 cursor-pointer")
+                .on("mouseover", (e, d) => {
+                    d3.select(e.target).attr("stroke", "#111827").attr("stroke-width", 2);
+                    showTooltip(e, `Сила связи: <b>${(d.val*100).toFixed(0)}%</b>`);
+                    highlightNetwork(d.rIdx);
+                })
+                .on("mouseout", (e) => {
+                    d3.select(e.target).attr("stroke", "none");
+                    hideTooltip();
+                    resetNetwork();
+                });
+
+            const sContainer = d3.select("#attention-sentence-container");
+            const arcSvg = sContainer.append("svg").attr("class", "absolute inset-0 pointer-events-none w-full h-full").style("z-index", "0");
+            
+            const wordEls = words.map((w, i) => {
+                let div = document.createElement("div");
+                div.className = "text-sm sm:text-base font-medium text-gray-800 relative z-10 cursor-pointer px-3 py-1.5 rounded-lg hover:bg-violet-50 transition-colors border border-transparent hover:border-violet-200";
+                div.textContent = w;
+                div.onmouseenter = () => highlightNetwork(i);
+                div.onmouseleave = resetNetwork;
+                sContainer.node().appendChild(div);
+                return div;
+            });
+
+            function getCenter(el) {
+                const rect = el.getBoundingClientRect();
+                const parentRect = sContainer.node().getBoundingClientRect();
+                return { x: rect.left - parentRect.left + rect.width/2, y: rect.top - parentRect.top + rect.height/2 };
+            }
+
+            function highlightNetwork(sourceIdx) {
+                arcSvg.selectAll("*").remove();
+                g.selectAll("rect").style("opacity", d => d.rIdx === sourceIdx ? 1 : 0.1);
+                
+                const sourceCenter = getCenter(wordEls[sourceIdx]);
+                words.forEach((_, targetIdx) => {
+                    if (sourceIdx === targetIdx) return;
+                    const w = weights[sourceIdx][targetIdx];
+                    if (w < 0.1) return; 
+                    
+                    const targetCenter = getCenter(wordEls[targetIdx]);
+                    const dist = Math.abs(targetCenter.x - sourceCenter.x);
+                    const curveY = sourceCenter.y - (dist * 0.2) - 10;
+                    
+                    arcSvg.append("path")
+                        .attr("d", `M ${sourceCenter.x} ${sourceCenter.y-10} Q ${(sourceCenter.x + targetCenter.x)/2} ${curveY} ${targetCenter.x} ${targetCenter.y-10}`)
+                        .attr("fill", "none").attr("stroke", "#8b5cf6")
+                        .attr("stroke-width", w * 12).attr("stroke-linecap", "round").attr("opacity", 0.6);
+                });
+            }
+
+            function resetNetwork() {
+                arcSvg.selectAll("*").remove();
+                g.selectAll("rect").style("opacity", 1);
+            }
+            window.addEventListener('resize', resetNetwork);
+        }
+
+        // Init All
+        window.addEventListener('DOMContentLoaded', () => {
+            initMontyHall();
+            initDijkstra();
+            initKNN();
+            initRegression();
+            initNeuron();
+            initDecisionBoundary();
+            initGradientDescent();
+            initAttention();
+        });
+    </script>
+
+</body></html>
