@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-theme_css">:root {
+    --monospace: Courier, monospace;
+    --bg-color: #f9f9f9;
+    --text-color: #303030;
+    --active-file-bg-color: #E6E8EA;
+    --side-bar-bg-color: #f9f9f9;
+    /*--text-color: #223c61;*/
+}
+
+/*forked from https://github.com/chloerei/scribble*/
+
+#write {
+    --bg-color: #fff;
+}
+
+#write div ,
+#write p {
+    width: auto;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    background: #f9f9f9;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    line-height: 19px;
+    padding: 0;
+    margin: 0;
+}
+
+#footer-word-count-info {
+    background: var(--bg-color);
+}
+
+header,
+.dropmenu {
+    --text-color: #223c61;
+}
+
+header {
+    color: #333;
+}
+
+#typora-sidebar {
+    font-size: 14px;
+    /*background: transparent;
+    background-color: transparent;*/
+}
+
+.file-list-item {
+    border: 0;
+}
+
+.file-list-item:hover,
+.file-tree-node[data-is-directory='false']:hover>.file-node-background {
+    transition: background-color 0.6s ease;
+    background: var(--active-file-bg-color);
+}
+
+.file-node-content {
+    cursor: default;
+}
+
+.file-list-item-summary {
+    height: 34px;
+ }
+
+ .show-folder-name .file-list-item {
+    padding-top: 16px;
+    padding-bottom: 24px;
+}
+
+.file-list-item {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.file-list-item-file-name {
+    line-height: 20px;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+#sidebar-files-menu,
+#ty-sidebar-footer {
+    background: var(--bg-color);
+}
+
+body,
+html {
+    background-color: rgba(255, 255, 255, 0);
+    background: url(file:///C://Users//mlnch//AppData//Roaming//Typora/themes/scribble/light_wool.png);
+    background-repeat: repeat;
+}
+
+#write {
+    width: 100%;
+    max-width: 768px;
+    background: #fff;
+    margin: 40px auto 20px;
+    border-radius: 7px;
+    border: 1px solid #eee;
+    min-height: calc(100vh - 6em);
+    margin-bottom: 120px;
+    padding: 60px;
+    line-height: 1.6em;
+	
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+
+@media screen and (max-width: 820px) {
+    body,
+    html {
+        --side-bar-bg-color: #fff;;
+        background: #fff;
+    }
+
+    #write {
+        border: none;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 1160px) {
+    body.pin-outline {
+        --side-bar-bg-color: #fff;;
+        background: #fff;
+    }
+
+    body.pin-outline #write{ 
+        border: none;
+        margin-top: 0;
+    }
+}
+
+.typora-node #write {
+  min-height: calc(100% - 6em);
+}
+
+h1 {
+    text-align: center;
+    line-height: 1.5em;
+    margin-bottom: 60px;
+}
+
+h3 {
+	text-align: center;
+}
+
+h2, h3, h4, h5 {
+  margin: 2em 0 1em; }
+
+ul, ol {
+    padding: 0 0 0 30px;
+}
+
+blockquote {
+    padding: 0 1em;
+    margin: 14px 0;
+    border: 2px dashed #d0dfda;
+    border-radius: 5px;
+    color: #606060;
+    background: #f9f9f9;
+    -webkit-transition: all, 0.3s;
+    -moz-transition: all, 0.3s;
+    -ms-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    transition: all, 0.3s;
+    font-style: normal !important;
+}
+
+ #write .md-toc {
+    margin: 2em -60px;
+    border-bottom: 1px dotted #CCC;
+    border-top: 1px dotted #CCC;
+    /*background: #f4f4f4;*/
+    width: calc(100% + 120px);
+    border-radius: 0;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+#write>.md-toc:first-child {
+    margin-top: 0;
+    border-top: 0;
+}
+
+#write>.md-meta-block:first-child {
+    margin: 2em -60px;
+    margin-top: -60px;
+    width: calc(100% + 120px);
+    border-bottom: 1px dotted #CCC;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background: #fdfdfd;
+    font-size: 14px;
+    border-radius: 0;
+    color: var(--text-color);
+
+    /*margin-top: -24px;
+    margin-bottom: 64px;
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 14px;*/
+}
+
+.md-toc:focus .md-toc-content {
+    border: none;
+    border-color: inherit;
+    margin: auto;
+    margin-top: auto;
+    margin: 20px 0px;
+}
+
+.md-toc-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#write div.md-toc-tooltip {
+    left: 0;
+    padding-left: 60px;
+    padding-right: 20px;
+    top: -24px;
+    border-top: 1px dotted #CCC;
+}
+
+pre[mdtype] {
+    word-wrap: break-word;
+    background: #f8f8f8;
+    padding: 1em;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 1.2em;
+}
+
+code {
+    background: #f8f8f8;
+    padding: 0.05rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    color: #009688;
+    color: #8a0004;;
+}
+
+p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+blockquote >:first-child {
+    margin-top: 1em;
+}
+
+blockquote >:last-child {
+    margin-bottom: inherit;
+}
+
+.md-fences {
+    font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #269;
+  line-height: 1.4em;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s; 
+}
+  
+[md-inline] a:hover {
+    color: #1d5884;
+    background-image: url(file:///C://Users//mlnch//AppData//Roaming//Typora/themes/scribble/line.png);
+    background-repeat: repeat-x;
+    background-position: left bottom; 
+}
+
+#write .code-tooltip {
+    width: auto;
+}
+
+#write > hr {
+    margin: 2em -60px;
+    border: 0;
+    border-bottom: 1px dotted #CCC;
+}
+
+#write [cid]>table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #CCCACC;
+}
+
+#write table th {
+    padding:10px 15px;
+    border-right:1px solid #CCCACC;
+    background:#E9E7E9;
+    text-shadow: 1px 1px 1px #f3f3f3;
+    font-weight: inherit;
+}
+
+#write table [cid]>td{
+    padding:10px;
+    border-right:1px solid #CCCACC;
+    border-top:1px solid #CCCACC;
+}
+
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property {
+    color: #223c61;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor{
+    border-left: 3px solid #223c61;
+}
+
+.outline-content li, .outline-content ul {
+    line-height: 1.4rem;
+}
+
+.dropdown-menu {
+    background-color:  #f9f9f9;;
+}
+
+.cm-s-inner .cm-header, .cm-s-inner.cm-header {color: #566ada;}
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color:#75787b; }
+.cm-s-inner .cm-keyword, .cm-s-inner .cm-property, .cm-s-inner.cm-keyword, .cm-s-inner.cm-property { color:#1d75b3; }
+.cm-s-inner .cm-atom,.cm-s-inner .cm-number, .cm-s-inner.cm-atom,.cm-s-inner.cm-number { color:#75438a; }
+.cm-s-inner .cm-node,.cm-s-inner .cm-tag, .cm-s-inner.cm-node,.cm-s-inner.cm-tag { color:#9c3328; }
+.cm-s-inner .cm-string, .cm-s-inner.cm-string { color:#b35e14; }
+.cm-s-inner .cm-variable, .cm-s-inner .cm-qualifier, .cm-s-inner.cm-variable, .cm-s-inner.cm-qualifier { color:#047d65; }
+
+.file-node-open-state, .file-node-icon {
+    color: #9E9E9E;
+}
+
+.code-tooltip.md-hover-tip {
+    background: #000;
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>50_концепций_проектирования_систем</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='50-концепций-проектирования-систем'><span>50 концепций проектирования систем</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#50-концепций-проектирования-систем">50 концепций проектирования систем</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#i-основные-принципы-архитектуры">I. Основные принципы архитектуры</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n5"><a class="md-toc-inner" href="#вертикальное-и-горизонтальное-масштабирование">Вертикальное и горизонтальное масштабирование</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n16"><a class="md-toc-inner" href="#теорема-cap">Теорема CAP</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner" href="#теорема-pacelc">Теорема PACELC</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n27"><a class="md-toc-inner" href="#acid-против-base">ACID против BASE</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n33"><a class="md-toc-inner" href="#пропускная-способность-против-задержки">Пропускная способность против задержки</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n42"><a class="md-toc-inner" href="#закон-амдала">Закон Амдала</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n48"><a class="md-toc-inner" href="#сильная-против-постепенной-стабильности">Сильная против постепенной стабильности</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n58"><a class="md-toc-inner" href="#архитектура-с-сохранением-состояния-против-архитектуры-без-сохранения-состояния">Архитектура с сохранением состояния против архитектуры без сохранения состояния</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n68"><a class="md-toc-inner" href="#микросервисы-против-монолитов">Микросервисы против монолитов</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n75"><a class="md-toc-inner" href="#бессерверная-архитектура">Бессерверная архитектура</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n81"><a class="md-toc-inner" href="#ii-сетевое-взаимодействие-и-коммуникация">II. Сетевое взаимодействие и коммуникация</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n82"><a class="md-toc-inner" href="#балансировка-нагрузки">Балансировка нагрузки</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n87"><a class="md-toc-inner" href="#алгоритмы-балансировки-нагрузки">Алгоритмы балансировки нагрузки</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n97"><a class="md-toc-inner" href="#обратный-прокси-против-прямого-прокси">Обратный прокси против прямого прокси</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n107"><a class="md-toc-inner" href="#api-шлюз">API-шлюз</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n112"><a class="md-toc-inner" href="#cdn-сеть-доставки-контента">CDN (сеть доставки контента)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n118"><a class="md-toc-inner" href="#dns-система-доменных-имен">DNS (система доменных имен)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n123"><a class="md-toc-inner" href="#tcp-против-udp">TCP против UDP</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n133"><a class="md-toc-inner" href="#http2-и-http3-quic">HTTP/2 и HTTP/3 (QUIC)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n140"><a class="md-toc-inner" href="#grpc-против-rest">gRPC против REST</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n149"><a class="md-toc-inner" href="#websocket-и-server-sent-events-sse">WebSocket и Server-Sent Events (SSE)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n156"><a class="md-toc-inner" href="#долгосрочный-опрос">Долгосрочный опрос</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n161"><a class="md-toc-inner" href="#протокол-сплетен">Протокол сплетен</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n165"><a class="md-toc-inner" href="#iii-внутреннее-устройство-баз-данных-и-хранилищ">III. Внутреннее устройство баз данных и хранилищ</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n166"><a class="md-toc-inner" href="#sharding-разделение-данных">Sharding (разделение данных)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n171"><a class="md-toc-inner" href="#шаблоны-репликации">Шаблоны репликации</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n180"><a class="md-toc-inner" href="#последовательное-хеширование">Последовательное хеширование</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n185"><a class="md-toc-inner" href="#индексирование-баз-данных-b-деревья-lsm-деревья">Индексирование баз данных (B-деревья, LSM-деревья)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n191"><a class="md-toc-inner" href="#журналирование-с-предварительной-записью-wal">Журналирование с предварительной записью (WAL)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n195"><a class="md-toc-inner" href="#нормализация-против-денормализации">Нормализация против денормализации</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n203"><a class="md-toc-inner" href="#полиглотная-персистенция">Полиглотная персистенция</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" href="#фильтры-блума">Фильтры Блума</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n212"><a class="md-toc-inner" href="#векторные-базы-данных">Векторные базы данных</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n216"><a class="md-toc-inner" href="#iv-надежность-reliability-и-отказоустойчивость-fault-tolerance">IV. Надежность (Reliability) и отказоустойчивость (Fault Tolerance)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n217"><a class="md-toc-inner" href="#ограничение-скорости">Ограничение скорости</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n223"><a class="md-toc-inner" href="#схема-автоматического-выключателя">Схема автоматического выключателя</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n228"><a class="md-toc-inner" href="#схема-перегородки">Схема перегородки</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n233"><a class="md-toc-inner" href="#шаблоны-повторных-попыток-и-экспоненциальная-задержка">Шаблоны повторных попыток и экспоненциальная задержка</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n239"><a class="md-toc-inner" href="#идемпотентность">Идемпотентность</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n245"><a class="md-toc-inner" href="#сердцебиение">Сердцебиение</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n252"><a class="md-toc-inner" href="#выборы-лидера-paxos-raft">Выборы лидера (Paxos, Raft)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n258"><a class="md-toc-inner" href="#распределенные-транзакции-паттерн-saga">Распределенные транзакции (паттерн SAGA)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n263"><a class="md-toc-inner" href="#двухфазное-подтверждение-2pc">Двухфазное подтверждение (2PC)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n272"><a class="md-toc-inner" href="#v-кэширование-и-обмен-сообщениями">V. Кэширование и обмен сообщениями</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n273"><a class="md-toc-inner" href="#кэширование">Кэширование</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n278"><a class="md-toc-inner" href="#стратегии-кэширования-отложенное-кэширование-сквозная-запись-и-т-д">Стратегии кэширования (отложенное кэширование, сквозная запись и т. д.)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n288"><a class="md-toc-inner" href="#политика-удаления-элементов-из-кэша-lru-lfu">Политика удаления элементов из кэша (LRU, LFU)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n297"><a class="md-toc-inner" href="#очереди-сообщений-точка-точка">Очереди сообщений (точка-точка)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n303"><a class="md-toc-inner" href="#публикацияподписка-publish-subscribe">Публикация/Подписка (Publish Subscribe)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n307"><a class="md-toc-inner" href="#очереди-недоставленных-сообщений">Очереди недоставленных сообщений</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n312"><a class="md-toc-inner" href="#vi-наблюдаемость-observability-и-безопасность-security">VI. Наблюдаемость (Observability) и Безопасность (Security)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n313"><a class="md-toc-inner" href="#распределенная-трассировка">Распределенная трассировка</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n316"><a class="md-toc-inner" href="#sla-против-slo-против-sli">SLA против SLO против SLI</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n323"><a class="md-toc-inner" href="#oauth-20-и-oidc">OAuth 2.0 и OIDC</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n327"><a class="md-toc-inner" href="#tlsssl-рукопожатие-handshake">TLS/SSL-рукопожатие (Handshake)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n332"><a class="md-toc-inner" href="#безопасность-с-нулевым-доверием">Безопасность с нулевым доверием</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n336"><a class="md-toc-inner" href="#ссылка">Ссылка</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n342"><a class="md-toc-inner" href="#основные-выводы">Основные выводы</a></span></p></div><p>&nbsp;</p><h2 id='i-основные-принципы-архитектуры'><span>I. Основные принципы архитектуры</span></h2><h3 id='вертикальное-и-горизонтальное-масштабирование'><span>Вертикальное и горизонтальное масштабирование</span></h3><ul><li><p><strong><span>Вертикальное масштабирование (Vertical scaling)</span></strong><span> означает модернизацию отдельной машины, например, добавление большего количества процессора, оперативной памяти или более быстрого хранилища.</span></p></li><li><p><strong><span>Горизонтальное масштабирование (Horizontal scaling)</span></strong><span> означает добавление большего количества машин и распределение работы между ними.</span></p></li></ul><p><span>Вертикальная установка проще, но сталкивается с аппаратными ограничениями и становится дорогостоящей.</span></p><p><span>Горизонтальный подход сложнее, поскольку требует балансировки нагрузки, сервисов без сохранения состояния и общего хранилища.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!3715!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2002728e-3c0d-4ce1-b850-255e6b6ee4e4_1200x750.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!3715!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2002728e-3c0d-4ce1-b850-255e6b6ee4e4_1200x750.jpeg" alt="img"></a></p><blockquote><p><span>Представьте себе: вертикальное развитие — это усиление одного супергероя, горизонтальное — это создание команды.</span></p></blockquote><h3 id='теорема-cap'><span>Теорема CAP</span></h3><p><strong><span>Теорема CAP</span></strong><span> гласит, что при наличии разделения (Partition Tolerance) сети распределенная система должна выбирать между </span><strong><span>согласованностью (Consistency)</span></strong><span> и </span><strong><span>доступностью (Availability)</span></strong><span>. Согласованность означает, что каждый пользователь видит одни и те же данные одновременно.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!WfFu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bcceca2-48a3-4c21-ac72-9179ef8474e5_1200x750.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!WfFu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1bcceca2-48a3-4c21-ac72-9179ef8474e5_1200x750.jpeg" alt="img"></a></p><p><span>Доступность означает, что система всегда отвечает, даже если данные немного устарели.</span></p><p><span>В случае сбоя сети невозможно обеспечить идеальную согласованность и идеальную доступность, поэтому приходится решать, чем пожертвовать ради решения конкретной задачи.</span></p><h3 id='теорема-pacelc'><span>Теорема PACELC</span></h3><p><strong><span>PACELC</span></strong><span> расширяет CAP и гласит: если есть раздел, выберите «Доступность» или «Согласованность»; в противном случае выберите «Задержка» или «Согласованность».</span></p><p><span>Даже при хорошем сетевом соединении приходится выбирать между медленным, но стабильным чтением и быстрым, но в конечном итоге стабильным чтением. Системы, синхронизирующиеся между регионами, часто жертвуют задержкой ради обеспечения высокой согласованности данных.</span></p><p><span>Это объясняет, почему одни базы данных работают быстро, но немного устаревают, а другие — медленнее, но всегда точны.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!xWpd!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00dd3699-78d4-4a74-9983-3bfdf1cae624_2816x1536.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!xWpd!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00dd3699-78d4-4a74-9983-3bfdf1cae624_2816x1536.jpeg" alt="img"></a></p><p>&nbsp;</p><h3 id='acid-против-base'><span>ACID против BASE</span></h3><p><strong><span>ACID</span></strong><span> — это принцип строгой и надежной транзакции: атомарность, согласованность, изоляция, долговечность. Он подходит для финансовых систем, управления запасами и всего, где ошибки обходятся очень дорого.</span></p><p><strong><span>Аббревиатура BASE</span></strong><span> расшифровывается как «Basic Available, Soft state, Eventual consistency» (практически доступная, мягкое состояние, согласованность в конечном итоге) и используется в больших распределенных системах, которым необходимо оставаться работоспособными и быстро реагировать.</span></p><p><span>В базовых системах могут наблюдаться временные несоответствия, которые со временем устраняются сами собой.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!L9TO!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85b4b94f-3a0f-48d9-b562-57e6e93e8b20_2816x1504.png'><img src="https://substackcdn.com/image/fetch/$s_!L9TO!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85b4b94f-3a0f-48d9-b562-57e6e93e8b20_2816x1504.png" alt="img"></a></p><p><span>На практике многие архитектуры сочетают в себе оба подхода, используя ACID для основных денежных потоков и BASE для таких вещей, как потоки данных и аналитика.</span></p><h3 id='пропускная-способность-против-задержки'><span>Пропускная способность против задержки</span></h3><ul><li><p><strong><span>Пропускная способность (Throughput)</span></strong><span> — это количество запросов, которые ваша система может обработать в секунду.</span></p></li><li><p><strong><span>Задержка (Latency)</span></strong><span> — это время, которое требуется для выполнения одного запроса от начала до конца.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!W9LS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e90b29f-0ec6-4314-b3fc-806bdbccbe6b_1200x750.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!W9LS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4e90b29f-0ec6-4314-b3fc-806bdbccbe6b_1200x750.jpeg" alt="img"></a></p><p><span>Часто пропускную способность можно увеличить, выполняя больше задач параллельно, но это может привести к увеличению задержки, если накапливаются очереди.</span></p><p><span>Представьте себе ресторан, который принимает множество заказов одновременно, но заставляет клиентов долго ждать. Хороший дизайн системы стремится найти баланс между этими двумя факторами: достаточная пропускная способность для пиковых нагрузок и низкая задержка для комфортной работы пользователя.</span></p><h3 id='закон-амдала'><span>Закон Амдала</span></h3><p><strong><span>Закон Амдала</span></strong><span> гласит, что ускорение, достигаемое за счет распараллеливания, ограничено той частью, которая не может быть распараллелена.</span></p><p><span>Если 20 процентов вашей системы всегда работает в последовательном режиме, никакое количество дополнительных машин не устранит это узкое место.</span></p><p><span>Если ваш запрос всегда должен обращаться к одной главной базе данных, эта главная база данных ограничит вашу производительность. Этот закон напоминает вам о необходимости поиска узких мест, а не просто добавления новых серверов.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!4yPb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf407386-5437-4506-8c61-13cc00da274d_2816x1536.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!4yPb!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf407386-5437-4506-8c61-13cc00da274d_2816x1536.jpeg" alt="img"></a></p><p>&nbsp;</p><h3 id='сильная-против-постепенной-стабильности'><span>Сильная против постепенной стабильности</span></h3><ul><li><p><strong><span>Строгая согласованность</span></strong><span> означает, что все пользователи видят одни и те же данные сразу после записи.</span></p></li><li><p><strong><span>Принцип согласованности в конечном итоге</span></strong><span> означает, что обновления распределены во времени, и узлы могут кратковременно расходиться во мнениях.</span></p></li></ul><p><span>Строгая согласованность проще для рассуждений, но обычно она медленнее и менее достижима в случае сбоев.</span></p><p><span>В конечном итоге, стабильность качества отлично подходит для крупномасштабных систем, таких как временные шкалы или счетчики, где идеальная свежесть не имеет решающего значения.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!TU2F!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86f7ba16-08c0-466a-9a83-1e76197f8a9c_2816x1504.png'><img src="https://substackcdn.com/image/fetch/$s_!TU2F!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F86f7ba16-08c0-466a-9a83-1e76197f8a9c_2816x1504.png" alt="img"></a></p><p><span>Главное — выбрать модель, которая соответствует необходимым вам потребностям пользователя.</span></p><h3 id='архитектура-с-сохранением-состояния-против-архитектуры-без-сохранения-состояния'><span>Архитектура с сохранением состояния против архитектуры без сохранения состояния</span></h3><ul><li><p><span>Сервис, </span><strong><span>сохраняющий состояние (stateful),</span></strong><span> запоминает контекст пользователя между запросами, часто храня данные сессии локально.</span></p></li><li><p><span>Сервис </span><strong><span>без сохранения состояния (stateless)</span></strong><span> обрабатывает каждый запрос как новый, полагаясь на внешние хранилища, такие как кэши или базы данных, для хранения информации о состоянии.</span></p></li></ul><p><span>Сервисы без сохранения состояния проще масштабировать горизонтально, поскольку любой экземпляр может обработать любой запрос.</span></p><p><span>Системы с сохранением состояния могут быть проще в программировании, но сложнее в балансировке нагрузки и переключении на резервный сервер.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!XqMj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa05f6c72-aa26-4898-8a83-1d04689934b5_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!XqMj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa05f6c72-aa26-4898-8a83-1d04689934b5_2816x1536.png" alt="img"></a></p><p><span>В современных облачных системах мы стараемся переносить состояние в базы данных и сохранять сервисы максимально свободными от состояния.</span></p><h3 id='микросервисы-против-монолитов'><span>Микросервисы против монолитов</span></h3><p><span>Монолитное </span><strong><span>приложение</span></strong><span> — это единое приложение, содержащее множество функций в одном развертываемом модуле.</span></p><p><strong><span>Микросервисы</span></strong><span> разделяют функциональные возможности на отдельные сервисы, которые взаимодействуют по сети.</span></p><p><span>Микросервисы помогают командам работать независимо и масштабировать различные части отдельно, но вносят сложности в вопросы коммуникации, отладки и согласованности данных.</span></p><p><span>Монолиты проще в начале работы, и их часто можно детализировать до определенного масштаба. Вот тут-то и начинается самое сложное.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!H1g6!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6922025-ecab-42e9-83c0-07c7e5aa4955_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!H1g6!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe6922025-ecab-42e9-83c0-07c7e5aa4955_2816x1536.png" alt="img"></a></p><p><span>Многие отличные системы начинаются как монолитные приложения и постепенно, по мере возникновения реальных проблем, трансформируются в микросервисы.</span></p><h3 id='бессерверная-архитектура'><span>Бессерверная архитектура</span></h3><p><strong><span>Бессерверная архитектура</span></strong><span> позволяет запускать небольшие функции в облаке без непосредственного управления серверами. Вы платите только тогда, когда ваш код выполняется, а платформа берет на себя масштабирование и управление инфраструктурой.</span></p><p><span>Он идеально подходит для рабочих нагрузок, управляемых событиями, таких как веб-хуки, фоновые задачи или нетребовательные API с пиковыми нагрузками.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!Xarh!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F389dcb47-3e31-4d5c-825c-5dffd64ec2b6_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!Xarh!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F389dcb47-3e31-4d5c-825c-5dffd64ec2b6_2816x1536.png" alt="img"></a></p><p><span>Компромисс заключается в меньшем контроле над длительными задачами, проблемах с запуском без предварительной настройки и, иногда, в более высоких затратах при очень больших объемах производства.</span></p><p><span>Рассматривайте бессерверную архитектуру как «функции как услугу», идеально подходящую для связующего кода и легковесных сервисов.</span></p><h2 id='ii-сетевое-взаимодействие-и-коммуникация'><span>II. Сетевое взаимодействие и коммуникация</span></h2><h3 id='балансировка-нагрузки'><span>Балансировка нагрузки</span></h3><p><strong><span>Балансировка нагрузки</span></strong><span> распределяет входящий трафик между несколькими серверами, чтобы ни один сервер не был перегружен. Это повышает как надежность, так и производительность, поскольку отказ одного сервера не приводит к сбою всей системы.</span></p><p><span>Балансировщики нагрузки могут быть аппаратными устройствами или программными сервисами. Зачастую они поддерживают проверки работоспособности, чтобы предотвратить отправку трафика на неработоспособные экземпляры.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!EfOD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F585e02f4-ab67-479b-9daa-07574840a203_2816x1504.png'><img src="https://substackcdn.com/image/fetch/$s_!EfOD!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F585e02f4-ab67-479b-9daa-07574840a203_2816x1504.png" alt="img"></a></p><p><span>С точки зрения собеседования, они являются вашим первым шагом на пути к горизонтальному развитию.</span></p><h3 id='алгоритмы-балансировки-нагрузки'><span>Алгоритмы балансировки нагрузки</span></h3><p><span>К распространенным </span><strong><span>алгоритмам балансировки нагрузки</span></strong><span> относятся Round Robin, Least Connections и IP Hash.</span></p><ul><li><p><strong><span>Принцип циклического распределения нагрузки (Round Robin)</span></strong><span> заключается в последовательном переключении между серверами и простоте реализации.</span></p></li><li><p><strong><span>Метод Least Connections</span></strong><span> направляет трафик на сервер с наименьшим количеством активных соединений, что полезно, когда запросы имеют разную длину.</span></p></li><li><p><strong><span>В методе IP-хеширования</span></strong><span> используется хеш IP-адреса клиента, поэтому один и тот же пользователь обычно обращается к одному и тому же серверу, что способствует простой привязке сессии.</span></p></li></ul><p><span>Правильный выбор алгоритма влияет на справедливость, использование ресурсов и удобство использования для пользователей.</span></p><h3 id='обратный-прокси-против-прямого-прокси'><span>Обратный прокси против прямого прокси</span></h3><ul><li><p><span>Обратный </span><strong><span>прокси-сервер (reverse proxy)</span></strong><span> располагается перед серверами и представляет их клиентам. Он скрывает внутреннюю топологию, может выполнять завершение TLS-соединения, кэширование, сжатие и маршрутизацию.</span></p></li><li><p><strong><span>Прокси-сервер, осуществляющий прямое подключение (forward proxy)</span></strong><span>, находится перед клиентами и представляет их внешнему миру, часто в целях безопасности, кэширования или фильтрации контента.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!0Kv3!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41c5e21c-d894-4246-b836-345110c37415_954x1073.png'><img src="https://substackcdn.com/image/fetch/$s_!0Kv3!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F41c5e21c-d894-4246-b836-345110c37415_954x1073.png" alt="img"></a></p><p>&nbsp;</p><p><span>Представьте себе обратный прокси-сервер как стойку регистрации компании, скрывающую все внутренние процессы, а прямой прокси-сервер — как шлюз, через который должен пройти ваш ноутбук, чтобы получить доступ к интернету.</span></p><p><span>Понимание разницы помогает, когда речь идет об API-шлюзах и корпоративных прокси-серверах.</span></p><h3 id='api-шлюз'><span>API-шлюз</span></h3><p><strong><span>API-шлюз</span></strong><span> — это особый обратный прокси-сервер, который выступает в качестве единой точки входа для всех вызовов API в микросервисной системе. Он обрабатывает маршрутизацию к нужному сервису, ограничение скорости запросов, аутентификацию, логирование и, иногда, формирование ответов.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!c_T9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d80cd8a-30a7-49bf-967b-e43fbfc54784_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!c_T9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d80cd8a-30a7-49bf-967b-e43fbfc54784_2816x1536.png" alt="img"></a></p><p><span>Это снижает сложность на стороне клиента, поскольку клиенты взаимодействуют только с одной конечной точкой.</span></p><p><span>Если в шлюзе слишком много логики, он может стать узким местом или превратиться в миниатюрный монолит. Хороший дизайн позволяет сфокусировать его на одной задаче и сделать более компактным.</span></p><h3 id='cdn-сеть-доставки-контента'><span>CDN (сеть доставки контента)</span></h3><p><span>CDN </span><strong><span>—</span></strong><span> это сеть географически распределенных серверов, которые кэшируют статический контент, такой как изображения, видео и скрипты, ближе к пользователям.</span></p><p><span>Когда пользователь запрашивает контент, его перенаправляют на ближайший узел CDN, что значительно снижает задержку. Это также разгружает трафик с ваших исходных серверов, повышая масштабируемость и отказоустойчивость.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!zT4-!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5628ae4-5f6f-4351-8632-2c6192040e5b_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!zT4-!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5628ae4-5f6f-4351-8632-2c6192040e5b_2816x1536.png" alt="img"></a></p><p><span>Сети доставки контента (CDN) необходимы для глобальных приложений и повышения производительности пользовательского интерфейса.</span></p><p><span>Рассматривайте их как «локальные копии» больших файлов вашего веб-сайта, разбросанные по всему миру.</span></p><h3 id='dns-система-доменных-имен'><span>DNS (система доменных имен)</span></h3><p><strong><span>DNS</span></strong><span> сопоставляет удобочитаемые доменные имена с IP-адресами.</span></p><p><span>Когда вы вводите название веб-сайта, ваше устройство запрашивает DNS-сервер, чтобы найти числовой адрес сервера.</span></p><p><span>Имеет многоуровневое кэширование, поэтому ответы после первого запроса поступают быстро. Также может использоваться для простой балансировки нагрузки путем возврата разных IP-адресов для одного и того же имени.</span></p><p><span>Понимание DNS помогает понять, почему изменения имен требуют времени для распространения и почему некоторые сбои вызваны неправильной настройкой DNS.</span></p><h3 id='tcp-против-udp'><span>TCP против UDP</span></h3><ul><li><p><strong><span>TCP</span></strong><span> — это надежный протокол, ориентированный на установление соединения. Он гарантирует упорядоченную доставку с проверкой ошибок за счет использования подтверждений и повторных попыток.</span></p></li><li><p><strong><span>Протокол UDP</span></strong><span> не устанавливает соединение и не гарантирует доставку или порядок сообщений, что делает его намного быстрее и легче.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!X5oa!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8dfa500b-2382-4295-adf5-9597f6556814_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!X5oa!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8dfa500b-2382-4295-adf5-9597f6556814_2816x1536.png" alt="img"></a></p><p><span>Протокол TCP подходит для API, веб-страниц и передачи файлов, где важна точность.</span></p><p><span>Протокол UDP хорошо подходит для приложений, работающих в режиме реального времени, таких как видеозвонки или игры, где допустима периодическая потеря пакетов.</span></p><p><span>Представьте TCP как заказное письмо, а UDP — как быструю почтовую открытку.</span></p><h3 id='http2-и-http3-quic'><span>HTTP/2 и HTTP/3 (QUIC)</span></h3><ul><li><p><strong><span>В протоколе HTTP/2</span></strong><span> была введена технология мультиплексирования, позволяющая нескольким запросам использовать одно TCP-соединение, что снижает накладные расходы. Также появились такие функции, как сжатие заголовков и отправка запросов на сервер.</span></p></li><li><p><strong><span>HTTP/3</span></strong><span> работает поверх QUIC, который основан на UDP и улучшает время установления соединения и производительность в нестабильных сетях. Эти версии в основном направлены на снижение задержки и более эффективное использование современных сетевых условий.</span></p></li></ul><p><span>Для вас, как для инженера, ключевая идея заключается в следующем: меньшее количество подключений и более эффективное использование одного соединения.</span></p><h3 id='grpc-против-rest'><span>gRPC против REST</span></h3><ul><li><p><strong><span>REST</span></strong><span> обычно использует HTTP с JSON и ориентирован на такие ресурсы, как </span><code>/users</code><span>или </span><code>/orders</code><span>. Он прост, удобочитаем и широко используется для публичных API.</span></p></li><li><p><strong><span>gRPC</span></strong><span> использует протокол HTTP/2 и двоичное кодирование сообщений (protobuf), которые обеспечивают меньший размер и более быструю передачу по сети. Он также поддерживает двунаправленную потоковую передачу и строгую типизацию.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!hqqS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5f53a4-1d34-4d68-ae0d-5fa95a10ace2_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!hqqS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdf5f53a4-1d34-4d68-ae0d-5fa95a10ace2_2816x1536.png" alt="img"></a></p><p><span>В микросервисной архитектуре gRPC часто предпочтительнее для вызовов между сервисами, в то время как REST распространен для внешних клиентов.</span></p><p><span>Используйте REST, когда важны читаемость и совместимость, gRPC, когда важны производительность и контракты.</span></p><h3 id='websocket-и-server-sent-events-sse'><span>WebSocket и Server-Sent Events (SSE)</span></h3><p><strong><span>WebSocket</span></strong><span> создают полнодуплексное соединение, позволяющее клиенту и серверу отправлять друг другу сообщения в любое время.</span></p><p><strong><span>SSE</span></strong><span> позволяет серверу передавать события клиенту по одностороннему каналу с использованием HTTP.</span></p><p><span>WebSocket отлично подходят для чатов, многопользовательских игр и совместной работы в режиме реального времени.</span></p><p><span>SSE проще и подходит для таких случаев, как обновление результатов матчей в режиме реального времени или уведомления, когда обновления необходимо отправлять только серверу.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!hC1V!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e7421f9-f9c8-4b72-b708-277819f1cabe_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!hC1V!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e7421f9-f9c8-4b72-b708-277819f1cabe_2816x1536.png" alt="img"></a></p><p><span>Оба протокола решают проблемы обмена данными в реальном времени, с которыми обычный HTTP справляться не может.</span></p><h3 id='долгосрочный-опрос'><span>Долгосрочный опрос</span></h3><p><strong><span>«Долгий опрос (Long polling)»</span></strong><span> — это метод, при котором клиент отправляет запрос, а сервер удерживает его открытым до тех пор, пока не появятся новые данные или не истечет время ожидания.</span></p><p><span>Получив ответ, клиент немедленно отправляет еще один запрос. Это имитирует обновления в реальном времени по обычному протоколу HTTP без использования специальных протоколов.</span></p><p><span>Он менее эффективен, чем WebSockets, но проще в реализации и работает через большинство прокси-серверов и брандмауэров.</span></p><p><span>Представьте, что вы задаете вопрос: «Есть что-нибудь новое?» и молча ждете ответа.</span></p><h3 id='протокол-сплетен'><span>Протокол сплетен</span></h3><p><span>Протокол </span><strong><span>сплетен (gossip protocol)</span></strong><span> позволяет узлам в распределенной системе обмениваться информацией, периодически связываясь со случайными узлами.</span></p><p><span>Со временем информация распространяется подобно сплетням в социальной группе, пока у всех не сформируется примерно одинаковое мнение. Она используется для обмена информацией о членстве, состоянии здоровья или конфигурации отказоустойчивым способом.</span></p><p><span>Протокол обеспечивает согласованность результатов в конечном итоге и не зависит от центрального органа. Это делает его идеальным для больших кластеров, где узлы часто присоединяются и покидают систему.</span></p><h2 id='iii-внутреннее-устройство-баз-данных-и-хранилищ'><span>III. Внутреннее устройство баз данных и хранилищ</span></h2><h3 id='sharding-разделение-данных'><span>Sharding (разделение данных)</span></h3><p><strong><span>Sharding</span></strong><span> распределяет данные между несколькими машинами, каждая из которых хранит подмножество данных. Распространенные стратегии включают шардинг на основе диапазонов, шардинг на основе хешей и шардинг на основе каталогов.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!dXeS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb72b6fa-1336-421c-95e9-34d57d898ffc_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!dXeS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcb72b6fa-1336-421c-95e9-34d57d898ffc_2816x1536.png" alt="img"></a></p><p><span>Главная цель — масштабирование хранилища и пропускной способности за счет отказа от использования одного гигантского узла базы данных.</span></p><p><span>Самая сложная задача — выбрать ключ для сегментирования, который позволит избежать зон с высокой интенсивностью трафика, когда один сегмент получает большую часть трафика. После сегментирования перемещение данных между сегментами (пересегментирование) становится важной операционной задачей.</span></p><h3 id='шаблоны-репликации'><span>Шаблоны репликации</span></h3><p><strong><span>Репликация (Replication)</span></strong><span> означает хранение нескольких копий данных на разных узлах.</span></p><ul><li><p><span>В </span><strong><span>режиме &quot;ведущий-ведомый (master slave)&quot;</span></strong><span> (или &quot;первичная реплика (primary replica)&quot;) один узел обрабатывает операции записи и реплицирует изменения на другие узлы, которые, в свою очередь, обрабатывают операции чтения.</span></p></li><li><p><span>В </span><strong><span>режиме &quot;ведущий-ведущий (master master)&quot;</span></strong><span> (или &quot;многоуровневая первичная сеть (multi-primary)&quot;) несколько узлов принимают операции записи и разрешают конфликты.</span></p></li></ul><p><span>Репликация повышает производительность чтения и доступность, но затрудняет обеспечение согласованности, особенно когда операции записи выполняются на нескольких узлах.</span></p><p><span>На собеседованиях вам, скорее всего, придётся обсудить, как задержка репликации влияет на скорость чтения и как работает переключение на резервный сервер при выходе из строя основного сервера.</span></p><h3 id='последовательное-хеширование'><span>Последовательное хеширование</span></h3><p><strong><span>Последовательное хеширование (Consistent hashing)</span></strong><span> — это метод распределения ключей между узлами таким образом, чтобы минимизировать перемещение данных при добавлении или удалении узлов.</span></p><p><span>Ключи и узлы размещаются на логическом кольце, и каждый ключ принадлежит следующему узлу в кольце.</span></p><p><span>При присоединении или удалении узла перемещается лишь небольшая часть ключей. Это свойство очень полезно в распределенных кэшах и базах данных.</span></p><p><span>Представьте это как плавное отображение, которое не искажается при изменении размера кластера.</span></p><h3 id='индексирование-баз-данных-b-деревья-lsm-деревья'><span>Индексирование баз данных (B-деревья, LSM-деревья)</span></h3><p><strong><span>Индексы</span></strong><span> ускоряют запросы, организуя данные таким образом, чтобы обеспечить быстрый поиск.</span></p><p><span>B-деревья — это сбалансированные деревья, которые поддерживают порядок в данных и позволяют эффективно находить диапазоны значений, что характерно для реляционных баз данных.</span></p><p><span>В LSM-деревьях запись осуществляется пакетами в память, а затем периодически сбрасываются на диск, что делает запись очень быстрой, но чтение — более сложным.</span></p><p><span>Компромисс заключается в соотношении нагрузок, требующих интенсивной записи, и нагрузок, требующих интенсивного чтения.</span></p><p><span>Ключевая идея заключается в том, что индексы представляют собой отдельную структуру, которую необходимо обновлять при каждой записи, поэтому слишком большое количество индексов снижает производительность вставки.</span></p><h3 id='журналирование-с-предварительной-записью-wal'><span>Журналирование с предварительной записью (WAL)</span></h3><p><strong><span>Функция предварительного логирования (Write Ahead Logging)</span></strong><span> записывает изменения в журнал перед их применением к основной базе данных.</span></p><p><span>Если во время транзакции произойдёт сбой, система может воспроизвести журнал для восстановления согласованного состояния. WAL обеспечивает надёжность и атомарность транзакций. Он также позволяет использовать такие методы, как репликация из потока журналов. Позвольте мне рассказать, почему это важно.</span></p><p><span>Без WAL сбой может привести к тому, что ваши данные окажутся в полуобновленном, поврежденном состоянии.</span></p><h3 id='нормализация-против-денормализации'><span>Нормализация против денормализации</span></h3><ul><li><p><strong><span>Нормализация (Normalization)</span></strong><span> организует данные в таблицы, которые уменьшают избыточность и зависимости, следуя таким правилам, как первая нормальная форма, вторая нормальная форма и так далее. Это позволяет избежать аномалий при обновлениях и вставках.</span></p></li><li><p><strong><span>Денормализация (Denormalization)</span></strong><span> намеренно дублирует данные для ускорения чтения и уменьшения количества объединений. В высокомасштабных системах денормализация часто используется для путей с высокой интенсивностью чтения, например, для хранения имен пользователей вместе с сообщениями вместо каждого объединения.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!rucm!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc71cddf-e06c-498e-bc28-c0605ffc9d47_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!rucm!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ffc71cddf-e06c-498e-bc28-c0605ffc9d47_2816x1536.png" alt="img"></a></p><p><span>Настоящее мастерство заключается в умении определять, где можно безопасно выполнить денормализацию, не нарушая согласованность данных.</span></p><h3 id='полиглотная-персистенция'><span>Полиглотная персистенция</span></h3><p><strong><span>Полиглотная персистентность (Polyglot persistence)</span></strong><span> подразумевает использование нескольких типов баз данных в одной системе, каждая из которых выбрана в соответствии со своими основными функциями. Вы можете использовать реляционную базу данных для транзакций, хранилище документов для журналов, хранилище типа «ключ-значение» для кэширования и графовую базу данных для связей.</span></p><p><span>Вместо того чтобы помещать все данные в одну базу данных, вы выбираете подходящий инструмент для каждой задачи.</span></p><p><span>Компромисс заключается в большей операционной сложности и необходимости предоставления команде большего объема знаний.</span></p><h3 id='фильтры-блума'><span>Фильтры Блума</span></h3><p><strong><span>Фильтр Блума (Bloom Filters)</span></strong><span> — это эффективная с точки зрения использования памяти структура данных, которая быстро отвечает на вопрос «может ли этот элемент быть в наборе?» с возможными ложными срабатываниями, но без ложных отрицаний. Он использует несколько хеш-функций для установки битов в битовом массиве при добавлении элементов.</span></p><p><span>Для проверки наличия элемента проверяются одни и те же биты; если какой-либо бит равен нулю, элемент определенно отсутствует.</span></p><p><span>В базах данных и кэшах используются фильтры Блума, чтобы избежать ненужных обращений к диску или промахов кэша.</span></p><p><span>Воспринимайте их как строгих привратников, которые говорят «определенно нет» или «возможно».</span></p><h3 id='векторные-базы-данных'><span>Векторные базы данных</span></h3><p><strong><span>Векторные базы данных</span></strong><span> хранят и обрабатывают векторы, которые представляют собой числовые представления данных, таких как текст, изображения или аудио. Эти векторы получаются из моделей, таких как эмбеддинги, и позволяют осуществлять поиск по сходству, например, «найти документы, наиболее похожие на этот».</span></p><p><span>Вместо точного сравнения на равенство они используют метрики расстояния, такие как косинусное сходство или евклидово расстояние. Это крайне важно для современных систем поиска, рекомендаций и систем искусственного интеллекта.</span></p><p><span>На собеседованиях достаточно знать, что векторные базы данных поддерживают поиск ближайшего соседа по многомерным данным.</span></p><h2 id='iv-надежность-reliability-и-отказоустойчивость-fault-tolerance'><span>IV. Надежность (Reliability) и отказоустойчивость (Fault Tolerance)</span></h2><h3 id='ограничение-скорости'><span>Ограничение скорости</span></h3><p><strong><span>Ограничение скорости запросов (Rate limiting)</span></strong><span> контролирует количество запросов, которые пользователь, IP-адрес или ключ API могут отправить за определенный промежуток времени. Это защищает вашу систему от злоупотреблений, случайных скачков трафика и неконтролируемых циклов.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!XoxJ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20f9aebc-7786-4e9a-8200-4e2291b0a346_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!XoxJ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F20f9aebc-7786-4e9a-8200-4e2291b0a346_2816x1536.png" alt="img"></a></p><p><span>К распространённым стратегиям относятся фиксированное окно, скользящее окно и метод «ведра жетонов».</span></p><p><span>Ограничения скорости запросов часто вводятся на уровне API-шлюза или балансировщика нагрузки.</span></p><p><span>Рассматривайте их как предохранительные тормоза, которые предотвращают перегрузку общих ресурсов.</span></p><h3 id='схема-автоматического-выключателя'><span>Схема автоматического выключателя</span></h3><p><strong><span>Автоматический выключатель (Circuit breaker pattern)</span></strong><span> отслеживает вызовы к удаленной службе и «размыкается», если возникает слишком много сбоев.</span></p><p><span>При открытии сервис немедленно отклоняет новые запросы, вместо того чтобы снова пытаться использовать неисправную службу.</span></p><p><span>После периода ожидания система позволяет выполнить несколько пробных вызовов, чтобы проверить, восстановилась ли работа сервиса, и закрывает его, если они проходят успешно. Такой подход предотвращает каскадные сбои, когда один медленно работающий сервис тянет всю систему вниз.</span></p><p><span>Вот тут-то и кроется сложность. Автоматические выключатели необходимо тщательно настраивать, чтобы они не срабатывали слишком резко или слишком поздно.</span></p><h3 id='схема-перегородки'><span>Схема перегородки</span></h3><p><strong><span>&quot;Схема перегородки (Bulkhead pattern)&quot;</span></strong><span> изолирует части системы, чтобы сбой в одной области не привел к сбою во всей системе. Это может означать отдельные пулы соединений, пулы потоков или даже целые кластеры служб для различных функций.</span></p><p><span>Если одна перегородка переполнена транспортом, другие продолжают работать.</span></p><p><span>Название происходит от корабельных переборок, которые позволяют предотвратить затопление одного из отсеков.</span></p><p><span>В ходе проектных обсуждений использование перегородок свидетельствует о том, что вы учитываете необходимость изоляции разломов и радиус поражения взрывной волной.</span></p><h3 id='шаблоны-повторных-попыток-и-экспоненциальная-задержка'><span>Шаблоны повторных попыток и экспоненциальная задержка</span></h3><p><strong><span>Повторные попытки (Retry Patterns)</span></strong><span> помогают восстановиться после временных ошибок, таких как тайм-аут сети или временная перегрузка.</span></p><p><strong><span>Экспоненциальная задержка (Exponential backoff)</span></strong><span> означает, что каждая последующая попытка ожидания длится дольше предыдущей, например, 1 секунда, 2 секунды, 4 секунды и так далее. Это предотвращает чрезмерную нагрузку на службу, которая и без того испытывает трудности.</span></p><p><span>В эффективных стратегиях повторных попыток также используется эффект дрожания (небольшая случайность), чтобы избежать хаотичных потоков.</span></p><blockquote><p><span>Повторные попытки без механизма отката могут усугубить сбои, а не помочь.</span></p></blockquote><h3 id='идемпотентность'><span>Идемпотентность</span></h3><p><span>Операция является </span><strong><span>идемпотентной (Idempotency),</span></strong><span> если её многократное выполнение приводит к тому же эффекту, что и однократное.</span></p><p><span>Например, команда «установить статус пользователя на активный» является идемпотентной, тогда как команда «увеличить баланс счета на 10» — нет.</span></p><p><span>Идемпотентность имеет решающее значение в системах, использующих повторные попытки, поскольку один и тот же запрос может быть отправлен несколько раз.</span></p><p><span>Для таких операций, как платежи, API часто требуют использования идемпотентных ключей во избежание двойного списания средств.</span></p><p><span>На собеседованиях всегда упоминайте идемпотентность, когда говорите хотя бы об одной попытке родов или повторных попытках.</span></p><h3 id='сердцебиение'><span>Сердцебиение</span></h3><p><strong><span>Сердцебиение (Heartbeat)</span></strong><span> — это периодический сигнал, посылаемый службой или узлом, указывающий на то, что он жив и здоров.</span></p><p><span>Системы мониторинга или координаторы отслеживают сердцебиение.</span></p><p><span>Если они перестают получать эти данные, они помечают узел как неработающий и запускают действия по переключению на резервный сервер или масштабированию.</span></p><p><span>Учащенное сердцебиение — это простой, но мощный инструмент для определения жизнеспособности организма. Можно рассматривать его как «проверку пульса» системы.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!-RC7!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ac2944e-be08-4844-8f82-f22dad9ac3ca_2816x1536.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!-RC7!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4ac2944e-be08-4844-8f82-f22dad9ac3ca_2816x1536.jpeg" alt="img"></a></p><p>&nbsp;</p><h3 id='выборы-лидера-paxos-raft'><span>Выборы лидера (Paxos, Raft)</span></h3><p><strong><span>Выборы лидера (Leader election)</span></strong><span> — это процесс выбора одного узла, который будет выступать в качестве координатора среди множества других.</span></p><p><span>Алгоритмы, такие как Paxos и Raft, гарантируют, что выбирается только один лидер и что все узлы в конечном итоге приходят к согласию относительно того, кто является этим лидером.</span></p><p><span>Лидер выполняет такие задачи, как распределение работы, управление метаданными или упорядочивание операций записи. Если лидер не справляется со своими обязанностями, автоматически избирается новый.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!y5Jj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0c7b6ac-fd1c-46a0-ab51-457b10c3ab30_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!y5Jj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0c7b6ac-fd1c-46a0-ab51-457b10c3ab30_2816x1536.png" alt="img"></a></p><p><span>Для собеседования вам не нужно запоминать математику, но вы должны знать, что алгоритмы консенсуса лежат в основе многих критически важных систем, таких как хранилища метаданных и распределенные журналы.</span></p><h3 id='распределенные-транзакции-паттерн-saga'><span>Распределенные транзакции (паттерн SAGA)</span></h3><p><strong><span>Распределенная транзакция (distributed transaction)</span></strong><span> охватывает несколько сервисов или баз данных.</span></p><p><span>Паттерн </span><strong><span>SAGA</span></strong><span> моделирует такую транзакцию как последовательность локальных шагов с компенсирующими действиями при откате транзакций.</span></p><p><span>Вместо блокировки всего, как в единой ACID-транзакции, каждый сервис выполняет свою часть работы и публикует событие. Если что-то не удается, компенсирующие шаги пытаются отменить предыдущие изменения. Это естественным образом соответствует микросервисам и принципу согласованности в конечном итоге.</span></p><p><span>Компромисс заключается в более сложной логике и возможности частичных сбоев, которые необходимо корректно обрабатывать.</span></p><h3 id='двухфазное-подтверждение-2pc'><span>Двухфазное подтверждение (2PC)</span></h3><p><span>Протокол </span><strong><span>Two Phase Commit</span></strong><span> стремится обеспечить атомарные транзакции между несколькими узлами.</span></p><ul><li><p><span>На первом этапе координатор спрашивает всех участников, готовы ли они подтвердить свою приверженность проекту.</span></p></li><li><p><span>На втором этапе, если все согласны, система предписывает им подтвердить свои действия; в противном случае — отменить их.</span></p></li></ul><p><span>Технология 2PC обеспечивает надежные гарантии, но может заблокироваться в случае сбоя координатора, а также является дорогостоящей при масштабировании из-за блокировки.</span></p><p><span>В современных облачных системах для высокоскоростных каналов часто избегают использования 2PC и заменяют его такими шаблонами, как SAGA.</span></p><h2 id='v-кэширование-и-обмен-сообщениями'><span>V. Кэширование и обмен сообщениями</span></h2><h3 id='кэширование'><span>Кэширование</span></h3><p><strong><span>Кэширование (Caching)</span></strong><span> позволяет хранить часто обращающиеся к данным данные в быстром хранилище, обычно в оперативной памяти, чтобы уменьшить задержку и нагрузку на бэкэнд.</span></p><p><span>К распространенным уровням кэширования относятся внутрипроцессные кэши, внешние хранилища типа «ключ-значение» и CDN. Кэширование особенно эффективно для задач с интенсивным чтением и ресурсоемкими вычислениями.</span></p><p><span>Вот тут-то и кроется сложность. Устаревшие данные и аннулирование кэша делают его сложнее, чем кажется на первый взгляд.</span></p><p><span>Как говорится, аннулирование кэша — одна из сложных проблем в информатике.</span></p><h3 id='стратегии-кэширования-отложенное-кэширование-сквозная-запись-и-т-д'><span>Стратегии кэширования (отложенное кэширование, сквозная запись и т. д.)</span></h3><ul><li><p><strong><span>Отключение кэша (Cache aside)</span></strong><span> означает, что приложение считывает данные из кэша, а в случае сбоя загружает их из базы данных и записывает в кэш.</span></p></li><li><p><strong><span>Сквозная запись (Write through)</span></strong><span> выполняет одновременную запись в кэш и базу данных, обеспечивая постоянную синхронизацию кэша и источника.</span></p></li><li><p><strong><span>Обратная запись (Write back)</span></strong><span> сначала выполняется в кэш, а затем сбрасывается в базу данных, что быстро, но рискованно в случае сбоя в работе кэша.</span></p></li></ul><p><a href='https://substackcdn.com/image/fetch/$s_!lBLr!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a0386b7-b397-42fe-9cd1-80b1886f1d44_1200x750.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!lBLr!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5a0386b7-b397-42fe-9cd1-80b1886f1d44_1200x750.jpeg" alt="img"></a></p><p><span>Каждая стратегия по-разному балансирует между новизной, сложностью и эффективностью.</span></p><h3 id='политика-удаления-элементов-из-кэша-lru-lfu'><span>Политика удаления элементов из кэша (LRU, LFU)</span></h3><p><strong><span>Политика удаления элементов из кэша (Cache Eviction Policies)</span></strong><span> определяет, какие элементы следует удалить, когда кэш заполняется.</span></p><ul><li><p><strong><span>Метод LRU</span></strong><span> (Least Recently Used — наименее использованные) удаляет элементы, к которым давно не обращались, предполагая, что недавно использованные элементы с большей вероятностью будут использованы повторно.</span></p></li><li><p><strong><span>Метод LFU</span></strong><span> (Least Frequently Used – наименее часто используемые) исключает из списка предметы, к которым редко обращаются, ориентируясь на их долгосрочную популярность.</span></p></li></ul><p><span>В некоторых системах используются алгоритмы случайного выбора, </span><strong><span>FIFO</span></strong><span> или более сложные алгоритмы.</span></p><p><span>Главная идея заключается в том, что объем кэш-памяти ограничен, поэтому наиболее ценные элементы следует хранить в оперативной памяти.</span></p><h3 id='очереди-сообщений-точка-точка'><span>Очереди сообщений (точка-точка)</span></h3><p><strong><span>Очередь сообщений (message queue)</span></strong><span> позволяет одному компоненту отправлять сообщения другому, не требуя, чтобы оба компонента были одновременно подключены к сети.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!de4I!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c623e1c-5e44-4058-8455-2b89132a3975_1200x750.jpeg'><img src="https://substackcdn.com/image/fetch/$s_!de4I!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5c623e1c-5e44-4058-8455-2b89132a3975_1200x750.jpeg" alt="img"></a></p><p><span>В модели &quot;точка-точка (Point to Point)&quot; сообщения в очереди обрабатываются одним получателем, а затем удаляются. Это позволяет отделить отправителя от получателя, обеспечивая их масштабируемость и возможность самостоятельного устранения неполадок.</span></p><p><span>Очереди отлично подходят для фоновых задач, отправки электронной почты и асинхронной обработки ресурсоемких задач.</span></p><p><span>Рассматривайте их как список дел, общий для всех сервисов.</span></p><h3 id='публикацияподписка-publish-subscribe'><span>Публикация/Подписка (Publish Subscribe)</span></h3><p><span>В </span><strong><span>системе «издатель-подписчик»</span></strong><span> издатели отправляют сообщения по темам, а не напрямую потребителям.</span></p><p><span>Подписчики слушают темы, которые их интересуют, и получают копии соответствующих сообщений. Это обеспечивает коммуникацию в формате вещания и слабую связь между производителями и потребителями.</span></p><p><span>Различные сервисы могут реагировать на одно и то же событие по-разному, например, посредством ведения журналов, аналитики и уведомлений.</span></p><h3 id='очереди-недоставленных-сообщений'><span>Очереди недоставленных сообщений</span></h3><p><span>В </span><strong><span>очереди недоставленных сообщений (dead letter queue)</span></strong><span> хранятся сообщения, которые не удалось успешно обработать после нескольких попыток.</span></p><p><span>Вместо того чтобы бесконечно повторять попытки и блокировать основную очередь, эти сообщения перемещаются в сторону.</span></p><p><span>Инженеры могут проверять очередь недоставленных сообщений, чтобы отлаживать проблемы, исправлять данные или воспроизводить сообщения позже. Такой подход повышает отказоустойчивость и предотвращает зависание системы на «опасных сообщениях».</span></p><p><span>Рассматривайте это как временное хранилище проблемных заданий.</span></p><h2 id='vi-наблюдаемость-observability-и-безопасность-security'><span>VI. Наблюдаемость (Observability) и Безопасность (Security)</span></h2><h3 id='распределенная-трассировка'><span>Распределенная трассировка</span></h3><p><strong><span>Распределенная трассировка (Distributed tracing)</span></strong><span> отслеживает один запрос на протяжении всего его прохождения через несколько сервисов. Каждый сервис добавляет идентификатор трассировки и информацию о диапазоне запросов, что позволяет восстановить полный путь запроса. Это чрезвычайно полезно при отладке медленных ответов или сбоев в микросервисных архитектурах.</span></p><p><span>Без трассировки вы видите только отдельные ошибки. С трассировкой же вы видите всю картину целиком, охватывающую все сервисы, очереди и базы данных.</span></p><h3 id='sla-против-slo-против-sli'><span>SLA против SLO против SLI</span></h3><p><span>Соглашение об уровне обслуживания </span><strong><span>SLA</span></strong><span> (Service Level Agreement) — это внешнее обещание клиентам, например, «99,9% времени бесперебойной работы в месяц».</span></p><p><strong><span>SLO</span></strong><span> (Service Level Objective) — это внутренний целевой показатель, к достижению которого стремятся инженеры, обычно более строгий, чем SLA. </span></p><p><strong><span>SLI</span></strong><span> (Service Level Indicator) — это фактически измеряемый показатель, например, реальное время безотказной работы или процент успешных запросов </span><strong><span>.</span></strong></p><p><span>Представьте себе SLA как контракт, SLO как цель, а SLI как табло результатов.</span></p><p><a href='https://substackcdn.com/image/fetch/$s_!jFeS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2304db8-db4a-46b7-95eb-f9cdda71ae26_2816x1536.png'><img src="https://substackcdn.com/image/fetch/$s_!jFeS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2304db8-db4a-46b7-95eb-f9cdda71ae26_2816x1536.png" alt="img"></a></p><p><span>В ходе собеседований правильное использование этих терминов свидетельствует о зрелости мышления в вопросах надежности.</span></p><h3 id='oauth-20-и-oidc'><span>OAuth 2.0 и OIDC</span></h3><p><strong><span>OAuth 2.0</span></strong><span> — это фреймворк для делегированной авторизации. Он позволяет пользователям предоставлять приложению ограниченный доступ к своим ресурсам без обмена паролями.</span></p><p><strong><span>OIDC</span></strong><span> (OpenID Connect) основан на OAuth 2.0 и добавляет функцию аутентификации, позволяя клиентам проверять, кто является пользователем, и получать информацию о его личности. Это лежит в основе многих сценариев «Вход с помощью X».</span></p><p><span>Основная идея заключается в том, что сервер авторизации выдает токены, которым могут доверять клиенты и API.</span></p><h3 id='tlsssl-рукопожатие-handshake'><span>TLS/SSL-рукопожатие (Handshake)</span></h3><p><strong><span>TLS/SSL</span></strong><span> обеспечивает безопасность связи между клиентом и сервером путем шифрования данных во время передачи.</span></p><p><span>В процессе </span><strong><span>установления соединения</span></strong><span> клиент и сервер согласовывают алгоритмы шифрования, безопасно обмениваются ключами и проверяют сертификаты.</span></p><p><span>После завершения процедуры установления соединения все последующие данные шифруются и защищены от прослушивания. Именно поэтому в вашем браузере появляется значок маленького замка.</span></p><p><span>Без протокола TLS любой пользователь сети мог читать или изменять конфиденциальную информацию.</span></p><h3 id='безопасность-с-нулевым-доверием'><span>Безопасность с нулевым доверием</span></h3><p><span>Модель безопасности </span><strong><span>«нулевого доверия (Zero Trust)»</span></strong><span> гласит: «Никогда не доверяй, всегда проверяй». Она предполагает, что угрозы могут существовать как вне, так и внутри сети.</span></p><p><span>Каждый запрос должен быть аутентифицирован, авторизован и зашифрован, даже если он поступает из вашего центра обработки данных или VPC. Доступ предоставляется на основе идентификации, состояния устройства и контекста, а не просто на основании нахождения «внутри брандмауэра».</span></p><p><span>В современных архитектурах концепция «нулевого доверия» становится подходом по умолчанию для проектирования безопасных систем.</span></p><h3 id='ссылка'><span>Ссылка</span></h3><ul><li><p><strong><a href='https://bit.ly/3KFuqrC'><span>Понимание собеседования по проектированию системы</span></a></strong></p></li><li><p><strong><a href='https://designgurus.substack.com/p/free-system-design-crash-course'><span>Экспресс-курс по проектированию систем (бесплатно)</span></a></strong></p></li></ul><h2 id='основные-выводы'><span>Основные выводы</span></h2><ul><li><p><span>Проектирование системы в основном сводится к пониманию компромиссов: согласованность против доступности, задержка против пропускной способности, простота против гибкости.</span></p></li><li><p><span>Масштабирование — это не просто «добавление большего количества серверов». Необходимо учитывать балансировку нагрузки, шардинг, репликацию и узкие места.</span></p></li><li><p><span>Такие механизмы обеспечения надежности, как ограничение скорости передачи данных, автоматические выключатели, повторные попытки и перегородки, существуют потому, что сбои являются нормой в распределенных системах.</span></p></li><li><p><span>Кэширование, очереди и модель публикации/подписки — ваши лучшие друзья в плане производительности и разделения зависимостей, но они создают новые проблемы, связанные с согласованностью и порядком выполнения.</span></p></li><li><p><span>Наблюдаемость и концепции безопасности, такие как трассировка, SLI, OAuth, TLS и Zero Trust, имеют важное значение для систем, которые не только быстры, но и безопасны и поддаются отладке.</span></p></li></ul></div></div>
+</body>
+</html>
