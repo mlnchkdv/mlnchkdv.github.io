@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Математика в телефоне</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      window.MathJax = {
+        tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+        svg: { fontCache: "global" }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+    <header class="hero" id="top">
+      <nav class="topbar">
+        <div class="brand">Математика в телефоне</div>
+        <div class="nav-links">
+          <a href="#lecture">Лекция</a>
+          <a href="#quiz">Квиз</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">День учителя математики | 31 марта 2026</p>
+          <h1 class="hero-title reveal">
+            Смартфон выглядит
+            <span>интерфейсом,</span>
+            но внутри работает математика
+          </h1>
+          <p class="hero-text reveal">
+            Здесь теория не отделена от практики: каждая сцена сразу показывает
+            модель, смысл формулы и живую демонстрацию того, как параметр влияет
+            на поведение технологии в телефоне.
+          </p>
+          <div class="hero-actions reveal">
+            <a href="#lecture" class="button button-primary">Открыть сцены</a>
+            <a href="#quiz" class="button button-secondary">Перейти к квизу</a>
+          </div>
+          <ul class="hero-facts reveal">
+            <li>6 сцен с формулами и интерактивом</li>
+            <li>Математика уровня школы и 1 курса</li>
+            <li>Мгновенная проверка в квизе</li>
+          </ul>
+        </div>
+
+        <div class="phone-stage reveal">
+          <div class="phone-shell hero-float">
+            <div class="phone-screen">
+              <div class="phone-status">
+                <span>09:41</span>
+                <span>math://inside-phone</span>
+              </div>
+              <div class="screen-card screen-card-main">
+                <p>Сейчас активны</p>
+                <h2>6</h2>
+                <span>математических сцен</span>
+                <svg viewBox="0 0 320 140" class="mini-graph" aria-hidden="true">
+                  <path d="M 0 106 C 38 100, 62 96, 84 86 S 138 64, 168 72 S 214 58, 244 42 S 286 24, 320 18"></path>
+                </svg>
+              </div>
+              <div class="screen-row">
+                <div class="screen-card"><p>Навигация</p><strong>геометрия + графы</strong></div>
+                <div class="screen-card"><p>Камера</p><strong>матрицы + свертки</strong></div>
+              </div>
+              <div class="screen-row">
+                <div class="screen-card"><p>Face ID</p><strong>метрики признаков</strong></div>
+                <div class="screen-card"><p>Связь</p><strong>спектры + шум</strong></div>
+              </div>
+              <div class="screen-card qr-card pulse-card">
+                <div class="qr-phone-code">
+                  <img src="./qr-placeholder.jpg" alt="QR-код для открытия сайта на телефоне" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="overview reveal">
+        <div class="section-head">
+          <p class="eyebrow">Логика построения</p>
+          <h2>Каждая сцена объединяет формулу, инженерный смысл и интерактивный эксперимент</h2>
+        </div>
+        <div class="overview-grid">
+          <article><strong>Модель</strong><p>Сначала формулируется математическое ядро задачи.</p></article>
+          <article><strong>Смысл</strong><p>Затем объясняется, что именно делает телефон и почему это нетривиально.</p></article>
+          <article><strong>Эксперимент</strong><p>После этого параметр можно поменять и увидеть реакцию системы.</p></article>
+          <article><strong>Проверка</strong><p>В конце каждая идея закрепляется квизом с мгновенной обратной связью.</p></article>
+        </div>
+      </section>
+
+      <section class="story-section" id="lecture">
+        <div class="section-head reveal">
+          <p class="eyebrow">Интерактивные Сцены</p>
+          <h2>Теория и практика теперь слиты в единый поток, как в хорошей лекции с живой демонстрацией</h2>
+        </div>
+
+        <article class="story-card scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">01</span>
+            <h3>Навигация: трилиатерация, least squares и поиск маршрута</h3>
+            <p>Телефон получает шумные измерения расстояний до источников сигнала, восстанавливает положение и затем решает задачу выбора маршрута на графе дорог.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ d_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \]</div>
+              <div class="formula">\[ \min_{x,y} \sum_i \left(d_i^{\text{изм}} - d_i(x,y)\right)^2 \]</div>
+              <div class="formula">\[ \text{route} = \arg\min_{P} \sum_{e \in P} w_e \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>Координаты не даны напрямую, измерения шумные, а решение должно обновляться быстро.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Геометрия, least squares, теория графов, численная оптимизация.</p></div>
+            </div>
+          </div>
+          <div class="story-side">
+            <div class="story-side-stack">
+              <div class="scene-demo-card">
+                <h4>Эксперимент</h4>
+                <p>Перемещай точку и смотри, как пересчитываются расстояния.</p>
+                <div class="map-stage" id="mapStage">
+                  <span class="tower tower-a"></span>
+                  <span class="tower tower-b"></span>
+                  <span class="tower tower-c"></span>
+                  <span class="user-dot" id="userDot"></span>
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="map-overlay">
+                    <circle id="circleA" cx="18" cy="20" r="10"></circle>
+                    <circle id="circleB" cx="78" cy="32" r="10"></circle>
+                    <circle id="circleC" cx="56" cy="78" r="10"></circle>
+                  </svg>
+                </div>
+                <div class="demo-stats three-cols">
+                  <div><span class="stat-label">Вышка A</span><strong id="distA">0.0 км</strong></div>
+                  <div><span class="stat-label">Вышка B</span><strong id="distB">0.0 км</strong></div>
+                  <div><span class="stat-label">Вышка C</span><strong id="distC">0.0 км</strong></div>
+                </div>
+              </div>
+              <div class="scene-demo-card">
+                <h4>Граф маршрутов</h4>
+                <p>Выбери начальную и конечную вершины. Сайт посчитает кратчайший путь по весам ребер и подсветит его на графе.</p>
+                <div class="route-toolbar">
+                  <div class="route-pill">Старт: <strong id="routeStartLabel">не выбран</strong></div>
+                  <div class="route-pill">Финиш: <strong id="routeEndLabel">не выбран</strong></div>
+                  <div class="route-pill route-mode" id="routeMode">Выбери на карте сначала старт, затем финиш</div>
+                </div>
+                <div class="graph-route" id="routeGraph">
+                  <button class="graph-node" data-node="A" style="left:10%;top:58%;">A</button>
+                  <button class="graph-node" data-node="B" style="left:30%;top:24%;">B</button>
+                  <button class="graph-node" data-node="C" style="left:34%;top:76%;">C</button>
+                  <button class="graph-node" data-node="D" style="left:58%;top:28%;">D</button>
+                  <button class="graph-node" data-node="E" style="left:62%;top:72%;">E</button>
+                  <button class="graph-node target-node" data-node="T" style="left:88%;top:48%;">T</button>
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="graph-lines">
+                    <path d="M10 58 L30 24"></path>
+                    <path d="M10 58 L34 76"></path>
+                    <path d="M30 24 L58 28"></path>
+                    <path d="M34 76 L62 72"></path>
+                    <path d="M58 28 L88 48"></path>
+                    <path d="M62 72 L88 48"></path>
+                    <path id="routePath" class="route-highlight" d=""></path>
+                  </svg>
+                  <span class="edge-label" style="left:20%;top:38%;">4</span>
+                  <span class="edge-label" style="left:22%;top:68%;">5</span>
+                  <span class="edge-label" style="left:44%;top:22%;">5</span>
+                  <span class="edge-label" style="left:48%;top:72%;">7</span>
+                  <span class="edge-label" style="left:73%;top:34%;">5</span>
+                  <span class="edge-label" style="left:75%;top:66%;">6</span>
+                </div>
+                <div class="lab-metrics">
+                  <span id="routeBest">Кратчайший путь: выбери две вершины</span>
+                  <span id="routeLength">Вес: —</span>
+                </div>
+                <div class="route-candidates" id="routeCandidates">
+                  <div class="route-option" id="routeOption1"></div>
+                  <div class="route-option" id="routeOption2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-card reverse scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">02</span>
+            <h3>Камера: проективная геометрия и вычислительная фотография</h3>
+            <p>Смартфон не просто “делает снимок”. Он оценивает геометрию сцены, переводит свет в дискретную матрицу чисел, локально фильтрует изображение и затем сшивает несколько оценок в один финальный кадр.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ x' \sim K [R \mid t] X \]</div>
+              <div class="formula">\[ (I * K)(u,v) = \sum_i \sum_j I(u-i, v-j)\,K(i,j) \]</div>
+              <div class="formula">\[ I_{\text{final}} = \sum_k w_k I_k \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>На сенсор попадает мало света, сцена движется, а разрешение и шум конфликтуют друг с другом. Камера вынуждена не просто измерять, а оценивать скрытую “идеальную” картинку.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Проективная геометрия, линейная алгебра, свертки как линейные операторы, взвешенные суммы кадров, оптимизация качества и подавление шума.</p></div>
+            </div>
+          </div>
+          <div class="story-side">
+            <div class="story-side-stack">
+              <div class="scene-demo-card">
+                <h4>Проекция кадра</h4>
+                <p>Перемещай объект по видоискателю. Камера предпочитает положения, где главный объект попадает в устойчивую композицию и не теряется при кадрировании.</p>
+                <div class="camera-stage" id="cameraStage">
+                  <div class="camera-grid"></div>
+                  <div class="focus-point" id="focusPoint" tabindex="0" aria-label="Объект в кадре"></div>
+                </div>
+                <div class="demo-stats">
+                  <div><span class="stat-label">Оценка композиции</span><strong id="compositionScore">82 / 100</strong></div>
+                  <div><span class="stat-label">Комментарий</span><strong id="compositionHint">Почти в сильной точке</strong></div>
+                </div>
+                <div class="mini-note">Даже до нейросетей работает геометрическая эвристика: сильные точки и баланс кадра уменьшают риск того, что важный объект окажется на краю после стабилизации и обрезки.</div>
+              </div>
+              <div class="scene-demo-card">
+                <h4>Лаборатория вычислительной фотографии</h4>
+                <p>Ниже один и тот же локальный фрагмент сенсора проходит через разные операторы. Слева входные интенсивности, в центре ядро, справа результат поэлементного умножения и итоговый отклик центрального пикселя.</p>
+                <div class="vision-toolbar">
+                  <div class="vision-group" id="scenePicker">
+                    <button class="vision-chip active" data-scene="0">Граница</button>
+                    <button class="vision-chip" data-scene="1">Шум</button>
+                    <button class="vision-chip" data-scene="2">Блик</button>
+                  </div>
+                  <div class="vision-group" id="kernelPicker">
+                    <button class="vision-chip active" data-kernel="blur">Blur</button>
+                    <button class="vision-chip" data-kernel="edge">Edge</button>
+                    <button class="vision-chip" data-kernel="sharp">Sharp</button>
+                  </div>
+                </div>
+                <div class="kernel-caption" id="patchCaption">Фрагмент с яркой границей справа</div>
+                <div class="vision-panels">
+                  <div class="vision-panel">
+                    <div class="kernel-subtitle">Сенсорное окно \(I\)</div>
+                    <div class="patch-grid" id="patchGrid"></div>
+                  </div>
+                  <div class="vision-panel">
+                    <div class="kernel-subtitle">Оператор \(K\)</div>
+                    <div class="kernel-grid" id="kernelGrid"></div>
+                  </div>
+                  <div class="vision-panel">
+                    <div class="kernel-subtitle">Вклад \(I \odot K\)</div>
+                    <div class="kernel-grid" id="kernelProduct"></div>
+                  </div>
+                </div>
+                <div class="vision-output">
+                  <div class="vision-output-card">
+                    <span class="stat-label">Локальный смысл</span>
+                    <strong id="kernelEffect">Эффект: сглаживание шума</strong>
+                  </div>
+                  <div class="vision-output-card">
+                    <span class="stat-label">Отклик центра</span>
+                    <strong id="kernelValue">Отклик центра: 0</strong>
+                  </div>
+                </div>
+                <div class="lab-metrics">
+                  <span id="kernelLabel">Оператор: blur</span>
+                  <span id="kernelInterpretation">Интерпретация: усреднение</span>
+                </div>
+                <div class="kernel-result">
+                  <div id="kernelMath"></div>
+                  <div class="kernel-explain" id="kernelExplain">Выбери ядро и посмотри, какие пиксели усиливаются, а какие подавляются.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-card scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">03</span>
+            <h3>Звук и связь: гармоники, ДПФ и шум</h3>
+            <p>Телефон получает смесь полезного сигнала и помех, переводит ее в дискретный набор отсчетов, раскладывает по частотам и затем пропускает через спектральную маску, чтобы восстановить более чистую версию.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ X_k = \sum_{n=0}^{N-1} x_n e^{-2\pi i k n / N} \]</div>
+              <div class="formula">\[ x(t) = \sum_m A_m \sin(\omega_m t + \varphi_m) \]</div>
+              <div class="formula">\[ y = x + \eta,\qquad \hat X_k = M_k X_k \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>Полезная информация и шум накладываются друг на друга. Телефон должен быстро оценить, какие частоты несут структуру речи, музыки или сигнала связи, а какие являются помехой.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Дискретизация, тригонометрические базисы, комплексные коэффициенты ДПФ, спектральные маски, обратное преобразование и оценка отношения сигнал/шум.</p></div>
+            </div>
+          </div>
+          <div class="story-side">
+            <div class="story-side-stack">
+              <div class="scene-demo-card">
+                <h4>DSP-лаборатория</h4>
+                <p>Выбери тип сигнала, добавь шум и включи спектральный фильтр. Сверху видна смесь во времени, в центре ее спектр, снизу восстановленный сигнал после фильтрации.</p>
+                <div class="dsp-toolbar">
+                  <div class="vision-group" id="signalScenePicker">
+                    <button class="vision-chip active" data-signal="voice">Речь</button>
+                    <button class="vision-chip" data-signal="street">Улица</button>
+                    <button class="vision-chip" data-signal="music">Музыка</button>
+                  </div>
+                  <div class="vision-group" id="signalFilterPicker">
+                    <button class="vision-chip active" data-filter="none">Без фильтра</button>
+                    <button class="vision-chip" data-filter="low">Low-pass</button>
+                    <button class="vision-chip" data-filter="band">Band-pass</button>
+                  </div>
+                </div>
+                <label for="noiseRange">Интенсивность шума</label>
+                <input id="noiseRange" type="range" min="0" max="100" value="22" />
+                <div class="dsp-panels">
+                  <div class="dsp-panel">
+                    <div class="kernel-subtitle">Смесь во времени \(y_n\)</div>
+                    <canvas id="signalCanvas" width="520" height="170"></canvas>
+                  </div>
+                  <div class="dsp-panel">
+                    <div class="kernel-subtitle">Амплитудный спектр \(|X_k|\)</div>
+                    <div class="spectrum-bars" id="spectrumBars"></div>
+                  </div>
+                  <div class="dsp-panel">
+                    <div class="kernel-subtitle">После фильтрации \(\hat y_n\)</div>
+                    <canvas id="recoveredCanvas" width="520" height="170"></canvas>
+                  </div>
+                </div>
+                <div class="noise-bar"><div id="noiseFill"></div></div>
+                <div class="lab-metrics">
+                  <span id="noiseInfo">Шум: 18%</span>
+                  <span id="snrInfo">SNR: 15.2 dB</span>
+                  <span id="spectrumPeak">Пик спектра: k = 4</span>
+                  <span id="filterInfo">Фильтр: пропускает все частоты</span>
+                </div>
+                <div class="kernel-result">
+                  <div id="dspMath">\[ \hat X_k = M_k X_k \]</div>
+                  <div class="kernel-explain" id="dspExplain">Когда маска зануляет часть спектра, телефон подавляет помехи, но может потерять часть полезной структуры сигнала.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-card reverse scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">04</span>
+            <h3>Face ID: векторы признаков и решение по порогу</h3>
+            <p>Биометрическая система не сравнивает фотографии напрямую. Она переводит лицо в компактный вектор признаков, измеряет расстояние до эталона и затем выбирает порог, балансируя между ложным допуском и ложным отказом.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ z = f_{\theta}(\text{image}) \in \mathbb{R}^n \]</div>
+              <div class="formula">\[ \operatorname{dist}(z_1, z_2) = \lVert z_1 - z_2 \rVert_2 \]</div>
+              <div class="formula">\[ \text{accept} \iff \operatorname{dist}(z_1, z_2) < \tau,\qquad \tau \uparrow \Rightarrow FAR \uparrow,\; FRR \downarrow \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>Один и тот же человек меняется из-за света, угла, очков и выражения лица. Нужна метрика, которая уменьшает эти вариации, но все еще отделяет владельца от посторонних.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Пространства признаков, евклидовы нормы, пороговые классификаторы, статистика ошибок `FAR/FRR` и выбор operating point системы.</p></div>
+            </div>
+          </div>
+          <div class="story-side">
+            <div class="story-side-stack">
+              <div class="scene-demo-card">
+                <h4>Биометрическая проверка</h4>
+                <p>Выбери сценарий сканирования и смотри, как меняется embedding лица. Система сравнивает его с эталоном и принимает решение по расстоянию до порога.</p>
+                <div class="vision-group" id="faceScenarioPicker">
+                  <button class="vision-chip active" data-face="direct">Прямой взгляд</button>
+                  <button class="vision-chip" data-face="glasses">Очки</button>
+                  <button class="vision-chip" data-face="angle">Поворот</button>
+                  <button class="vision-chip" data-face="impostor">Посторонний</button>
+                </div>
+                <label for="faceRange">Порог схожести</label>
+                <input id="faceRange" type="range" min="18" max="70" value="36" />
+                <div class="face-panel face-lab">
+                  <div class="face-column">
+                    <span class="kernel-subtitle">Эталон \(z_0\)</span>
+                    <div class="feature-vector" id="referenceVector"></div>
+                  </div>
+                  <div class="face-column">
+                    <span class="kernel-subtitle">Скан \(z\)</span>
+                    <div class="feature-vector" id="probeVector"></div>
+                  </div>
+                </div>
+                <div class="lab-metrics">
+                  <span id="faceDistance">Расстояние: 0.074</span>
+                  <span id="faceVerdict">Доступ разрешен</span>
+                  <span id="faceScenarioInfo">Сценарий: прямой взгляд</span>
+                </div>
+                <div class="kernel-result">
+                  <div id="faceMath">\[ \lVert z-z_0 \rVert_2 = 0.074 < \tau \]</div>
+                  <div class="kernel-explain" id="faceExplain">Для одного и того же человека расстояние должно оставаться малым даже при изменении внешних условий.</div>
+                </div>
+              </div>
+              <div class="scene-demo-card">
+                <h4>Граница решений в пространстве признаков</h4>
+                <p>Синие точки изображают варианты владельца, красные — посторонних. При росте порога растет число принятых “своих”, но вместе с этим повышается риск ложного допуска.</p>
+                <label for="embedRange">Локальный порог \(\tau\)</label>
+                <input id="embedRange" type="range" min="18" max="70" value="36" />
+                <div class="embedding-plane" id="embeddingPlane">
+                  <span class="embed-center"></span>
+                  <button class="embed-point accepted" data-kind="genuine" data-label="Владелец A" data-dist="0.18" style="left:56%;top:44%;"></button>
+                  <button class="embed-point accepted" data-kind="genuine" data-label="Владелец B" data-dist="0.24" style="left:60%;top:49%;"></button>
+                  <button class="embed-point accepted" data-kind="genuine" data-label="Владелец C" data-dist="0.31" style="left:45%;top:40%;"></button>
+                  <button class="embed-point rejected" data-kind="genuine" data-label="Владелец D" data-dist="0.39" style="left:40%;top:62%;"></button>
+                  <button class="embed-point rejected" data-kind="impostor" data-label="Посторонний A" data-dist="0.47" style="left:74%;top:28%;"></button>
+                  <button class="embed-point rejected" data-kind="impostor" data-label="Посторонний B" data-dist="0.55" style="left:72%;top:70%;"></button>
+                  <button class="embed-point rejected" data-kind="impostor" data-label="Посторонний C" data-dist="0.63" style="left:28%;top:68%;"></button>
+                  <button class="embed-point rejected" data-kind="impostor" data-label="Посторонний D" data-dist="0.71" style="left:22%;top:30%;"></button>
+                  <span class="embed-ring" id="embedRing"></span>
+                </div>
+                <div class="lab-metrics">
+                  <span id="embedRadius">Радиус принятия: 26</span>
+                  <span id="embedCount">Принято: 2 точки</span>
+                  <span id="faceFar">FAR: 0%</span>
+                  <span id="faceFrr">FRR: 25%</span>
+                </div>
+                <div class="mini-note" id="embedPointInfo">Нажми на точку, чтобы увидеть ее расстояние до эталона и решение классификатора.</div>
+                <div class="mini-note" id="embedRule">Принятие: \( \lVert z - z_0 \rVert_2 < \tau \)</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-card scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">05</span>
+            <h3>Рекомендации и батарея: оценка вероятности и скорости изменения</h3>
+            <p>Телефон постоянно оценивает вероятности и скорости изменения: с какой вероятностью пользователь нажмет на рекомендацию, как быстро падает заряд, и как нужно обновить параметры модели, чтобы следующая оценка стала точнее.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ p(\text{click}\mid x) = \sigma(w^T x + b) \]</div>
+              <div class="formula">\[ L = - \sum \left[y \log p + (1-y)\log(1-p)\right] \]</div>
+              <div class="formula">\[ \bar{s} \approx \frac{\Delta Q}{\Delta t},\qquad w_{t+1}=w_t-\alpha \nabla L(w_t) \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>Система принимает решения по шумным и неполным признакам. Если пороги и веса настроены плохо, рекомендации становятся навязчивыми, а прогноз батареи — неточным.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Логистическая регрессия, сигмоида, кросс-энтропия, градиентный спуск, производные и оценка скорости изменения заряда как наклона функции.</p></div>
+            </div>
+          </div>
+          <div class="story-side story-side-stack">
+            <div class="scene-demo-card">
+              <h4>Лаборатория рекомендаций</h4>
+              <p>Переключай признаки пользователя и смотри, как меняется линейный скор \(w^Tx+b\), вероятность клика и вклад каждого признака в итоговое решение модели.</p>
+              <div class="vision-group" id="recommendationPresetPicker">
+                <button class="vision-chip active" data-preset="study">Учеба</button>
+                <button class="vision-chip" data-preset="commute">Дорога</button>
+                <button class="vision-chip" data-preset="night">Вечер</button>
+              </div>
+              <div class="feature-vector" id="recommendationFeatures"></div>
+              <div class="vision-output">
+                <div class="vision-output-card">
+                  <span class="stat-label">Линейный скор</span>
+                  <strong id="recommendationScore">\(w^Tx+b = 0.31\)</strong>
+                </div>
+                <div class="vision-output-card">
+                  <span class="stat-label">Вероятность</span>
+                  <strong id="probabilityText">Шанс рекомендации: 58%</strong>
+                </div>
+              </div>
+              <div class="probability-bar"><div id="probabilityFill"></div></div>
+              <div class="lab-metrics">
+                <span id="probabilityHint">Модель пока не уверена</span>
+                <span id="recommendationTopFeature">Главный вклад: история просмотров</span>
+              </div>
+              <div class="kernel-result">
+                <div id="recommendationMath">\[ p = \sigma(w^T x + b) \]</div>
+                <div class="kernel-explain" id="recommendationExplain">Каждый признак вносит вклад в общий скор. После сигмоиды этот скор превращается в вероятность показа или клика.</div>
+              </div>
+            </div>
+            <div class="scene-demo-card">
+              <h4>Батарея и обновление модели</h4>
+              <p>Меняй нагрузку телефона и шаг обучения. Сверху виден прогноз разряда как функция времени, снизу — как параметр \(\alpha\) влияет на скорость уменьшения ошибки модели.</p>
+              <label for="batteryLoad">Нагрузка телефона</label>
+              <input id="batteryLoad" type="range" min="1" max="10" value="4" />
+              <div class="demo-stats">
+                <div><span class="stat-label">Режим</span><strong id="batteryMode">сбалансированный</strong></div>
+                <div><span class="stat-label">До 0%</span><strong id="batteryHours">11.2 ч</strong></div>
+                <div><span class="stat-label">Средний спад</span><strong id="batterySlope">-8.9 %/ч</strong></div>
+              </div>
+              <svg viewBox="0 0 460 220" class="graph-stage">
+                <path class="grid-line" d="M 30 30 H 430"></path>
+                <path class="grid-line" d="M 30 110 H 430"></path>
+                <path class="grid-line" d="M 30 190 H 430"></path>
+                <path id="batteryArea" class="graph-area"></path>
+                <path id="batteryPath" class="graph-path"></path>
+              </svg>
+              <label for="gradientRange">Шаг обучения α</label>
+              <input id="gradientRange" type="range" min="1" max="100" value="24" />
+              <div class="loss-chart">
+                <div class="loss-line" id="lossLine"></div>
+              </div>
+              <div class="lab-metrics">
+                <span id="gradientInfo">α = 0.24</span>
+                <span id="lossInfo">Loss после 5 шагов: 0.41</span>
+                <span id="gradientMode">Режим: устойчивое обучение</span>
+              </div>
+              <div class="gradient-steps" id="gradientSteps"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="story-card reverse scene-card reveal">
+          <div class="story-copy">
+            <span class="story-index">06</span>
+            <h3>Безопасность: энтропия, хеширование и арифметика по модулю</h3>
+            <p>Защита телефона опирается не на “секретность интерфейса”, а на математическую трудность перебора и подделки. Здесь важны размер пространства паролей, односторонность преобразований и арифметика в кольцах вычетов.</p>
+            <div class="formula-card">
+              <div class="formula-title">Математическая модель</div>
+              <div class="formula">\[ H \approx L \log_2 |\Sigma| \]</div>
+              <div class="formula">\[ h = H(m),\qquad H(m) = H(m') \text{ маловероятно при } m \neq m' \]</div>
+              <div class="formula">\[ c \equiv m^e \pmod n,\qquad m \equiv c^d \pmod n \]</div>
+            </div>
+            <div class="deep-points compact">
+              <div class="deep-point"><strong>Почему это нетривиально</strong><p>Система должна быть удобной для владельца, но вычислительно дорогой для атакующего. Это означает борьбу не только с человеком, но и с массовым автоматическим перебором.</p></div>
+              <div class="deep-point"><strong>Где математика</strong><p>Комбинаторика паролей, логарифмы и энтропия, хеш-функции, коллизии, модульная арифметика, теория чисел и оценка вычислительной сложности.</p></div>
+            </div>
+          </div>
+          <div class="story-side">
+            <div class="story-side-stack">
+              <div class="scene-demo-card">
+                <h4>Лаборатория стойкости пароля</h4>
+                <p>Выбери алфавит, длину и модель атаки. Блок покажет, как меняются пространство перебора, энтропия и ожидаемая стоимость атаки, если атакующий пытается подобрать пароль автоматически.</p>
+                <div class="vision-group" id="charsetPicker">
+                  <button class="vision-chip active" data-charset="digits">Цифры</button>
+                  <button class="vision-chip" data-charset="latin">Латиница</button>
+                  <button class="vision-chip" data-charset="full">Полный набор</button>
+                </div>
+                <div class="vision-group" id="attackPicker">
+                  <button class="vision-chip active" data-attack="online">Online</button>
+                  <button class="vision-chip" data-attack="offline">Offline</button>
+                </div>
+                <label for="entropyRange">Длина пароля</label>
+                <input id="entropyRange" type="range" min="4" max="20" value="10" />
+                <div class="vision-output">
+                  <div class="vision-output-card">
+                    <span class="stat-label">Число вариантов</span>
+                    <strong id="entropySpace">\(10^{10}\)</strong>
+                  </div>
+                  <div class="vision-output-card">
+                    <span class="stat-label">Энтропия</span>
+                    <strong id="entropyBits">Энтропия: 47 бит</strong>
+                  </div>
+                </div>
+                <div class="entropy-scale"><div id="entropyFill"></div></div>
+                <div class="lab-metrics">
+                  <span id="entropyLabel">Средняя стойкость</span>
+                  <span id="entropyTime">Перебор: часы</span>
+                </div>
+                <div class="kernel-result">
+                  <div id="entropyMath">\[ H \approx L \log_2 |\Sigma| \]</div>
+                  <div class="kernel-explain" id="entropyExplain">Если длина растет линейно, то число возможных строк растет экспоненциально. Именно это делает полный перебор дорогим.</div>
+                </div>
+              </div>
+              <div class="scene-demo-card">
+                <h4>Игрушечный RSA-цикл</h4>
+                <p>Это учебная версия RSA. Подвигай сообщение \(m\): блок отдельно покажет исходное значение, шаг шифрования и шаг расшифровки. Интерактив здесь именно в изменении \(m\) и наблюдении, как меняются \(c\) и \(m'\).</p>
+                <label for="modValue">Сообщение \(m\)</label>
+                <input id="modValue" type="range" min="0" max="17" value="4" />
+                <div class="mini-note" id="rsaMessageInfo">Текущее сообщение: \(m = 8\)</div>
+                <div class="vision-output">
+                  <div class="vision-output-card">
+                    <span class="stat-label">Открытый ключ</span>
+                    <strong id="rsaPublic">\((e,n) = (3,33)\)</strong>
+                  </div>
+                  <div class="vision-output-card">
+                    <span class="stat-label">Закрытый ключ</span>
+                    <strong id="rsaPrivate">\((d,n) = (7,33)\)</strong>
+                  </div>
+                </div>
+                <div class="vision-output">
+                  <div class="vision-output-card">
+                    <span class="stat-label">Шаг 1</span>
+                    <strong id="rsaStepMessage">Сообщение: \(m = 8\)</strong>
+                  </div>
+                  <div class="vision-output-card">
+                    <span class="stat-label">Шаг 2</span>
+                    <strong id="rsaStepCipher">Шифрование: \(c = 17\)</strong>
+                  </div>
+                  <div class="vision-output-card">
+                    <span class="stat-label">Шаг 3</span>
+                    <strong id="rsaStepDecode">Расшифровка: \(m' = 8\)</strong>
+                  </div>
+                </div>
+                <div class="mod-result" id="modResult">\[ c \equiv m^e \pmod n \]</div>
+                <div class="lab-metrics">
+                  <span id="modInfo">Шифртекст: 2</span>
+                  <span id="modCycles">Расшифровка: 2</span>
+                  <span id="rsaCheck">Проверка: \(m' = m\)</span>
+                </div>
+                <div class="mod-ring" id="modRing"></div>
+                <div class="kernel-result">
+                  <div id="rsaMath">\[ c = m^3 \bmod 33,\qquad m' = c^7 \bmod 33 \]</div>
+                  <div class="kernel-explain" id="rsaExplain">На кольце вычетов сообщение и шифртекст выглядят как разные точки. Математика гарантирует, что владелец закрытого ключа может вернуть исходное значение.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="quiz-section" id="quiz">
+        <div class="section-head reveal">
+          <p class="eyebrow">Проверка понимания</p>
+          <h2>Одна карточка за раз: отвечаешь, сразу видишь результат и переходишь дальше</h2>
+        </div>
+        <div class="quiz-shell reveal">
+          <article class="quiz-card quiz-single" id="quizCard">
+            <span class="quiz-number" id="quizStep">01</span>
+            <h3 id="quizQuestion">Загрузка вопроса...</h3>
+            <div class="quiz-formula" id="quizFormula"></div>
+            <div class="quiz-options" id="quizOptions"></div>
+            <div class="quiz-feedback" id="quizFeedback">Выбери вариант ответа.</div>
+            <div class="quiz-actions">
+              <button id="nextQuestion" class="button button-secondary" disabled>Следующий вопрос</button>
+              <div id="quizResult" class="quiz-result">Текущий счет: 0 / 0</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="finale-section reveal">
+        <div class="finale-card">
+          <p class="eyebrow">Итог</p>
+          <h2>Сильная математика в телефоне работает не отдельно от жизни, а прямо внутри привычных действий пользователя.</h2>
+          <p>Поэтому понимание формул здесь не абстракция: это способ понять современную технику на инженерном уровне.</p>
+          <a href="#top" class="button button-primary">Наверх</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
